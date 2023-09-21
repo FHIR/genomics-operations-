@@ -2,12 +2,12 @@ from collections import OrderedDict
 from threading import Lock
 from uuid import uuid4
 import pyliftover
-import requests
 from datetime import datetime
 import pymongo
 from flask import abort
 from itertools import groupby
 import re
+from .input_normalization import normalize
 
 # MongoDB Client URIs
 FHIR_genomics_data_client_uri = "mongodb+srv://download:download@cluster0.8ianr.mongodb.net/FHIRGenomicsData"
@@ -118,10 +118,6 @@ SUPPORTED_DATE_FORMAT = '%Y-%m-%d'
 
 SUPPORTED_GENOMIC_SOURCE_CLASSES = ['germline', 'somatic']
 
-NCBI_VARIATION_SERVICES_BASE_URL = 'https://api.ncbi.nlm.nih.gov/variation/v0/'
-
-CHROMOSOME_CSV_FILE = 'app/_Dict_Chromosome.csv'
-
 # Utility Functions
 
 
@@ -165,26 +161,6 @@ def merge_ranges(ranges):
     return merged_ranges
 
 
-def get_hgvs_contextuals_url(hgvs):
-    return f"{NCBI_VARIATION_SERVICES_BASE_URL}hgvs/{hgvs}/contextuals"
-
-
-def get_spdi_all_equivalent_contextual_url(contextual_SPDI):
-    return f'{NCBI_VARIATION_SERVICES_BASE_URL}spdi/{contextual_SPDI}/all_equivalent_contextual'
-
-
-def get_spdi_canonical_representative_url(contextual_SPDI):
-    return f'{NCBI_VARIATION_SERVICES_BASE_URL}spdi/{contextual_SPDI}/canonical_representative'
-
-
-def build_spdi(seq_id, position, deleted_sequence, inserted_sequence):
-    return f"{seq_id}:{position}:{deleted_sequence}:{inserted_sequence}"
-
-
-def get_spdi_elements(response_object):
-    return (response_object['seq_id'], response_object['position'], response_object['deleted_sequence'], response_object['inserted_sequence'])
-
-
 def validate_subject(patient_id):
     if not patients_db.find_one({"patientID": patient_id}):
         abort(400, f"Patient ({patient_id}) not found.")
@@ -198,7 +174,7 @@ def get_variant(variant):
     variant = variant.lstrip()
 
     if variant.count(":") == 1:  # HGVS expression
-        SPDIs = hgvs_2_contextual_SPDIs(variant)
+        SPDIs = normalize(variant)
         if not SPDIs:
             abort(400, f'Cannot normalize variant: {variant}')
         elif not SPDIs["GRCh37"] and not SPDIs["GRCh38"]:
@@ -207,7 +183,7 @@ def get_variant(variant):
             normalized_variant = {"variant": variant, "GRCh37": SPDIs["GRCh37"], "GRCh38": SPDIs["GRCh38"]}
 
     elif variant.count(":") == 3:  # SPDI expression
-        SPDIs = SPDI_2_contextual_SPDIs(variant)
+        SPDIs = normalize(variant)
         if not SPDIs:
             abort(400, f'Cannot normalize variant: {variant}')
         elif not SPDIs["GRCh37"] and not SPDIs["GRCh38"]:
@@ -1050,136 +1026,6 @@ def get_intersected_regions(bed_id, build, chrom, start, end, intersected_region
         for csePair in result:
             ref_seq = get_ref_seq_by_chrom_and_build(build, csePair["Chromosome"])
             intersected_regions.append(f'{ref_seq}:{max(start, csePair["Start"])}-{min(end, csePair["End"])}')
-
-
-def hgvs_2_contextual_SPDIs(hgvs):
-
-    # convert hgvs to contextualSPDI
-    url = get_hgvs_contextuals_url(hgvs)
-    headers = {'Accept': 'application/json'}
-
-    r = requests.get(url, headers=headers)
-    if r.status_code != 200:
-        return False
-
-    response = r.json()
-    raw_data = response['data']
-    raw_SPDI = raw_data['spdis'][0]
-
-    seq_id, position, deleted_sequence, inserted_sequence = get_spdi_elements(raw_SPDI)
-
-    contextual_SPDI = build_spdi(seq_id, position, deleted_sequence, inserted_sequence)
-
-    # convert contextualSPDI to build37 and build38 contextual SPDIs
-    url = get_spdi_all_equivalent_contextual_url(contextual_SPDI)
-    headers = {'Accept': 'application/json'}
-
-    r = requests.get(url, headers=headers)
-    if r.status_code != 200:
-        return False
-
-    response = r.json()
-    raw_SPDI_List = response['data']['spdis']
-
-    b37SPDI = None
-    b38SPDI = None
-    for item in raw_SPDI_List:
-        if item['seq_id'].startswith("NC_"):
-            temp = get_build_and_chrom_by_ref_seq(item['seq_id'])
-            if temp:
-                seq_id, position, deleted_sequence, inserted_sequence = get_spdi_elements(item)
-
-                if temp['build'] == 'GRCh37':
-                    b37SPDI = build_spdi(seq_id, position, deleted_sequence, inserted_sequence)
-                elif temp['build'] == 'GRCh38':
-                    b38SPDI = build_spdi(seq_id, position, deleted_sequence, inserted_sequence)
-            else:
-                return False
-
-    return {"GRCh37": b37SPDI, "GRCh38": b38SPDI}
-
-
-def hgvs_2_canonical_SPDI(hgvs):
-
-    # convert hgvs to contextualSPDI
-    url = get_hgvs_contextuals_url(hgvs)
-    headers = {'Accept': 'application/json'}
-
-    r = requests.get(url, headers=headers)
-    if r.status_code != 200:
-        return False
-
-    response = r.json()
-    raw_data = response['data']
-    raw_SPDI = raw_data['spdis'][0]
-
-    seq_id, position, deleted_sequence, inserted_sequence = get_spdi_elements(raw_SPDI)
-
-    contextual_SPDI = build_spdi(seq_id, position, deleted_sequence, inserted_sequence)
-
-    # convert contextualSPDI to canonical SPDI
-    url = get_spdi_canonical_representative_url(contextual_SPDI)
-    headers = {'Accept': 'application/json'}
-
-    r = requests.get(url, headers=headers)
-    if r.status_code != 200:
-        return False
-
-    response = r.json()
-    raw_SPDI = response['data']
-
-    seq_id, position, deleted_sequence, inserted_sequence = get_spdi_elements(raw_SPDI)
-
-    canonical_SPDI = build_spdi(seq_id, position, deleted_sequence, inserted_sequence)
-
-    return {"canonicalSPDI": canonical_SPDI}
-
-
-def SPDI_2_contextual_SPDIs(spdi):
-    url = get_spdi_all_equivalent_contextual_url(spdi)
-    headers = {'Accept': 'application/json'}
-
-    r = requests.get(url, headers=headers)
-    if r.status_code != 200:
-        return False
-
-    response = r.json()
-    raw_SPDI_List = response['data']['spdis']
-
-    b37SPDI = None
-    b38SPDI = None
-    for item in raw_SPDI_List:
-        if item['seq_id'].startswith("NC_"):
-            temp = get_build_and_chrom_by_ref_seq(item['seq_id'])
-            if temp:
-                seq_id, position, deleted_sequence, inserted_sequence = get_spdi_elements(item)
-
-                if temp['build'] == 'GRCh37':
-                    b37SPDI = build_spdi(seq_id, position, deleted_sequence, inserted_sequence)
-                elif temp['build'] == 'GRCh38':
-                    b38SPDI = build_spdi(seq_id, position, deleted_sequence, inserted_sequence)
-            else:
-                return False
-
-    return {"GRCh37": b37SPDI, "GRCh38": b38SPDI}
-
-
-def SPDI_2_canonical_SPDI(spdi):
-    url = get_spdi_canonical_representative_url(spdi)
-    headers = {'Accept': 'application/json'}
-
-    r = requests.get(url, headers=headers)
-    if r.status_code != 200:
-        return False
-
-    response = r.json()
-    raw_SPDI = response['data']
-
-    seq_id, position, deleted_sequence, inserted_sequence = get_spdi_elements(raw_SPDI)
-
-    canonical_SPDI = build_spdi(seq_id, position, deleted_sequence, inserted_sequence)
-
-    return {"canonicalSPDI": canonical_SPDI}
 
 
 def query_clinvar_by_variants(normalized_variant_list, code_list, query, population=False):

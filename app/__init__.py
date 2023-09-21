@@ -2,9 +2,13 @@ import connexion
 import flask
 from flask_cors import CORS
 import os
+# from .refseq import download_refseq_files
 
 
 def create_app():
+    # First ensure we have the refseq files locally
+    # download_refseq_files()
+
     # App and API
     options = {
         'swagger_url': '/',
