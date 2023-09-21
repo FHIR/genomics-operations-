@@ -179,7 +179,11 @@ def find_subject_specific_variants(
     subject = subject.strip()
     common.validate_subject(subject)
 
-    variants = list(map(common.get_variant, variants))
+    try:
+        variants = list(map(common.get_variant, variants))
+    except Exception as err:
+        print(f"Unexpected {err=}, {type(err)=}")
+        abort(422, 'Failed LiftOver')
 
     # Query
     query = {}
@@ -833,13 +837,23 @@ def find_subject_tx_implications(
     if ranges:
         ranges = list(map(common.get_range, ranges))
         common.get_lift_over_range(ranges)
-        variants = common.get_variants(ranges, query)
+
+        try:
+            variants = common.get_variants(ranges, query)
+        except Exception as err:
+            print(f"Unexpected {err=}, {type(err)=}")
+            abort(422, 'Failed LiftOver')
+
         if not variants:
             return jsonify({"resourceType": "Parameters"})
         normalized_variants = [{variant["BUILD"]: variant["SPDI"]} for variant in variants]
 
     if variants and not ranges:
-        normalized_variants = list(map(common.get_variant, variants))
+        try:
+            normalized_variants = list(map(common.get_variant, variants))
+        except Exception as err:
+            print(f"Unexpected {err=}, {type(err)=}")
+            abort(422, 'Failed LiftOver')
 
     # Result Object
     result = OrderedDict()
@@ -1079,13 +1093,23 @@ def find_subject_dx_implications(
     if ranges:
         ranges = list(map(common.get_range, ranges))
         common.get_lift_over_range(ranges)
-        variants = common.get_variants(ranges, query)
+
+        try:
+            variants = common.get_variants(ranges, query)
+        except Exception as err:
+            print(f"Unexpected {err=}, {type(err)=}")
+            abort(422, 'Failed LiftOver')
+
         if not variants:
             return jsonify({"resourceType": "Parameters"})
         normalized_variants = [{variant["BUILD"]: variant["SPDI"]} for variant in variants]
 
     if variants and not ranges:
-        normalized_variants = list(map(common.get_variant, variants))
+        try:
+            normalized_variants = list(map(common.get_variant, variants))
+        except Exception as err:
+            print(f"Unexpected {err=}, {type(err)=}")
+            abort(422, 'Failed LiftOver')
 
     # Result Object
     result = OrderedDict()
@@ -1433,7 +1457,11 @@ def find_population_specific_variants(
     # Parameters
     variants = list(map(lambda x: x.strip().split(","), variants))
     for i in range(len(variants)):
-        variants[i] = list(map(common.get_variant, variants[i]))
+        try:
+            variants[i] = list(map(common.get_variant, variants[i]))
+        except Exception as err:
+            print(f"Unexpected {err=}, {type(err)=}")
+            abort(422, 'Failed LiftOver')
 
     # Query
     query = {}
@@ -1944,7 +1972,11 @@ def find_population_tx_implications(
         return jsonify({"resourceType": "Parameters"})
 
     if variants:
-        variants = list(map(common.get_variant, variants))
+        try:
+            variants = list(map(common.get_variant, variants))
+        except Exception as err:
+            print(f"Unexpected {err=}, {type(err)=}")
+            abort(422, 'Failed LiftOver')
 
     condition_code_list = []
     if conditions:
@@ -2150,7 +2182,11 @@ def find_population_dx_implications(
         return jsonify({"resourceType": "Parameters"})
 
     if variants:
-        variants = list(map(common.get_variant, variants))
+        try:
+            variants = list(map(common.get_variant, variants))
+        except Exception as err:
+            print(f"Unexpected {err=}, {type(err)=}")
+            abort(422, 'Failed LiftOver')
 
     condition_code_list = []
     if conditions:
