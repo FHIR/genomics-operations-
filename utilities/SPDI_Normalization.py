@@ -2,11 +2,12 @@ from glob import glob
 from math import ceil
 from pathlib import Path
 from threading import Lock
+from memory_profiler import profile
 
-MAX_REFSEQ_CACHE_SIZE = 300 * 1024 * 1024  # 450MB
+MAX_REFSEQ_CACHE_SIZE = 200 * 1024 * 1024  # 450MB
 
 
-def hex2Code(code):
+def hex_to_code(code):
     """
     Convert a 4 byte integer to a sequence code. See `code2Hex()` for details
     """
@@ -31,6 +32,11 @@ def hex2Code(code):
             raise NotImplementedError(f"unsupported code '{code}'")
 
 
+def refseq_length_to_size(length):
+    # Each byte contains at most 2 codes
+    return ceil(length / 2)
+
+
 class RefSeq:
     def __init__(self, refSeq, length):
         """
@@ -42,7 +48,7 @@ class RefSeq:
         self.__length = length
 
         # Size in bytes
-        self.size = ceil(length / 2)
+        self.size = refseq_length_to_size(length)
 
     def __getitem__(self, subscript):
         if isinstance(subscript, slice):
@@ -54,41 +60,12 @@ class RefSeq:
         byte = self.__packedRefSeq[subscript // 2]
 
         if subscript % 2 == 0:
-            return hex2Code((byte >> 4) & 0xF)
+            return hex_to_code((byte >> 4) & 0xF)
 
-        return hex2Code(byte & 0xF)
-
-
-class RefSeqCache:
-    def __init__(self):
-        self.cache = {}
-        self.size = 0
-
-    def __getKey(self, build, refSeqName):
-        return f'{build}/{refSeqName}'
-
-    def contains(self, build, refSeqName):
-        return self.__getKey(build, refSeqName) in self.cache
-
-    def get(self, build, refSeqName):
-        return self.cache[self.__getKey(build, refSeqName)]
-
-    def add(self, build, refSeqName, refSeq):
-        """
-        Evacuates enough items from the cache until we have room for the new one and then adds it to the cache.
-        """
-
-        while self.size + refSeq.size > MAX_REFSEQ_CACHE_SIZE:
-            key, cachedRefSeq = next(iter(self.cache.items()))
-            self.size -= cachedRefSeq.size
-            del self.cache[key]
-
-        self.cache[self.__getKey(build, refSeqName)] = refSeq
-        self.size += refSeq.size
+        return hex_to_code(byte & 0xF)
 
 
-refSeqCache = RefSeqCache()
-refSeqCacheLock = Lock()
+refSeqLock = Lock()
 
 
 def get_ref_seq(build, refSeqName):
@@ -100,9 +77,13 @@ def get_ref_seq(build, refSeqName):
                 raise ValueError(f'failed to find expected refseq file for build "{build}" and RefSeq "{refSeqName}" ')
 
             refSeqFile = foundFiles[0]
-            refSeqLength = Path(refSeqFile).stem.rpartition('_')[-1]
+            refSeqLength = int(Path(refSeqFile).stem.rpartition('_')[-1])
+
+            # Make room for this refseq in the cache
+            refSeqCache.reserve_space(refSeqLength)
+
             with open(refSeqFile, mode='rb') as file:
-                refSeq = RefSeq(file.read(), int(refSeqLength))
+                refSeq = RefSeq(file.read(), refSeqLength)
         except Exception as err:
             print(f"failed to read refseq file: {err=}, {type(err)=}")
             raise
@@ -112,7 +93,7 @@ def get_ref_seq(build, refSeqName):
 
 def get_normalized_spdi(ref_seq, pos, ref, alt, build):
     # Need to serialise this if we can't keep all the ref seq data in memory
-    with refSeqCacheLock:
+    with refSeqLock:
         return get_normalized_spdi_impl(ref_seq, pos, ref, alt, build)
 
 
