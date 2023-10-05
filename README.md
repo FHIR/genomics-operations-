@@ -48,3 +48,9 @@ run `python3 -m pytest` from the terminal to execute them all.
 Additionally, since the tests run against the Mongo DB database, if you need to update the test data in this repo, you
 can run `OVERWRITE_TEST_EXPECTED_DATA=true python3 -m pytest` from the terminal and then create a pull request with the
 changes.
+
+## Development environment on Heroku
+
+Pull requests will trigger a deployment to this environment automatically which is accessible at the following URL:
+
+https://fhir-gen-ops-dev-ca42373833b6.herokuapp.com/
