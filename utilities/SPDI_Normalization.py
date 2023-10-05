@@ -1,99 +1,99 @@
 from glob import glob
-from math import ceil
+from math import floor
 from pathlib import Path
 from threading import Lock
-from memory_profiler import profile
-
-MAX_REFSEQ_CACHE_SIZE = 200 * 1024 * 1024  # 450MB
 
 
-def hex_to_code(code):
+def hex_to_code(hex):
     """
-    Convert a 4 byte integer to a sequence code. See `code2Hex()` for details
+    Convert a 3 bit integer to a sequence code. See `code_to_hex()` in pack_refseq.py for details.
     """
-    match code:
+    match hex:
         case 0x0: return 'A'
         case 0x1: return 'C'
         case 0x2: return 'G'
         case 0x3: return 'T'
-        case 0x4: return 'U'
-        case 0x5: return 'R'
-        case 0x6: return 'Y'
-        case 0x7: return 'K'
-        case 0x8: return 'M'
-        case 0x9: return 'S'
-        case 0xA: return 'W'
-        case 0xB: return 'B'
-        case 0xC: return 'D'
-        case 0xD: return 'H'
-        case 0xE: return 'V'
-        case 0xF: return 'N'
+        case 0x4: return 'N'
+        # Blow up if we get any unexpected hex-encoded code
         case _:
-            raise NotImplementedError(f"unsupported code '{code}'")
-
-
-def refseq_length_to_size(length):
-    # Each byte contains at most 2 codes
-    return ceil(length / 2)
+            raise NotImplementedError(f"unexpected hex-encoded code: '{hex}'")
 
 
 class RefSeq:
-    def __init__(self, refSeq, length):
-        """
-        Store the length so we can easily tell when the index operator receives an out of bounds subscript because we
-        want to represent each symbol using 4 bits and we have 16 symbols, so there's no room left to represent an
-        invalid symbol which denotes end-of-sequence.
-        """
-        self.__packedRefSeq = refSeq
-        self.__length = length
+    # TODO: Consider adding `__str__()` method (and maybe `__repr__()` too?)
 
-        # Size in bytes
-        self.size = refseq_length_to_size(length)
+    def __init__(self, packed_ref_seq, len):
+        self.__packed_ref_seq = packed_ref_seq
+        # Store the RefSeq length so we can easily tell when the index operator receives an out of bounds subscript
+        # because we want to represent each code using 3 bits and we don't want to introduce an end-of-sequence code, in
+        # case we'll want to leverage the unused codes for something else.
+        self.__len = len
 
     def __getitem__(self, subscript):
         if isinstance(subscript, slice):
             codes = []
-            for i in range(*subscript.indices(self.__length)):
+            # TODO: It should be more efficient to process 3 bytes at a time for long ranges.
+            for i in range(*subscript.indices(self.__len)):
                 codes.append(self[i])
             return "".join(codes)
 
-        byte = self.__packedRefSeq[subscript // 2]
+        if subscript >= self.__len:
+            raise IndexError(f"list index out of range: '{subscript}' must be less than '{self.__len}'")
 
-        if subscript % 2 == 0:
-            return hex_to_code((byte >> 4) & 0xF)
+        # Select the byte(s) and the offset of the code we wish to extract from the packed RefSeq data.
+        packed_subscript = floor(subscript * 3 / 8)
+        data = self.__packed_ref_seq[packed_subscript]
+        match subscript % 8:
+            case 0: offset = 0
+            case 1: offset = 3
+            case 2:
+                offset = 6
+                # This code is packed across two bytes.
+                data += self.__packed_ref_seq[packed_subscript + 1] << 8
+            case 3: offset = 1
+            case 4: offset = 4
+            case 5:
+                offset = 7
+                # This code is packed across two bytes.
+                data += self.__packed_ref_seq[packed_subscript + 1] << 8
+            case 6: offset = 2
+            case 7: offset = 5
 
-        return hex_to_code(byte & 0xF)
+        # Move the relevant three bits to the bottom, extract them using a bit mask and convert them back to a code.
+        return hex_to_code((data >> offset) & 0x3)
 
 
-refSeqLock = Lock()
+def get_ref_seq(build, ref_seq_name):
+    try:
+        ref_seq_file_pattern = f'refseq/{build}/{ref_seq_name}_*.refseq'
+        found_files = glob(ref_seq_file_pattern)
+        if len(found_files) != 1:
+            raise ValueError(f'failed to find expected refseq file for build "{build}" and RefSeq "{ref_seq_name}" ')
+
+        ref_seq_file = found_files[0]
+        ref_seq_length = int(Path(ref_seq_file).stem.rpartition('_')[-1])
+
+        with open(ref_seq_file, mode='rb') as file:
+            refSeq = RefSeq(file.read(), ref_seq_length)
+    except Exception as err:
+        print(f"failed to read refseq file: {err=}, {type(err)=}")
+        raise
+
+    return refSeq
 
 
-def get_ref_seq(build, refSeqName):
-    if not refSeqCache.contains(build, refSeqName):
-        try:
-            refSeqFilePattern = f'refseq/{build}/{refSeqName}_*.seq'
-            foundFiles = glob(refSeqFilePattern)
-            if len(foundFiles) != 1:
-                raise ValueError(f'failed to find expected refseq file for build "{build}" and RefSeq "{refSeqName}" ')
+ref_seq_lock = Lock()
 
-            refSeqFile = foundFiles[0]
-            refSeqLength = int(Path(refSeqFile).stem.rpartition('_')[-1])
 
-            # Make room for this refseq in the cache
-            refSeqCache.reserve_space(refSeqLength)
-
-            with open(refSeqFile, mode='rb') as file:
-                refSeq = RefSeq(file.read(), refSeqLength)
-        except Exception as err:
-            print(f"failed to read refseq file: {err=}, {type(err)=}")
-            raise
-        refSeqCache.add(build, refSeqName, refSeq)
-    return refSeqCache.get(build, refSeqName)
+def get_ref_seq_subseq(build, ref_seq, start, end):
+    # Need to serialise this if we can't keep all the RefSeq data in memory
+    with ref_seq_lock:
+        return get_ref_seq(build, ref_seq)[start:end]
 
 
 def get_normalized_spdi(ref_seq, pos, ref, alt, build):
-    # Need to serialise this if we can't keep all the ref seq data in memory
-    with refSeqLock:
+    # Need to serialise this if we can't keep all the RefSeq data in memory
+    with ref_seq_lock:
         return get_normalized_spdi_impl(ref_seq, pos, ref, alt, build)
 
 

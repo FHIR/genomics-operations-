@@ -1,6 +1,7 @@
 from flask import abort, jsonify
 from collections import OrderedDict
 from app import common
+from utilities import SPDI_Normalization
 
 
 def get_feature_coordinates(
@@ -133,7 +134,8 @@ def get_feature_coordinates(
             protein = protein.split('.')[0]
 
         try:
-            result = common.proteins_data.aggregate([{"$match": {"proteinRefSeq": {'$regex': ".*"+str(protein).replace('*', r'\*')+".*"}}}])
+            result = common.proteins_data.aggregate(
+                [{"$match": {"proteinRefSeq": {'$regex': ".*"+str(protein).replace('*', r'\*')+".*"}}}])
             result = list(result)
         except Exception as e:
             print(f"DEBUG: Error({e}) under get_feature_coordinates(protein={protein})")
@@ -189,3 +191,11 @@ def find_the_gene(range=None):
         output.append(ord_dict)
 
     return (jsonify(output))
+
+
+def seqfetcher(ref_seq, start, end):
+    try:
+        subseq = SPDI_Normalization.get_ref_seq_subseq('GRCh37', ref_seq, start, end)
+    except Exception:
+        subseq = SPDI_Normalization.get_ref_seq_subseq('GRCh38', ref_seq, start, end)
+    return f'>{ref_seq}:{start}-{end} Homo sapiens chromosome 1, GRCh37.p13 Primary Assembly\n{subseq}\n\n'
