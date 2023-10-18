@@ -3,6 +3,13 @@ import flask
 from flask_cors import CORS
 import os
 
+# Ugly hack: Force the hgvs library to skip Normalizer validation
+# TODO: Remove this after https://github.com/biocommons/hgvs/issues/704 is addressed
+import hgvs.config
+hgvs.config.global_config.normalizer.validate = False
+hgvs.global_config.mapping.prevalidation_level = None  # TODO: Open issue
+hgvs.global_config.mapping.replace_reference = False  # TODO: Open issue
+
 
 def create_app():
     # App and API

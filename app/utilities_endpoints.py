@@ -193,9 +193,5 @@ def find_the_gene(range=None):
     return (jsonify(output))
 
 
-def seqfetcher(ref_seq, start, end):
-    try:
-        subseq = SPDI_Normalization.get_ref_seq_subseq('GRCh37', ref_seq, start, end)
-    except Exception:
-        subseq = SPDI_Normalization.get_ref_seq_subseq('GRCh38', ref_seq, start, end)
-    return f'>{ref_seq}:{start}-{end} Homo sapiens chromosome 1, GRCh37.p13 Primary Assembly\n{subseq}\n\n'
+def seqfetcher(acc, start, end):
+    return SPDI_Normalization.get_ref_seq_subseq(acc, start, end)
