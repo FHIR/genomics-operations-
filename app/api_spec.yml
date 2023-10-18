@@ -1262,7 +1262,7 @@ paths:
             pattern: '^\s*[Nn][Cc]_\d{4,10}(\.)(\d{1,2}):\d{1,10}-\d{1,10}\s*$'
             example: "NC_000001.11:11794399-11794400"
 
-  /utilities/seqfetcher/1/sequence/{ref_seq}:
+  /utilities/seqfetcher/1/sequence/{acc}:
     get:
       summary: "Seqfetcher"
       operationId: "app.utilities_endpoints.seqfetcher"
@@ -1276,10 +1276,10 @@ paths:
               schema:
                 type: string
       parameters:
-        - name: ref_seq
+        - name: acc
           in: path
           required: true
-          description: RefSeq
+          description: Accession
           schema:
             type: string
             example: "NC_000001.10"

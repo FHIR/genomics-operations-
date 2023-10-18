@@ -3,13 +3,14 @@ import hgvs.dataproviders.uta
 import hgvs.assemblymapper
 from utilities.SPDI_Normalization import get_normalized_spdi
 
+
 hgvsParser = hgvs.parser.Parser()
 hgvsDataProvider = hgvs.dataproviders.uta.connect(
     db_url="postgresql://anonymous:anonymous@uta.biocommons.org/uta/uta_20210129")
 b37hgvsAssemblyMapper = hgvs.assemblymapper.AssemblyMapper(
-    hgvsDataProvider, assembly_name='GRCh37', alt_aln_method='splign', replace_reference=True)
+    hgvsDataProvider, assembly_name='GRCh37', alt_aln_method='splign', replace_reference=False, prevalidation_level=None)
 b38hgvsAssemblyMapper = hgvs.assemblymapper.AssemblyMapper(
-    hgvsDataProvider, assembly_name='GRCh38', alt_aln_method='splign', replace_reference=True)
+    hgvsDataProvider, assembly_name='GRCh38', alt_aln_method='splign', replace_reference=False, prevalidation_level=None)
 
 # ------------- point to latest data source ------------------------
 # at unix command line: export UTA_DB_URL=postgresql://anonymous:anonymous@uta.biocommons.org/uta/uta_20210129
@@ -49,7 +50,7 @@ def normalize_variant(parsed_variant, build):
         alt = parsed_variant.posedit.edit.alt
     else:  # alt is blank for deletions
         alt = ''
-    return get_normalized_spdi(parsed_variant.ac, pos, ref, alt, build)
+    return get_normalized_spdi(parsed_variant.ac, pos, ref, alt)
 
 # ---------------- CONVERT NM_HGVS to canonical SPDIs ---------------
 

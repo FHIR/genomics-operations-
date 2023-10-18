@@ -63,12 +63,12 @@ class RefSeq:
         return hex_to_code((data >> offset) & 0x3)
 
 
-def get_ref_seq(build, ref_seq_name):
+def get_ref_seq(acc):
     try:
-        ref_seq_file_pattern = f'refseq/{build}/{ref_seq_name}_*.refseq'
+        ref_seq_file_pattern = f'refseq/*/{acc}_*.refseq'
         found_files = glob(ref_seq_file_pattern)
         if len(found_files) != 1:
-            raise ValueError(f'failed to find expected refseq file for build "{build}" and RefSeq "{ref_seq_name}" ')
+            raise ValueError(f'failed to find expected refseq file for accession "{acc}"')
 
         ref_seq_file = found_files[0]
         ref_seq_length = int(Path(ref_seq_file).stem.rpartition('_')[-1])
@@ -85,20 +85,20 @@ def get_ref_seq(build, ref_seq_name):
 ref_seq_lock = Lock()
 
 
-def get_ref_seq_subseq(build, ref_seq, start, end):
+def get_ref_seq_subseq(acc, start, end):
     # Need to serialise this if we can't keep all the RefSeq data in memory
     with ref_seq_lock:
-        return get_ref_seq(build, ref_seq)[start:end]
+        return get_ref_seq(acc)[start:end]
 
 
-def get_normalized_spdi(ref_seq, pos, ref, alt, build):
+def get_normalized_spdi(acc, pos, ref, alt):
     # Need to serialise this if we can't keep all the RefSeq data in memory
     with ref_seq_lock:
-        return get_normalized_spdi_impl(ref_seq, pos, ref, alt, build)
+        return get_normalized_spdi_impl(acc, pos, ref, alt)
 
 
-def get_normalized_spdi_impl(ref_seq, pos, ref, alt, build):
-    ref_seq_fasta = get_ref_seq(build, ref_seq)
+def get_normalized_spdi_impl(acc, pos, ref, alt):
+    ref_seq_fasta = get_ref_seq(acc)
 
     # Step 0
     start = pos
@@ -152,7 +152,7 @@ def get_normalized_spdi_impl(ref_seq, pos, ref, alt, build):
         # b. Check if both are non-empty
 
     if ref and alt:
-        return f"{ref_seq}:{start}:{ref}:{alt}"
+        return f"{acc}:{start}:{ref}:{alt}"
 
         # c. Check if one is empty
 
@@ -200,7 +200,7 @@ def get_normalized_spdi_impl(ref_seq, pos, ref, alt, build):
         start = left_roll_bound
         end = right_roll_bound
 
-        return (f"{ref_seq}:{start}:{ref.upper()}:{alt.upper()}")
+        return (f"{acc}:{start}:{ref.upper()}:{alt.upper()}")
 
     else:
         left_roll_bound = start
@@ -230,4 +230,4 @@ def get_normalized_spdi_impl(ref_seq, pos, ref, alt, build):
         start = left_roll_bound
         end = right_roll_bound
 
-        return (f"{ref_seq}:{start}:{ref.upper()}:{alt.upper()}")
+        return (f"{acc}:{start}:{ref.upper()}:{alt.upper()}")
