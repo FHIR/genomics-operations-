@@ -13,7 +13,7 @@ def hex_to_code(hex):
         case 0x1: return 'C'
         case 0x2: return 'G'
         case 0x3: return 'T'
-        case 0x4: return 'N'
+        case 0x7: return 'N'
         # Blow up if we get any unexpected hex-encoded code
         case _:
             raise NotImplementedError(f"unexpected hex-encoded code: '{hex}'")
@@ -60,7 +60,7 @@ class RefSeq:
             case 7: offset = 5
 
         # Move the relevant three bits to the bottom, extract them using a bit mask and convert them back to a code.
-        return hex_to_code((data >> offset) & 0x3)
+        return hex_to_code((data >> offset) & 0x7)
 
 
 def get_ref_seq(acc):
