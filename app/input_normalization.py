@@ -75,7 +75,7 @@ def process_NM_HGVS(NM_HGVS):
         projected_variant_dict['b38projected'], 'GRCh38')
     print(f"b37normalized: {b37SPDI}; b38normalized: {b38SPDI}")
 
-    return {"GRCh37": b37SPDI, "GRCh38": b38SPDI}
+    return {'GRCh37SPDI': b37SPDI, 'GRCh38SPDI': b38SPDI, 'GRCh37HGVS': str(projected_variant_dict['b37projected']), 'GRCh38HGVS': str(projected_variant_dict['b38projected'])}
 
 
 # ---------------- CONVERT NC_HGVS to canonical SPDIs ---------------
@@ -101,7 +101,7 @@ def process_NC_HGVS(NC_HGVS):
         projected_variant_dict['b38projected'], 'GRCh38')
     print(f"b37normalized: {b37SPDI}; b38normalized: {b38SPDI}")
 
-    return {"GRCh37": b37SPDI, "GRCh38": b38SPDI}
+    return {'GRCh37SPDI': b37SPDI, 'GRCh38SPDI': b38SPDI, 'GRCh37HGVS': str(projected_variant_dict['b37projected']), 'GRCh38HGVS': str(projected_variant_dict['b38projected'])}
 
 # ---------------- CONVERT NM_SPDI to canonical SPDIs ---------------
 
