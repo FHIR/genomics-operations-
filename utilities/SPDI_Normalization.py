@@ -65,9 +65,10 @@ class RefSeq:
 
 def get_ref_seq(acc):
     try:
-        ref_seq_file_pattern = f'refseq/*/{acc}_*.refseq'
+        ref_seq_file_pattern = f'refseq/**/{acc}_*.refseq'
         found_files = glob(ref_seq_file_pattern)
-        if len(found_files) != 1:
+        # TODO: Don't store NM accessions for each build since they're redundant
+        if not found_files:
             raise ValueError(f'failed to find expected refseq file for accession "{acc}"')
 
         ref_seq_file = found_files[0]
