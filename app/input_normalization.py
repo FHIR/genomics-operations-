@@ -1,7 +1,13 @@
 import hgvs.parser
 import hgvs.dataproviders.uta
 import hgvs.assemblymapper
+import os
 from utilities.SPDI_Normalization import get_normalized_spdi
+
+# Set the HGVS_SEQREPO_URL env var so the hgvs library will use the local `utilities/seqfetcher` endpoint instead of
+# making NCBI API calls.
+port = os.getenv("PORT", 5000)  # The localhost debugger starts the app on port 5000
+os.environ["HGVS_SEQREPO_URL"] = f"http://localhost:{port}/utilities/seqfetcher"
 
 
 hgvsParser = hgvs.parser.Parser()
