@@ -1,6 +1,7 @@
 from flask import abort, jsonify
 from collections import OrderedDict
 from app import common
+from app import input_normalization
 from utilities import SPDI_Normalization
 
 
@@ -195,3 +196,7 @@ def find_the_gene(range=None):
 
 def seqfetcher(acc, start, end):
     return SPDI_Normalization.get_ref_seq_subseq(acc, start, end)
+
+
+def normalize_variant(variant):
+    return input_normalization.normalize(variant)

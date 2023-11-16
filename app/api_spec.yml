@@ -1284,6 +1284,28 @@ paths:
             type: integer
             example: 2
 
+  /utilities/normalize-variant:
+    get:
+      summary: "Normalize variant"
+      operationId: "app.utilities_endpoints.normalize_variant"
+      tags:
+        - "Operations Utilities (not part of balloted HL7 Operations)"
+      responses:
+        "200":
+          description: "Returns a normalized variant in both GRCh37 and GRCh38."
+          content:
+            application/json:
+              schema:
+                type: object
+      parameters:
+        - name: variant
+          in: query
+          required: true
+          description: "Variant."
+          schema:
+            type: string
+            example: "NM_021960.4:c.740C>T"
+
 tags:
   - name: Subject Genotype Operations
   - name: Subject Phenotype Operations
