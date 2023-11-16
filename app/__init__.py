@@ -9,6 +9,7 @@ import hgvs.config
 hgvs.config.global_config.normalizer.validate = False
 hgvs.global_config.mapping.prevalidation_level = None  # TODO: Open issue
 hgvs.global_config.mapping.replace_reference = False  # TODO: Open issue
+hgvs.global_config.lru_cache.maxsize = 0  # Disable the hgvs LRU cache to avoid blowing up memory (TODO: Revisit this)
 
 
 def create_app():
