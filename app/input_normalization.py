@@ -12,14 +12,14 @@ os.environ["HGVS_SEQREPO_URL"] = f"http://localhost:{port}/utilities/seqfetcher"
 
 hgvsParser = hgvs.parser.Parser()
 hgvsDataProvider = hgvs.dataproviders.uta.connect(
-    db_url="postgresql://anonymous:anonymous@uta.biocommons.org/uta/uta_20210129")
+    db_url="postgresql://anonymous:anonymous@uta.biocommons.org/uta/uta_20210129b")
 b37hgvsAssemblyMapper = hgvs.assemblymapper.AssemblyMapper(
     hgvsDataProvider, assembly_name='GRCh37', alt_aln_method='splign', replace_reference=False, prevalidation_level=None)
 b38hgvsAssemblyMapper = hgvs.assemblymapper.AssemblyMapper(
     hgvsDataProvider, assembly_name='GRCh38', alt_aln_method='splign', replace_reference=False, prevalidation_level=None)
 
 # ------------- point to latest data source ------------------------
-# at unix command line: export UTA_DB_URL=postgresql://anonymous:anonymous@uta.biocommons.org/uta/uta_20210129
+# at unix command line: export UTA_DB_URL=postgresql://anonymous:anonymous@uta.biocommons.org/uta/uta_20210129b
 
 # ------------------ PARSE -------------
 
