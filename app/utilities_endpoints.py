@@ -199,4 +199,8 @@ def seqfetcher(acc, start, end):
 
 
 def normalize_variant(variant):
-    return input_normalization.normalize(variant)
+    try:
+        return input_normalization.normalize(variant)
+    except Exception as err:
+        print(f"Unexpected {err=}, {type(err)=}")
+        abort(422, 'Failed LiftOver')
