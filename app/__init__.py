@@ -3,13 +3,10 @@ import flask
 from flask_cors import CORS
 import os
 
-# Ugly hack: Force the hgvs library to skip Normalizer validation
-# TODO: Remove this after https://github.com/biocommons/hgvs/issues/704 is addressed
-import hgvs.config
-hgvs.config.global_config.normalizer.validate = False
-hgvs.global_config.mapping.prevalidation_level = None  # TODO: Open issue
-hgvs.global_config.mapping.replace_reference = False  # TODO: Open issue
-hgvs.global_config.lru_cache.maxsize = 0  # Disable the hgvs LRU cache to avoid blowing up memory (TODO: Revisit this)
+import hgvs
+# Disable the hgvs LRU cache to avoid blowing up memory
+# TODO: Revisit this, since this caching might not use a ton of memory.
+hgvs.global_config.lru_cache.maxsize = 0
 
 
 def create_app():

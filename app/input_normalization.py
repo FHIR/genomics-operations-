@@ -13,11 +13,18 @@ os.environ["HGVS_SEQREPO_URL"] = f"http://localhost:{port}/utilities/seqfetcher"
 hgvsParser = hgvs.parser.Parser()
 hgvsDataProvider = hgvs.dataproviders.uta.connect(
     db_url="postgresql://anonymous:anonymous@uta.biocommons.org/uta/uta_20210129b")
-b37hgvsAssemblyMapper = hgvs.assemblymapper.AssemblyMapper(
-    hgvsDataProvider, assembly_name='GRCh37', alt_aln_method='splign', replace_reference=False, prevalidation_level=None)
-b38hgvsAssemblyMapper = hgvs.assemblymapper.AssemblyMapper(
-    hgvsDataProvider, assembly_name='GRCh38', alt_aln_method='splign', replace_reference=False, prevalidation_level=None)
 
+# Note: One can set `replace_reference=False` and `prevalidation_level=None` to skip data validation
+# Also, until https://github.com/biocommons/hgvs/issues/704 is addressed, the following config settings need to also be set.
+# hgvs.config.global_config.normalizer.validate = False
+# hgvs.global_config.mapping.prevalidation_level = None  # TODO: Open issue
+# hgvs.global_config.mapping.replace_reference = False  # TODO: Open issue
+# Until https://github.com/biocommons/hgvs/issues/705 is addressed, validation cannot be disabled completely.
+
+b37hgvsAssemblyMapper = hgvs.assemblymapper.AssemblyMapper(
+    hgvsDataProvider, assembly_name='GRCh37', alt_aln_method='splign')
+b38hgvsAssemblyMapper = hgvs.assemblymapper.AssemblyMapper(
+    hgvsDataProvider, assembly_name='GRCh38', alt_aln_method='splign')
 # ------------- point to latest data source ------------------------
 # at unix command line: export UTA_DB_URL=postgresql://anonymous:anonymous@uta.biocommons.org/uta/uta_20210129b
 
