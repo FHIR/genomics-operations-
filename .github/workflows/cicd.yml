@@ -28,15 +28,13 @@ jobs:
           args: --extend-ignore E501,E741
 
       - name: Run Tests
-        # run: ./fetch_refseq.sh python -m pytest
-        run: "true"
+        run: ./fetch_refseq.sh && python -m pytest
 
-  # TODO: Add a way to deploy to Prod manually
   deploy:
     name: Deploy to dev
     runs-on: ubuntu-latest
 
-    if: ${{ contains(join(needs.*.result, ','), 'success') }}
+    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' && always() && contains(join(needs.*.result, ','), 'success') }}
     needs: [test]
 
     steps:
