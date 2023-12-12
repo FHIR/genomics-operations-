@@ -49,8 +49,52 @@ Additionally, since the tests run against the Mongo DB database, if you need to 
 can run `OVERWRITE_TEST_EXPECTED_DATA=true python3 -m pytest` from the terminal and then create a pull request with the
 changes.
 
-## Development environment on Heroku
+## Heroku Deployment
 
-Pull requests will trigger a deployment to this environment automatically which is accessible at the following URL:
+Currently, there are two environments running in Heroku:
+- Dev: <https://fhir-gen-ops-dev-ca42373833b6.herokuapp.com/>
+- Prod: <https://fhir-gen-ops.herokuapp.com/>
 
-https://fhir-gen-ops-dev-ca42373833b6.herokuapp.com/
+Pull requests will trigger a deployment to the dev environment automatically after being merged.
+
+Deployments to the prod environment can be triggered manually from the `main` branch of the repo using the ["Manual
+Deployment"](https://github.com/FHIR/genomics-operations/actions/workflows/manual_deployment.yml) workflow.
+
+### Heroku Stack
+
+Make sure that the Python version under [`runtime.txt`](./runtime.txt) is
+[supported](https://devcenter.heroku.com/articles/python-support#supported-runtimes) by the
+[Heroku stack](https://devcenter.heroku.com/articles/stack) that is currently running in each environment.
+
+### UTA Database
+
+The Biocommons [hgvs](https://github.com/biocommons/hgvs) library which is used for variant parsing, validation and
+normalisation requires access to a copy of the [UTA](https://github.com/biocommons/uta) Postgres database.
+
+We have provisioned a Heroku Postgres instance in the Prod environment which contains the imported data from a database
+dump as described [here](https://github.com/biocommons/uta#installing-from-database-dumps).
+
+The connection string for this database can be found in Heroku under the `UTA_DATABASE_URL` environment variable.
+
+Additionally, we define a `UTA_DATABASE_SCHEMA` environment variable in the [`.env`](.env) file which contains the name
+of the currently imported database schema.
+
+Database import procedure (it will take about 10 minutes):
+
+```shell
+> UTA_SCHEMA="uta_20210129b" # Specify the UTA schema you wish to use
+> PGPASSWORD="${POSTGRES_PASSWORD}"
+> gzip -cdq ${UTA_SCHEMA}.pgd.gz | grep -v anonymous | psql -U ${POSTGRES_USER} -1 -v ON_ERROR_STOP=1 -d ${POSTGRES_DATABASE} -h ${POSTGRES_HOST} -Eae
+```
+
+Note: `grep -v anonymous` is required because it's not possible to create an `anonymous` role in Heroku Postgres.
+
+Once the process finishes, if you are using the Heroku Postgres Basic plan on the
+[Essential Tier](https://devcenter.heroku.com/articles/heroku-postgres-plans#essential-tier), you'll bump into the 10
+million rows / database limit. However, it's safe to ignore the warnings about this limit, since Heroku will simply
+revoke INSERT privileges from the database and the hgvs library only needs read-only access to this database.
+
+### RefSeq access
+
+The RefSeq metadata from the UTA database needs to be in sync with the RefSeq data which is available for the *Seqfetcher
+Utility* endpoint. See the [`fetchRefseq.py` utility docs](./utilities/fetchRefseq.py) for details.
