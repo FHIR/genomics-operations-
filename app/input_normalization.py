@@ -6,13 +6,16 @@ from utilities.SPDI_Normalization import get_normalized_spdi
 
 # Set the HGVS_SEQREPO_URL env var so the hgvs library will use the local `utilities/seqfetcher` endpoint instead of
 # making NCBI API calls.
-port = os.getenv("PORT", 5000)  # The localhost debugger starts the app on port 5000
-os.environ["HGVS_SEQREPO_URL"] = f"http://localhost:{port}/utilities/seqfetcher"
+port = os.getenv('PORT', 5000)  # The localhost debugger starts the app on port 5000
+os.environ['HGVS_SEQREPO_URL'] = f"http://localhost:{port}/utilities/seqfetcher"
 
+database_schema = os.getenv('UTA_DATABASE_SCHEMA', 'uta_20210129b')
+# Use the biocommons UTA database if we don't specify a custom one.
+# Also, make sure the URL uses `postgresql` instead of `postgres` as schema
+database_url = f"{os.getenv('UTA_DATABASE_URL', 'postgresql://anonymous:anonymous@uta.biocommons.org/uta')}/{database_schema}".replace('postgres://', 'postgresql://')
 
 hgvsParser = hgvs.parser.Parser()
-hgvsDataProvider = hgvs.dataproviders.uta.connect(
-    db_url="postgresql://anonymous:anonymous@uta.biocommons.org/uta/uta_20210129b")
+hgvsDataProvider = hgvs.dataproviders.uta.connect(db_url=database_url)
 
 # Note: One can set `replace_reference=False` and `prevalidation_level=None` to skip data validation
 # Also, until https://github.com/biocommons/hgvs/issues/704 is addressed, the following config settings need to also be set.
