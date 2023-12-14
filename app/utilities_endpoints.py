@@ -195,7 +195,11 @@ def find_the_gene(range=None):
 
 
 def seqfetcher(acc, start, end):
-    return SPDI_Normalization.get_ref_seq_subseq(acc, start, end)
+    try:
+        return SPDI_Normalization.get_ref_seq_subseq(acc, start, end)
+    except Exception as err:
+        print(f"Unexpected {err=}, {type(err)=}")
+        abort(404, 'Not Found')
 
 
 def normalize_variant(variant):
