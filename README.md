@@ -57,8 +57,14 @@ Currently, there are two environments running in Heroku:
 
 Pull requests will trigger a deployment to the dev environment automatically after being merged.
 
-Deployments to the prod environment can be triggered manually from the `main` branch of the repo using the ["Manual
-Deployment"](https://github.com/FHIR/genomics-operations/actions/workflows/manual_deployment.yml) workflow.
+The ["Manual Deployment"](https://github.com/FHIR/genomics-operations/actions/workflows/manual_deployment.yml) workflow
+can be used to deploy code to either the `dev` or `prod` environments. To do so, please select "Run workflow", ignore
+the "Use workflow from" dropdown which lists the branches in the current repo (I can't disable / remove it) and then
+select the environment, the branch and the repository. By default, the `https://github.com/FHIR/genomics-operations`
+repo is specified, but you can replace it with any any fork.
+
+Deployments to the prod environment can only be triggered manually from the `main` branch of the repo using the Manual
+Deployment.
 
 ### Heroku Stack
 
