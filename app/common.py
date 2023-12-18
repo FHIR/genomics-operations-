@@ -177,19 +177,19 @@ def get_variant(variant):
         SPDIs = normalize(variant)
         if not SPDIs:
             abort(400, f'Cannot normalize variant: {variant}')
-        elif not SPDIs["GRCh37"] and not SPDIs["GRCh38"]:
+        elif not SPDIs["GRCh37SPDI"] and not SPDIs["GRCh38SPDI"]:
             abort(400, f'Cannot normalize variant: {variant}')
         else:
-            normalized_variant = {"variant": variant, "GRCh37": SPDIs["GRCh37"], "GRCh38": SPDIs["GRCh38"]}
+            normalized_variant = {"variant": variant, "GRCh37": SPDIs["GRCh37SPDI"], "GRCh38": SPDIs["GRCh38SPDI"]}
 
     elif variant.count(":") == 3:  # SPDI expression
         SPDIs = normalize(variant)
         if not SPDIs:
             abort(400, f'Cannot normalize variant: {variant}')
-        elif not SPDIs["GRCh37"] and not SPDIs["GRCh38"]:
+        elif not SPDIs["GRCh37SPDI"] and not SPDIs["GRCh38SPDI"]:
             abort(400, f'Cannot normalize variant: {variant}')
         else:
-            normalized_variant = {"variant": variant, "GRCh37": SPDIs["GRCh37"], "GRCh38": SPDIs["GRCh38"]}
+            normalized_variant = {"variant": variant, "GRCh37": SPDIs["GRCh37SPDI"], "GRCh38": SPDIs["GRCh38SPDI"]}
     else:
         abort(400, f'variant ({variant}) is not in the correct format(SPDI|HGVS)')
 

@@ -1,7 +1,9 @@
-import hgvs.parser
-import hgvs.dataproviders.uta
-import hgvs.assemblymapper
 import os
+
+import hgvs.assemblymapper
+import hgvs.dataproviders.uta
+import hgvs.parser
+
 from utilities.SPDI_Normalization import get_normalized_spdi
 
 # Set the HGVS_SEQREPO_URL env var so the hgvs library will use the local `utilities/seqfetcher` endpoint instead of
@@ -97,9 +99,22 @@ def process_NC_HGVS(NC_HGVS):
     print(f"parsed: {parsed_variant_dict['parsed']}")
 
     transcripts = b38hgvsAssemblyMapper.relevant_transcripts(parsed_variant)
-    relevantTranscript = next((tr for tr in transcripts if tr.startswith("NM_")))
+    # Since we might not have access to all the transcripts that UTA contains, we select the "Longest Compatible
+    # Remaining" transcript as described here: https://github.com/GenomicMedLab/cool-seq-tool/blob/main/docs/TranscriptSelectionPriority.md
+    # - If there is a tie, choose the first-published transcript (lowest-numbered accession for RefSeq/Ensembl) among
+    #   those transcripts meeting this criterion.
+    #   Note: We want the most recent version of a transcript associated with an assembly.
+    # Eventually, hgvs should include pyliftover for this purpose: https://github.com/biocommons/hgvs/issues/711
+    nm_transcripts = [t for t in transcripts if 'NM_' in t]
+    # Since a transcript looks like 'NM_006015.6', we sort them based on the number following 'NM_'
+    ordered_transcripts = sorted(nm_transcripts, key=lambda t: int(t[3:t.find('.')]))
+    # Pick the first transcript accession
+    transcript_acc = ordered_transcripts[0].split('.')[0]
+    # Search for its most recent version among nm_transcripts
+    relevant_transcript = max((t for t in nm_transcripts if t.startswith(transcript_acc)), key=lambda t: int(t.split('.')[-1]))
+
     var_c = b38hgvsAssemblyMapper.g_to_c(
-        parsed_variant, relevantTranscript)
+        parsed_variant, relevant_transcript)
 
     projected_variant_dict = project_variant(var_c)
     print(
