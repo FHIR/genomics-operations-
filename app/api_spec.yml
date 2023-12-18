@@ -1300,7 +1300,7 @@ paths:
 
   /utilities/normalize-variant:
     get:
-      summary: "Normalize variant"
+      summary: "Normalize Variant"
       operationId: "app.utilities_endpoints.normalize_variant"
       tags:
         - "Operations Utilities (not part of balloted HL7 Operations)"

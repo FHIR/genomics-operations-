@@ -1,8 +1,15 @@
-from bioutils.normalize import normalize, NormalizationMode
 from glob import glob
 from math import floor
+from os.path import isdir
 from pathlib import Path
+from sys import exit
 from threading import Lock
+
+from bioutils.normalize import NormalizationMode, normalize
+
+# Make sure the refseq folder exists locally
+if not isdir('refseq'):
+    exit("Missing refseq folder. Please run fetch_refseq.sh!")
 
 
 def hex_to_code(hex):
