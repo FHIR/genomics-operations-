@@ -110,5 +110,5 @@ def get_normalized_spdi(acc, pos, ref, alt):
                                           alleles=(None, alt),
                                           mode=NormalizationMode.EXPAND,
                                           anchor_length=0,
-                                          trim=True)
+                                          trim=ref != alt)
         return (f"{acc}:{new_ival[0]}:{new_alleles[0]}:{new_alleles[1]}")
