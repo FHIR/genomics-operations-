@@ -35,11 +35,14 @@ def test_population_specific_variants_2(client):
     tu.compare_actual_and_expected_output(f'{tu.FIND_POPULATION_SPECIFIC_VARIANTS_OUTPUT_DIR}2.json', response.json)
 
 
-# def test_population_specific_variants_3(client):
-#     url = tu.find_population_specific_variants_query('variants=NC_000001.10:144931726:G:A, NC_000001.10:145532548:T:C, NC_000001.10:145592072:A:T')
-#     response = client.get(url)
+def test_population_specific_variants_3(client):
+    """
+    Same as test 2 above, but without `subject` & `includePatientList`.
+    """
+    url = tu.find_population_specific_variants_query('variants=NC_000001.10:144931726:G:A, NC_000001.10:145532548:T:C, NC_000001.10:145592072:A:T')
+    response = client.get(url)
 
-#     tu.compare_actual_and_expected_output(f'{tu.FIND_POPULATION_SPECIFIC_VARIANTS_OUTPUT_DIR}3.json', response.json)
+    tu.compare_actual_and_expected_output(f'{tu.FIND_POPULATION_SPECIFIC_VARIANTS_OUTPUT_DIR}3.json', response.json)
 
 
 """
