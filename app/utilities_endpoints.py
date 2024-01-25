@@ -5,7 +5,7 @@ from flask import abort, jsonify
 from collections import OrderedDict
 from app import common
 from app import input_normalization
-from utilities import SPDI_Normalization
+from utilities.spdi_normalization import get_ref_seq_subseq
 import pyard
 
 # Make sure the pyard folder exists locally
@@ -207,7 +207,7 @@ def find_the_gene(range=None):
 
 def seqfetcher(acc, start, end):
     try:
-        return SPDI_Normalization.get_ref_seq_subseq(acc, start, end)
+        return get_ref_seq_subseq(acc, start, end)
     except Exception as err:
         print(f"Unexpected {err=}, {type(err)=}")
         abort(404, 'Not Found')
