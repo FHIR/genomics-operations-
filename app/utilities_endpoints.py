@@ -1,8 +1,14 @@
+import os
+
 from flask import abort, jsonify
 from collections import OrderedDict
 from app import common
 from app import input_normalization
 from utilities import SPDI_Normalization
+import pyard
+
+pyard_database_version = os.getenv('PYARD_DATABASE_VERSION', '3550')
+ard = pyard.init(data_dir='./pyard', cache_size=1, imgt_version=pyard_database_version)
 
 
 def get_feature_coordinates(
@@ -208,3 +214,22 @@ def normalize_variant(variant):
     except Exception as err:
         print(f"Unexpected {err=}, {type(err)=}")
         abort(422, 'Failed LiftOver')
+
+
+def normalize_hla(allele):
+    try:
+        return {
+            allele: {
+                "G": ard.redux(allele, "G"),
+                "P": ard.redux(allele, "P"),
+                "lg": ard.redux(allele, "lg"),
+                "lgx": ard.redux(allele, "lgx"),
+                "W": ard.redux(allele, "W"),
+                "exon": ard.redux(allele, "exon"),
+                "U2": ard.redux(allele, "U2"),
+                "S": ard.redux(allele, "S")
+            }
+        }
+    except Exception as err:
+        print(f"Unexpected {err=}, {type(err)=}")
+        abort(422, 'Failed HLA normalization')
