@@ -1,1 +1,1 @@
-web: ./fetch_refseq.sh && gunicorn run:app
+web: ./fetch_utilities_data.sh && gunicorn run:app

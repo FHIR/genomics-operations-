@@ -8,8 +8,8 @@ from threading import Lock
 from bioutils.normalize import NormalizationMode, normalize
 
 # Make sure the refseq folder exists locally
-if not isdir('refseq'):
-    exit("Missing refseq folder. Please run fetch_refseq.sh!")
+if not isdir('./data/refseq'):
+    exit("Missing refseq folder. Please run fetch_utilities_data.sh!")
 
 
 def hex_to_code(hex):
@@ -74,7 +74,7 @@ class RefSeq:
 
 def get_ref_seq(acc):
     try:
-        ref_seq_file_pattern = f'refseq/**/{acc}_*.refseq'
+        ref_seq_file_pattern = f'./data/refseq/**/{acc}_*.refseq'
         found_files = glob(ref_seq_file_pattern)
         # TODO: Don't store NM accessions for each build since they're redundant
         if not found_files:

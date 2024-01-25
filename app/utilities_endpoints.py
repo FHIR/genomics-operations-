@@ -1,4 +1,5 @@
 import os
+from os.path import isdir
 
 from flask import abort, jsonify
 from collections import OrderedDict
@@ -7,8 +8,12 @@ from app import input_normalization
 from utilities import SPDI_Normalization
 import pyard
 
+# Make sure the pyard folder exists locally
+if not isdir('./data/pyard'):
+    exit("Missing pyard folder. Please run fetch_utilities_data.sh!")
+
 pyard_database_version = os.getenv('PYARD_DATABASE_VERSION', '3550')
-ard = pyard.init(data_dir='./pyard', cache_size=1, imgt_version=pyard_database_version)
+ard = pyard.init(data_dir='./data/pyard', cache_size=1, imgt_version=pyard_database_version)
 
 
 def get_feature_coordinates(

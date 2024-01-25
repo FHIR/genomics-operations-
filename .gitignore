@@ -3,4 +3,4 @@
 .hypothesis
 .pytest_cache
 __pycache__
-/refseq
+/data
