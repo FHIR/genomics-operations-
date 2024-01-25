@@ -1306,6 +1306,28 @@ paths:
             type: string
             example: "NM_021960.4:c.740C>T"
 
+  /utilities/normalize-hla:
+    get:
+      summary: "Normalize HLA"
+      operationId: "app.utilities_endpoints.normalize_hla"
+      tags:
+        - "Operations Utilities (not part of balloted HL7 Operations)"
+      responses:
+        "200":
+          description: "Returns a normalized HLA ARD allele."
+          content:
+            application/json:
+              schema:
+                type: object
+      parameters:
+        - name: allele
+          in: query
+          required: true
+          description: "Allele."
+          schema:
+            type: string
+            example: "B14"
+
 tags:
   - name: Subject Genotype Operations
   - name: Subject Phenotype Operations
