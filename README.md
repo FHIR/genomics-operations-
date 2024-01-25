@@ -100,7 +100,27 @@ Once the process finishes, if you are using the Heroku Postgres Basic plan on th
 million rows / database limit. However, it's safe to ignore the warnings about this limit, since Heroku will simply
 revoke INSERT privileges from the database and the hgvs library only needs read-only access to this database.
 
-### RefSeq access
+### RefSeq data
 
 The RefSeq metadata from the UTA database needs to be in sync with the RefSeq data which is available for the *Seqfetcher
-Utility* endpoint. See the [`fetchRefseq.py` utility docs](./utilities/fetchRefseq.py) for details.
+Utility* endpoint. Currently, this is stored in GitHub as release artifacts.
+
+To update the RefSeq data, you will have to install `seqrepo` locally and run `./utilities/pack_seqrepo_data.py`. Here
+is a step-by-step guide on how to do this:
+
+```shell
+> mkdir seqrepo
+> cd seqrepo
+> python3 -m venv .venv
+> . .venv/bin/activate
+> pip install setuptools
+> pip install biocommons.seqrepo
+> seqrepo -r . pull --update-latest
+> # If you'll get a "Permission denied" error, then you can run the following command (using the temp directory which got created):
+> # > chmod +w 2024-02-20.r4521u5y && mv 2024-02-20.r4521u5y 2024-02-20 && ln -s 2024-02-20 latest
+>
+> # cd to genomics-operations repo
+> python ./utilities/pack_seqrepo_data.py --seqrepo_dir /path/to/seqrepo/dir/latest
+> # Upload tar archives from ./tmp/ to a new GitHub release and then update `UTILITIES_DATA_VERSION` in the `.env` file
+> # such that it contains the short SHA of the new release which contains the updated data.
+```

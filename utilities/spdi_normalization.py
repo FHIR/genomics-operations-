@@ -14,15 +14,16 @@ if not isdir('./data/refseq'):
 
 def hex_to_code(hex):
     """
-    Convert a 3 bit integer to a sequence code. See `code_to_hex()` in pack_refseq.py for details.
+    Convert a 3 bit integer to a sequence code. See `code_to_hex()` for details.
     """
     match hex:
         case 0x0: return 'A'
         case 0x1: return 'C'
         case 0x2: return 'G'
         case 0x3: return 'T'
+        case 0x4: return 'U'
         case 0x7: return 'N'
-        # Blow up if we get any unexpected hex-encoded code
+        # Error out if we get any unexpected hex-encoded code
         case _:
             raise NotImplementedError(f"unexpected hex-encoded code: '{hex}'")
 
@@ -84,12 +85,12 @@ def get_ref_seq(acc):
         ref_seq_length = int(Path(ref_seq_file).stem.rpartition('_')[-1])
 
         with open(ref_seq_file, mode='rb') as file:
-            refSeq = RefSeq(file.read(), ref_seq_length)
+            ref_seq = RefSeq(file.read(), ref_seq_length)
     except Exception as err:
         print(f"failed to read refseq file: {err=}, {type(err)=}")
         raise
 
-    return refSeq
+    return ref_seq
 
 
 ref_seq_lock = Lock()

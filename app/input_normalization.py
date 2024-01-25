@@ -4,7 +4,7 @@ import hgvs.assemblymapper
 import hgvs.dataproviders.uta
 import hgvs.parser
 
-from utilities.SPDI_Normalization import get_normalized_spdi
+from utilities.spdi_normalization import get_normalized_spdi
 
 # Set the HGVS_SEQREPO_URL env var so the hgvs library will use the local `utilities/seqfetcher` endpoint instead of
 # making NCBI API calls.
@@ -133,29 +133,29 @@ def process_NC_HGVS(NC_HGVS):
 
 def process_NM_SPDI(NM_SPDI):
     # convert SPDI into NM_HGVS then use NM_HGVS pipeline
-    refSeq = NM_SPDI.split(":")[0]
+    ref_seq = NM_SPDI.split(":")[0]
     pos = int(NM_SPDI.split(":")[1])+1
     ref = NM_SPDI.split(":")[2]
     alt = NM_SPDI.split(":")[3]
 
     if len(ref) == len(alt) == 1:  # SNV
         var_n = hgvsParser.parse_hgvs_variant(
-            refSeq+":n."+str(pos)+ref+">"+alt)
+            ref_seq+":n."+str(pos)+ref+">"+alt)
     elif len(ref) == 0:  # INS (e.g. NM_007294.3:c.5533_5534insG)
         start = pos-1
         end = start+1
         var_n = hgvsParser.parse_hgvs_variant(
-            refSeq+":n."+str(start)+"_"+str(end)+'ins'+alt)
+            ref_seq+":n."+str(start)+"_"+str(end)+'ins'+alt)
     elif len(alt) == 0:  # DEL (e.g. NM_000527.5:c.1350_1355del)
         start = pos
         end = start+len(ref)-1
         var_n = hgvsParser.parse_hgvs_variant(
-            refSeq+":n."+str(start)+"_"+str(end)+'del')
+            ref_seq+":n."+str(start)+"_"+str(end)+'del')
     elif len(alt) != 0 and len(ref) != 0:  # DELINS (e.g. NM_007294.3:c.5359_5363delinsAGTGA)
         start = pos
         end = start+len(ref)-1
         var_n = hgvsParser.parse_hgvs_variant(
-            refSeq+":n."+str(start)+"_"+str(end)+'delins'+alt)
+            ref_seq+":n."+str(start)+"_"+str(end)+'delins'+alt)
     NM_HGVS = b38hgvsAssemblyMapper.n_to_c(var_n)
 
     return process_NM_HGVS(str(NM_HGVS))
@@ -165,25 +165,25 @@ def process_NM_SPDI(NM_SPDI):
 
 def process_NC_SPDI(NC_SPDI):
     # convert SPDI into NC_HGVS then use NC_HGVS pipeline
-    refSeq = NC_SPDI.split(":")[0]
+    ref_seq = NC_SPDI.split(":")[0]
     pos = int(NC_SPDI.split(":")[1])+1
     ref = NC_SPDI.split(":")[2]
     alt = NC_SPDI.split(":")[3]
 
     if len(ref) == len(alt) == 1:  # SNV
-        NC_HGVS = (refSeq+":g."+str(pos)+ref+">"+alt)
+        NC_HGVS = (ref_seq+":g."+str(pos)+ref+">"+alt)
     elif len(ref) == 0:  # INS (e.g. NM_007294.3:c.5533_5534insG)
         start = pos-1
         end = start+1
-        NC_HGVS = (refSeq+":g."+str(start)+"_"+str(end)+'ins'+alt)
+        NC_HGVS = (ref_seq+":g."+str(start)+"_"+str(end)+'ins'+alt)
     elif len(alt) == 0:  # DEL (e.g. NM_000527.5:c.1350_1355del)
         start = pos
         end = start+len(ref)-1
-        NC_HGVS = (refSeq+":g."+str(start)+"_"+str(end)+'del')
+        NC_HGVS = (ref_seq+":g."+str(start)+"_"+str(end)+'del')
     elif len(alt) != 0 and len(ref) != 0:  # DELINS (e.g. NM_007294.3:c.5359_5363delinsAGTGA)
         start = pos
         end = start+len(ref)-1
-        NC_HGVS = (refSeq+":g."+str(start)+"_"+str(end)+'delins'+alt)
+        NC_HGVS = (ref_seq+":g."+str(start)+"_"+str(end)+'delins'+alt)
 
     return process_NC_HGVS(str(NC_HGVS))
 
