@@ -93,6 +93,12 @@
                             "text": "Patient eligible for clinical trial"
                         }
                     }
+                ],
+                "identifier": [
+                    {
+                        "system": "https://clinicaltrials.gov/",
+                        "value": "NCT05023655"
+                    }
                 ]
             }
         },
@@ -194,10 +200,6 @@
                                     "system": "https://api.ncbi.nlm.nih.gov/variation/v0/",
                                     "code": "NC_000001.10:27106893::T",
                                     "display": "NC_000001.10:27106893::T"
-                                },
-                                {
-                                    "system": "https://clinicaltrials.gov/",
-                                    "code": "NCT05023655"
                                 }
                             ]
                         }

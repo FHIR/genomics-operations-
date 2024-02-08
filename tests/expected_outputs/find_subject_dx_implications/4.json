@@ -93,6 +93,16 @@
                             "text": "criteria provided, single submitter"
                         }
                     }
+                ],
+                "identifier": [
+                    {
+                        "system": "http://www.ncbi.nlm.nih.gov/clinvar",
+                        "value": "10"
+                    },
+                    {
+                        "system": "http://www.ncbi.nlm.nih.gov/clinvar/scv",
+                        "value": "SCV000223933.2"
+                    }
                 ]
             }
         },
@@ -214,14 +224,6 @@
                                     "system": "https://api.ncbi.nlm.nih.gov/variation/v0/",
                                     "code": "NC_000006.11:26091178:C:G",
                                     "display": "NC_000006.11:26091178:C:G"
-                                },
-                                {
-                                    "system": "http://www.ncbi.nlm.nih.gov/clinvar",
-                                    "code": "10"
-                                },
-                                {
-                                    "system": "http://www.ncbi.nlm.nih.gov/clinvar/scv",
-                                    "code": "SCV000223933.2"
                                 }
                             ]
                         }
@@ -446,6 +448,16 @@
                             "text": "criteria provided, single submitter"
                         }
                     }
+                ],
+                "identifier": [
+                    {
+                        "system": "http://www.ncbi.nlm.nih.gov/clinvar",
+                        "value": "10"
+                    },
+                    {
+                        "system": "http://www.ncbi.nlm.nih.gov/clinvar/scv",
+                        "value": "SCV001251532.1"
+                    }
                 ]
             }
         },
@@ -567,14 +579,6 @@
                                     "system": "https://api.ncbi.nlm.nih.gov/variation/v0/",
                                     "code": "NC_000006.11:26091178:C:G",
                                     "display": "NC_000006.11:26091178:C:G"
-                                },
-                                {
-                                    "system": "http://www.ncbi.nlm.nih.gov/clinvar",
-                                    "code": "10"
-                                },
-                                {
-                                    "system": "http://www.ncbi.nlm.nih.gov/clinvar/scv",
-                                    "code": "SCV001251532.1"
                                 }
                             ]
                         }
@@ -799,6 +803,16 @@
                             "text": "criteria provided, single submitter"
                         }
                     }
+                ],
+                "identifier": [
+                    {
+                        "system": "http://www.ncbi.nlm.nih.gov/clinvar",
+                        "value": "10"
+                    },
+                    {
+                        "system": "http://www.ncbi.nlm.nih.gov/clinvar/scv",
+                        "value": "SCV001194094.2"
+                    }
                 ]
             }
         },
@@ -920,14 +934,6 @@
                                     "system": "https://api.ncbi.nlm.nih.gov/variation/v0/",
                                     "code": "NC_000006.11:26091178:C:G",
                                     "display": "NC_000006.11:26091178:C:G"
-                                },
-                                {
-                                    "system": "http://www.ncbi.nlm.nih.gov/clinvar",
-                                    "code": "10"
-                                },
-                                {
-                                    "system": "http://www.ncbi.nlm.nih.gov/clinvar/scv",
-                                    "code": "SCV001194094.2"
                                 }
                             ]
                         }
@@ -1152,6 +1158,16 @@
                             "text": "criteria provided, single submitter"
                         }
                     }
+                ],
+                "identifier": [
+                    {
+                        "system": "http://www.ncbi.nlm.nih.gov/clinvar",
+                        "value": "10"
+                    },
+                    {
+                        "system": "http://www.ncbi.nlm.nih.gov/clinvar/scv",
+                        "value": "SCV002038504.1"
+                    }
                 ]
             }
         },
@@ -1273,14 +1289,6 @@
                                     "system": "https://api.ncbi.nlm.nih.gov/variation/v0/",
                                     "code": "NC_000006.11:26091178:C:G",
                                     "display": "NC_000006.11:26091178:C:G"
-                                },
-                                {
-                                    "system": "http://www.ncbi.nlm.nih.gov/clinvar",
-                                    "code": "10"
-                                },
-                                {
-                                    "system": "http://www.ncbi.nlm.nih.gov/clinvar/scv",
-                                    "code": "SCV002038504.1"
                                 }
                             ]
                         }
@@ -1505,6 +1513,16 @@
                             "text": "criteria provided, single submitter"
                         }
                     }
+                ],
+                "identifier": [
+                    {
+                        "system": "http://www.ncbi.nlm.nih.gov/clinvar",
+                        "value": "10"
+                    },
+                    {
+                        "system": "http://www.ncbi.nlm.nih.gov/clinvar/scv",
+                        "value": "SCV002499222.1"
+                    }
                 ]
             }
         },
@@ -1626,14 +1644,6 @@
                                     "system": "https://api.ncbi.nlm.nih.gov/variation/v0/",
                                     "code": "NC_000006.11:26091178:C:G",
                                     "display": "NC_000006.11:26091178:C:G"
-                                },
-                                {
-                                    "system": "http://www.ncbi.nlm.nih.gov/clinvar",
-                                    "code": "10"
-                                },
-                                {
-                                    "system": "http://www.ncbi.nlm.nih.gov/clinvar/scv",
-                                    "code": "SCV002499222.1"
                                 }
                             ]
                         }
@@ -1858,6 +1868,16 @@
                             "text": "criteria provided, single submitter"
                         }
                     }
+                ],
+                "identifier": [
+                    {
+                        "system": "http://www.ncbi.nlm.nih.gov/clinvar",
+                        "value": "10"
+                    },
+                    {
+                        "system": "http://www.ncbi.nlm.nih.gov/clinvar/scv",
+                        "value": "SCV000893709.1"
+                    }
                 ]
             }
         },
@@ -1979,14 +1999,6 @@
                                     "system": "https://api.ncbi.nlm.nih.gov/variation/v0/",
                                     "code": "NC_000006.11:26091178:C:G",
                                     "display": "NC_000006.11:26091178:C:G"
-                                },
-                                {
-                                    "system": "http://www.ncbi.nlm.nih.gov/clinvar",
-                                    "code": "10"
-                                },
-                                {
-                                    "system": "http://www.ncbi.nlm.nih.gov/clinvar/scv",
-                                    "code": "SCV000893709.1"
                                 }
                             ]
                         }
@@ -2211,6 +2223,16 @@
                             "text": "criteria provided, single submitter"
                         }
                     }
+                ],
+                "identifier": [
+                    {
+                        "system": "http://www.ncbi.nlm.nih.gov/clinvar",
+                        "value": "10"
+                    },
+                    {
+                        "system": "http://www.ncbi.nlm.nih.gov/clinvar/scv",
+                        "value": "SCV002028310.1"
+                    }
                 ]
             }
         },
@@ -2332,14 +2354,6 @@
                                     "system": "https://api.ncbi.nlm.nih.gov/variation/v0/",
                                     "code": "NC_000006.11:26091178:C:G",
                                     "display": "NC_000006.11:26091178:C:G"
-                                },
-                                {
-                                    "system": "http://www.ncbi.nlm.nih.gov/clinvar",
-                                    "code": "10"
-                                },
-                                {
-                                    "system": "http://www.ncbi.nlm.nih.gov/clinvar/scv",
-                                    "code": "SCV002028310.1"
                                 }
                             ]
                         }
@@ -2564,358 +2578,15 @@
                             "text": "no assertion criteria provided"
                         }
                     }
-                ]
-            }
-        },
-        {
-            "name": "variant",
-            "resource": {
-                "resourceType": "Observation",
-                "id": "dv-6387cc68f6e72ea32bb00174",
-                "meta": {
-                    "profile": [
-                        "http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/variant"
-                    ]
-                },
-                "status": "final",
-                "category": [
-                    {
-                        "coding": [
-                            {
-                                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
-                                "code": "laboratory"
-                            }
-                        ]
-                    }
                 ],
-                "code": {
-                    "coding": [
-                        {
-                            "system": "http://loinc.org",
-                            "code": "69548-6",
-                            "display": "Genetic variant assessment"
-                        }
-                    ]
-                },
-                "subject": {
-                    "reference": "Patient/HG02657"
-                },
-                "valueCodeableConcept": {
-                    "coding": [
-                        {
-                            "system": "http://loinc.org",
-                            "code": "LA9633-4",
-                            "display": "present"
-                        }
-                    ]
-                },
-                "component": [
+                "identifier": [
                     {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "48002-0",
-                                    "display": "Genomic Source Class"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "LA6683-2",
-                                    "display": "germline"
-                                }
-                            ]
-                        }
+                        "system": "http://www.ncbi.nlm.nih.gov/clinvar",
+                        "value": "10"
                     },
                     {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "48013-7",
-                                    "display": "Genomic reference sequence ID"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "coding": [
-                                {
-                                    "system": "http://www.ncbi.nlm.nih.gov/nuccore",
-                                    "code": "NC_000006.11"
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "53034-5",
-                                    "display": "Allelic state"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "LA6706-1",
-                                    "display": "heterozygous"
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "81252-9",
-                                    "display": "Discrete genetic variant"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "coding": [
-                                {
-                                    "system": "https://api.ncbi.nlm.nih.gov/variation/v0/",
-                                    "code": "NC_000006.11:26091178:C:G",
-                                    "display": "NC_000006.11:26091178:C:G"
-                                },
-                                {
-                                    "system": "http://www.ncbi.nlm.nih.gov/clinvar",
-                                    "code": "10"
-                                },
-                                {
-                                    "system": "http://www.ncbi.nlm.nih.gov/clinvar/scv",
-                                    "code": "SCV000245789.1"
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "81258-6",
-                                    "display": "Sample VAF"
-                                }
-                            ]
-                        },
-                        "valueQuantity": {
-                            "value": 0.42857142857142855,
-                            "unit": "relative frequency of a particular allele in the specimen",
-                            "system": "http://unitsofmeasure.org",
-                            "code": "1"
-                        }
-                    },
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "69547-8",
-                                    "display": "Genomic Ref allele [ID]"
-                                }
-                            ]
-                        },
-                        "valueString": "C"
-                    },
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "69551-0",
-                                    "display": "Genomic Alt allele [ID]"
-                                }
-                            ]
-                        },
-                        "valueString": "G"
-                    },
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "92822-6",
-                                    "display": "Genomic coord system"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "LA30100-4",
-                                    "display": "0-based interval counting"
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "81254-5",
-                                    "display": "Variant exact start-end"
-                                }
-                            ]
-                        },
-                        "valueRange": {
-                            "low": {
-                                "value": 26091178
-                            }
-                        }
-                    },
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs",
-                                    "code": "molecular-consequence"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "coding": [
-                                {
-                                    "system": "http://www.sequenceontology.org/",
-                                    "code": "SO:0001583",
-                                    "display": "missense_variant"
-                                },
-                                {
-                                    "system": "http://www.sequenceontology.org/",
-                                    "code": "SO:0001627",
-                                    "display": "intron_variant"
-                                },
-                                {
-                                    "system": "http://www.sequenceontology.org/",
-                                    "code": "SO:0001792",
-                                    "display": "non_coding_transcript_exon_variant"
-                                }
-                            ]
-                        },
-                        "interpretation": {
-                            "text": "PREDICTED IMPACT MODERATE"
-                        }
-                    },
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "92821-8",
-                                    "display": "Population allele frequency"
-                                }
-                            ]
-                        },
-                        "valueQuantity": {
-                            "value": 0.10924,
-                            "system": "http://unitsofmeasure.org",
-                            "code": "1"
-                        }
-                    }
-                ]
-            }
-        },
-        {
-            "name": "implication",
-            "resource": {
-                "resourceType": "Observation",
-                "id": "dv-62fab6305932091e78bf2326",
-                "meta": {
-                    "profile": [
-                        "http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/diagnostic-implication"
-                    ]
-                },
-                "status": "final",
-                "category": [
-                    {
-                        "coding": [
-                            {
-                                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
-                                "code": "laboratory"
-                            }
-                        ]
-                    }
-                ],
-                "code": {
-                    "coding": [
-                        {
-                            "system": "http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs",
-                            "code": "diagnostic-implication"
-                        }
-                    ]
-                },
-                "subject": {
-                    "reference": "Patient/HG02657"
-                },
-                "derivedFrom": [
-                    {
-                        "reference": "Observation/dv-6387cc68f6e72ea32bb00174"
-                    }
-                ],
-                "component": [
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "53037-8",
-                                    "display": "Genetic variation clinical significance"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "LA6668-3",
-                                    "display": "Pathogenic"
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "81259-4",
-                                    "display": "predicted phenotype"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "coding": [
-                                {
-                                    "system": "https://www.ncbi.nlm.nih.gov/medgen",
-                                    "code": "C3469186",
-                                    "display": "Hemochromatosis type 1"
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "93044-6",
-                                    "display": "Level of evidence"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "text": "criteria provided, single submitter"
-                        }
+                        "system": "http://www.ncbi.nlm.nih.gov/clinvar/scv",
+                        "value": "SCV000245789.1"
                     }
                 ]
             }
@@ -3038,14 +2709,6 @@
                                     "system": "https://api.ncbi.nlm.nih.gov/variation/v0/",
                                     "code": "NC_000006.11:26091178:C:G",
                                     "display": "NC_000006.11:26091178:C:G"
-                                },
-                                {
-                                    "system": "http://www.ncbi.nlm.nih.gov/clinvar",
-                                    "code": "10"
-                                },
-                                {
-                                    "system": "http://www.ncbi.nlm.nih.gov/clinvar/scv",
-                                    "code": "SCV001519563.1"
                                 }
                             ]
                         }
@@ -3270,6 +2933,16 @@
                             "text": "criteria provided, single submitter"
                         }
                     }
+                ],
+                "identifier": [
+                    {
+                        "system": "http://www.ncbi.nlm.nih.gov/clinvar",
+                        "value": "10"
+                    },
+                    {
+                        "system": "http://www.ncbi.nlm.nih.gov/clinvar/scv",
+                        "value": "SCV000206973.2"
+                    }
                 ]
             }
         },
@@ -3391,14 +3064,361 @@
                                     "system": "https://api.ncbi.nlm.nih.gov/variation/v0/",
                                     "code": "NC_000006.11:26091178:C:G",
                                     "display": "NC_000006.11:26091178:C:G"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "code": {
+                            "coding": [
+                                {
+                                    "system": "http://loinc.org",
+                                    "code": "81258-6",
+                                    "display": "Sample VAF"
+                                }
+                            ]
+                        },
+                        "valueQuantity": {
+                            "value": 0.42857142857142855,
+                            "unit": "relative frequency of a particular allele in the specimen",
+                            "system": "http://unitsofmeasure.org",
+                            "code": "1"
+                        }
+                    },
+                    {
+                        "code": {
+                            "coding": [
+                                {
+                                    "system": "http://loinc.org",
+                                    "code": "69547-8",
+                                    "display": "Genomic Ref allele [ID]"
+                                }
+                            ]
+                        },
+                        "valueString": "C"
+                    },
+                    {
+                        "code": {
+                            "coding": [
+                                {
+                                    "system": "http://loinc.org",
+                                    "code": "69551-0",
+                                    "display": "Genomic Alt allele [ID]"
+                                }
+                            ]
+                        },
+                        "valueString": "G"
+                    },
+                    {
+                        "code": {
+                            "coding": [
+                                {
+                                    "system": "http://loinc.org",
+                                    "code": "92822-6",
+                                    "display": "Genomic coord system"
+                                }
+                            ]
+                        },
+                        "valueCodeableConcept": {
+                            "coding": [
+                                {
+                                    "system": "http://loinc.org",
+                                    "code": "LA30100-4",
+                                    "display": "0-based interval counting"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "code": {
+                            "coding": [
+                                {
+                                    "system": "http://loinc.org",
+                                    "code": "81254-5",
+                                    "display": "Variant exact start-end"
+                                }
+                            ]
+                        },
+                        "valueRange": {
+                            "low": {
+                                "value": 26091178
+                            }
+                        }
+                    },
+                    {
+                        "code": {
+                            "coding": [
+                                {
+                                    "system": "http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs",
+                                    "code": "molecular-consequence"
+                                }
+                            ]
+                        },
+                        "valueCodeableConcept": {
+                            "coding": [
+                                {
+                                    "system": "http://www.sequenceontology.org/",
+                                    "code": "SO:0001583",
+                                    "display": "missense_variant"
                                 },
                                 {
-                                    "system": "http://www.ncbi.nlm.nih.gov/clinvar",
-                                    "code": "10"
+                                    "system": "http://www.sequenceontology.org/",
+                                    "code": "SO:0001627",
+                                    "display": "intron_variant"
                                 },
                                 {
-                                    "system": "http://www.ncbi.nlm.nih.gov/clinvar/scv",
-                                    "code": "SCV000206973.2"
+                                    "system": "http://www.sequenceontology.org/",
+                                    "code": "SO:0001792",
+                                    "display": "non_coding_transcript_exon_variant"
+                                }
+                            ]
+                        },
+                        "interpretation": {
+                            "text": "PREDICTED IMPACT MODERATE"
+                        }
+                    },
+                    {
+                        "code": {
+                            "coding": [
+                                {
+                                    "system": "http://loinc.org",
+                                    "code": "92821-8",
+                                    "display": "Population allele frequency"
+                                }
+                            ]
+                        },
+                        "valueQuantity": {
+                            "value": 0.10924,
+                            "system": "http://unitsofmeasure.org",
+                            "code": "1"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "implication",
+            "resource": {
+                "resourceType": "Observation",
+                "id": "dv-62fab6305932091e78bf2326",
+                "meta": {
+                    "profile": [
+                        "http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/diagnostic-implication"
+                    ]
+                },
+                "status": "final",
+                "category": [
+                    {
+                        "coding": [
+                            {
+                                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                                "code": "laboratory"
+                            }
+                        ]
+                    }
+                ],
+                "code": {
+                    "coding": [
+                        {
+                            "system": "http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs",
+                            "code": "diagnostic-implication"
+                        }
+                    ]
+                },
+                "subject": {
+                    "reference": "Patient/HG02657"
+                },
+                "derivedFrom": [
+                    {
+                        "reference": "Observation/dv-6387cc68f6e72ea32bb00174"
+                    }
+                ],
+                "component": [
+                    {
+                        "code": {
+                            "coding": [
+                                {
+                                    "system": "http://loinc.org",
+                                    "code": "53037-8",
+                                    "display": "Genetic variation clinical significance"
+                                }
+                            ]
+                        },
+                        "valueCodeableConcept": {
+                            "coding": [
+                                {
+                                    "system": "http://loinc.org",
+                                    "code": "LA6668-3",
+                                    "display": "Pathogenic"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "code": {
+                            "coding": [
+                                {
+                                    "system": "http://loinc.org",
+                                    "code": "81259-4",
+                                    "display": "predicted phenotype"
+                                }
+                            ]
+                        },
+                        "valueCodeableConcept": {
+                            "coding": [
+                                {
+                                    "system": "https://www.ncbi.nlm.nih.gov/medgen",
+                                    "code": "C3469186",
+                                    "display": "Hemochromatosis type 1"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "code": {
+                            "coding": [
+                                {
+                                    "system": "http://loinc.org",
+                                    "code": "93044-6",
+                                    "display": "Level of evidence"
+                                }
+                            ]
+                        },
+                        "valueCodeableConcept": {
+                            "text": "criteria provided, single submitter"
+                        }
+                    }
+                ],
+                "identifier": [
+                    {
+                        "system": "http://www.ncbi.nlm.nih.gov/clinvar",
+                        "value": "10"
+                    },
+                    {
+                        "system": "http://www.ncbi.nlm.nih.gov/clinvar/scv",
+                        "value": "SCV001519563.1"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "variant",
+            "resource": {
+                "resourceType": "Observation",
+                "id": "dv-6387cc68f6e72ea32bb00174",
+                "meta": {
+                    "profile": [
+                        "http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/variant"
+                    ]
+                },
+                "status": "final",
+                "category": [
+                    {
+                        "coding": [
+                            {
+                                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                                "code": "laboratory"
+                            }
+                        ]
+                    }
+                ],
+                "code": {
+                    "coding": [
+                        {
+                            "system": "http://loinc.org",
+                            "code": "69548-6",
+                            "display": "Genetic variant assessment"
+                        }
+                    ]
+                },
+                "subject": {
+                    "reference": "Patient/HG02657"
+                },
+                "valueCodeableConcept": {
+                    "coding": [
+                        {
+                            "system": "http://loinc.org",
+                            "code": "LA9633-4",
+                            "display": "present"
+                        }
+                    ]
+                },
+                "component": [
+                    {
+                        "code": {
+                            "coding": [
+                                {
+                                    "system": "http://loinc.org",
+                                    "code": "48002-0",
+                                    "display": "Genomic Source Class"
+                                }
+                            ]
+                        },
+                        "valueCodeableConcept": {
+                            "coding": [
+                                {
+                                    "system": "http://loinc.org",
+                                    "code": "LA6683-2",
+                                    "display": "germline"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "code": {
+                            "coding": [
+                                {
+                                    "system": "http://loinc.org",
+                                    "code": "48013-7",
+                                    "display": "Genomic reference sequence ID"
+                                }
+                            ]
+                        },
+                        "valueCodeableConcept": {
+                            "coding": [
+                                {
+                                    "system": "http://www.ncbi.nlm.nih.gov/nuccore",
+                                    "code": "NC_000006.11"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "code": {
+                            "coding": [
+                                {
+                                    "system": "http://loinc.org",
+                                    "code": "53034-5",
+                                    "display": "Allelic state"
+                                }
+                            ]
+                        },
+                        "valueCodeableConcept": {
+                            "coding": [
+                                {
+                                    "system": "http://loinc.org",
+                                    "code": "LA6706-1",
+                                    "display": "heterozygous"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "code": {
+                            "coding": [
+                                {
+                                    "system": "http://loinc.org",
+                                    "code": "81252-9",
+                                    "display": "Discrete genetic variant"
+                                }
+                            ]
+                        },
+                        "valueCodeableConcept": {
+                            "coding": [
+                                {
+                                    "system": "https://api.ncbi.nlm.nih.gov/variation/v0/",
+                                    "code": "NC_000006.11:26091178:C:G",
+                                    "display": "NC_000006.11:26091178:C:G"
                                 }
                             ]
                         }
@@ -3623,6 +3643,16 @@
                             "text": "criteria provided, single submitter"
                         }
                     }
+                ],
+                "identifier": [
+                    {
+                        "system": "http://www.ncbi.nlm.nih.gov/clinvar",
+                        "value": "10"
+                    },
+                    {
+                        "system": "http://www.ncbi.nlm.nih.gov/clinvar/scv",
+                        "value": "SCV001523197.1"
+                    }
                 ]
             }
         },
@@ -3744,14 +3774,6 @@
                                     "system": "https://api.ncbi.nlm.nih.gov/variation/v0/",
                                     "code": "NC_000006.11:26091178:C:G",
                                     "display": "NC_000006.11:26091178:C:G"
-                                },
-                                {
-                                    "system": "http://www.ncbi.nlm.nih.gov/clinvar",
-                                    "code": "10"
-                                },
-                                {
-                                    "system": "http://www.ncbi.nlm.nih.gov/clinvar/scv",
-                                    "code": "SCV001523197.1"
                                 }
                             ]
                         }
@@ -3976,6 +3998,16 @@
                             "text": "no assertion criteria provided"
                         }
                     }
+                ],
+                "identifier": [
+                    {
+                        "system": "http://www.ncbi.nlm.nih.gov/clinvar",
+                        "value": "10"
+                    },
+                    {
+                        "system": "http://www.ncbi.nlm.nih.gov/clinvar/scv",
+                        "value": "SCV000020169.4"
+                    }
                 ]
             }
         },
@@ -4097,14 +4129,6 @@
                                     "system": "https://api.ncbi.nlm.nih.gov/variation/v0/",
                                     "code": "NC_000006.11:26091178:C:G",
                                     "display": "NC_000006.11:26091178:C:G"
-                                },
-                                {
-                                    "system": "http://www.ncbi.nlm.nih.gov/clinvar",
-                                    "code": "10"
-                                },
-                                {
-                                    "system": "http://www.ncbi.nlm.nih.gov/clinvar/scv",
-                                    "code": "SCV000020169.4"
                                 }
                             ]
                         }
@@ -4329,6 +4353,16 @@
                             "text": "criteria provided, single submitter"
                         }
                     }
+                ],
+                "identifier": [
+                    {
+                        "system": "http://www.ncbi.nlm.nih.gov/clinvar",
+                        "value": "10"
+                    },
+                    {
+                        "system": "http://www.ncbi.nlm.nih.gov/clinvar/scv",
+                        "value": "SCV000693430.2"
+                    }
                 ]
             }
         },
@@ -4450,14 +4484,6 @@
                                     "system": "https://api.ncbi.nlm.nih.gov/variation/v0/",
                                     "code": "NC_000006.11:26091178:C:G",
                                     "display": "NC_000006.11:26091178:C:G"
-                                },
-                                {
-                                    "system": "http://www.ncbi.nlm.nih.gov/clinvar",
-                                    "code": "10"
-                                },
-                                {
-                                    "system": "http://www.ncbi.nlm.nih.gov/clinvar/scv",
-                                    "code": "SCV000693430.2"
                                 }
                             ]
                         }
@@ -4682,6 +4708,16 @@
                             "text": "criteria provided, single submitter"
                         }
                     }
+                ],
+                "identifier": [
+                    {
+                        "system": "http://www.ncbi.nlm.nih.gov/clinvar",
+                        "value": "10"
+                    },
+                    {
+                        "system": "http://www.ncbi.nlm.nih.gov/clinvar/scv",
+                        "value": "SCV001137061.1"
+                    }
                 ]
             }
         },
@@ -4803,14 +4839,6 @@
                                     "system": "https://api.ncbi.nlm.nih.gov/variation/v0/",
                                     "code": "NC_000006.11:26091178:C:G",
                                     "display": "NC_000006.11:26091178:C:G"
-                                },
-                                {
-                                    "system": "http://www.ncbi.nlm.nih.gov/clinvar",
-                                    "code": "10"
-                                },
-                                {
-                                    "system": "http://www.ncbi.nlm.nih.gov/clinvar/scv",
-                                    "code": "SCV001137061.1"
                                 }
                             ]
                         }
@@ -5035,6 +5063,16 @@
                             "text": "criteria provided, single submitter"
                         }
                     }
+                ],
+                "identifier": [
+                    {
+                        "system": "http://www.ncbi.nlm.nih.gov/clinvar",
+                        "value": "10"
+                    },
+                    {
+                        "system": "http://www.ncbi.nlm.nih.gov/clinvar/scv",
+                        "value": "SCV001368348.2"
+                    }
                 ]
             }
         },
@@ -5156,14 +5194,6 @@
                                     "system": "https://api.ncbi.nlm.nih.gov/variation/v0/",
                                     "code": "NC_000006.11:26091178:C:G",
                                     "display": "NC_000006.11:26091178:C:G"
-                                },
-                                {
-                                    "system": "http://www.ncbi.nlm.nih.gov/clinvar",
-                                    "code": "10"
-                                },
-                                {
-                                    "system": "http://www.ncbi.nlm.nih.gov/clinvar/scv",
-                                    "code": "SCV001368348.2"
                                 }
                             ]
                         }

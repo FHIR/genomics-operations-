@@ -859,23 +859,6 @@ def create_genotype_profile(genotype, subject, gids):
     return resource
 
 
-def add_variation_id(resource, variation_id):
-    spdi_index = next((i for i, item in enumerate(resource["component"]) if item["code"]["coding"][0]["code"] == "81252-9"), None)
-
-    for var_id in variation_id:
-        if spdi_index is not None:
-            resource["component"][spdi_index]["valueCodeableConcept"]["coding"].append(
-                {"system": f'{var_id["system"]}',
-                 "code": f'{var_id["code"]}'})
-        else:
-            resource["component"].append(
-                {"code": {"coding": [{"system": "http://loinc.org",
-                                      "code": "81252-9",
-                                      "display": "Discrete genetic variant"}]},
-                 "valueCodeableConcept": {"coding": [{"system": f'{var_id["system"]}',
-                                                      "code": f'{var_id["code"]}'}]}})
-
-
 def create_sequence_phase_relationship(subject, sequence_phase_data):
     resource = OrderedDict()
     resource["resourceType"] = "Observation"
