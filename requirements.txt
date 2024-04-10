@@ -9,7 +9,7 @@ hgvs==1.5.4
 pandas==1.5.3
 py-ard==1.0.10
 pyfastx==2.0.1
-pyliftover==0.4
+pyliftover==0.4.1
 pymongo==4.2.0
 pyranges==0.0.120
 pytest==7.1.1
