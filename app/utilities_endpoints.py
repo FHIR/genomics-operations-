@@ -1,6 +1,19 @@
+import os
+from os.path import isdir
+
 from flask import abort, jsonify
 from collections import OrderedDict
 from app import common
+from app import input_normalization
+from utilities.spdi_normalization import get_ref_seq_subseq
+import pyard
+
+# Make sure the pyard folder exists locally
+if not isdir('./data/pyard'):
+    exit("Missing pyard folder. Please run fetch_utilities_data.sh!")
+
+pyard_database_version = os.getenv('PYARD_DATABASE_VERSION', '3550')
+ard = pyard.init(data_dir='./data/pyard', cache_size=1, imgt_version=pyard_database_version)
 
 
 def get_feature_coordinates(
@@ -133,7 +146,8 @@ def get_feature_coordinates(
             protein = protein.split('.')[0]
 
         try:
-            result = common.proteins_data.aggregate([{"$match": {"proteinRefSeq": {'$regex': ".*"+str(protein).replace('*', r'\*')+".*"}}}])
+            result = common.proteins_data.aggregate(
+                [{"$match": {"proteinRefSeq": {'$regex': ".*"+str(protein).replace('*', r'\*')+".*"}}}])
             result = list(result)
         except Exception as e:
             print(f"DEBUG: Error({e}) under get_feature_coordinates(protein={protein})")
@@ -189,3 +203,38 @@ def find_the_gene(range=None):
         output.append(ord_dict)
 
     return (jsonify(output))
+
+
+def seqfetcher(acc, start, end):
+    try:
+        return get_ref_seq_subseq(acc, start, end)
+    except Exception as err:
+        print(f"Unexpected {err=}, {type(err)=}")
+        abort(404, 'Not Found')
+
+
+def normalize_variant(variant):
+    try:
+        return input_normalization.normalize(variant)
+    except Exception as err:
+        print(f"Unexpected {err=}, {type(err)=}")
+        abort(422, 'Failed LiftOver')
+
+
+def normalize_hla(allele):
+    try:
+        return {
+            allele: {
+                "G": ard.redux(allele, "G"),
+                "P": ard.redux(allele, "P"),
+                "lg": ard.redux(allele, "lg"),
+                "lgx": ard.redux(allele, "lgx"),
+                "W": ard.redux(allele, "W"),
+                "exon": ard.redux(allele, "exon"),
+                "U2": ard.redux(allele, "U2"),
+                "S": ard.redux(allele, "S")
+            }
+        }
+    except Exception as err:
+        print(f"Unexpected {err=}, {type(err)=}")
+        abort(422, 'Failed HLA normalization')

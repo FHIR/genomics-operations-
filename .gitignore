@@ -3,3 +3,5 @@
 .hypothesis
 .pytest_cache
 __pycache__
+/data
+/tmp

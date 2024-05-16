@@ -22,6 +22,12 @@ def test_population_specific_variants_1(client):
 
 
 def test_population_specific_variants_2(client):
+    """
+    PDE4DIP gene is on minus strand in build 37, but is on positive strand in build 38. The hgvs library returned
+    "HGVSDataNotAvailableError: No alignments for NM_001002811.1 in GRCh38 using splign" before the relevant_transcript
+    selection for liftover was adjusted to select the newest version of the first-published transcript in
+    `process_NC_HGVS()` in input_normalization.py.
+    """
     url = tu.find_population_specific_variants_query(
         'subject=HG00403&variants=NC_000001.10:144931726:G:A&variants=NC_000001.10:145532548:T:C&variants=NC_000001.10:145592072:A:T&includePatientList=true')
     response = client.get(url)
@@ -29,11 +35,14 @@ def test_population_specific_variants_2(client):
     tu.compare_actual_and_expected_output(f'{tu.FIND_POPULATION_SPECIFIC_VARIANTS_OUTPUT_DIR}2.json', response.json)
 
 
-# def test_population_specific_variants_3(client):
-#     url = tu.find_population_specific_variants_query('variants=NC_000001.10:144931726:G:A, NC_000001.10:145532548:T:C, NC_000001.10:145592072:A:T')
-#     response = client.get(url)
+def test_population_specific_variants_3(client):
+    """
+    Same as test 2 above, but without `subject` & `includePatientList`.
+    """
+    url = tu.find_population_specific_variants_query('variants=NC_000001.10:144931726:G:A, NC_000001.10:145532548:T:C, NC_000001.10:145592072:A:T')
+    response = client.get(url)
 
-#     tu.compare_actual_and_expected_output(f'{tu.FIND_POPULATION_SPECIFIC_VARIANTS_OUTPUT_DIR}3.json', response.json)
+    tu.compare_actual_and_expected_output(f'{tu.FIND_POPULATION_SPECIFIC_VARIANTS_OUTPUT_DIR}3.json', response.json)
 
 
 """

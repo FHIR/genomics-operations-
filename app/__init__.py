@@ -3,6 +3,13 @@ import flask
 from flask_cors import CORS
 import os
 
+import hgvs
+# Disable the hgvs LRU cache to avoid blowing up memory
+# TODO: Revisit this, since this caching might not use a ton of memory.
+hgvs.global_config.lru_cache.maxsize = 0
+# Disable HGVS strict bounds checks as a workaround for liftover failures: https://github.com/biocommons/hgvs/issues/717
+hgvs.global_config.mapping.strict_bounds = False
+
 
 def create_app():
     # App and API

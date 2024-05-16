@@ -93,6 +93,16 @@
                             "text": "criteria provided, single submitter"
                         }
                     }
+                ],
+                "identifier": [
+                    {
+                        "system": "http://www.ncbi.nlm.nih.gov/clinvar",
+                        "value": "873683"
+                    },
+                    {
+                        "system": "http://www.ncbi.nlm.nih.gov/clinvar/scv",
+                        "value": "SCV001252233.1"
+                    }
                 ]
             }
         },
@@ -214,14 +224,6 @@
                                     "system": "https://api.ncbi.nlm.nih.gov/variation/v0/",
                                     "code": "NC_000001.10:161333381:C:T",
                                     "display": "NC_000001.10:161333381:C:T"
-                                },
-                                {
-                                    "system": "http://www.ncbi.nlm.nih.gov/clinvar",
-                                    "code": "873683"
-                                },
-                                {
-                                    "system": "http://www.ncbi.nlm.nih.gov/clinvar/scv",
-                                    "code": "SCV001252233.1"
                                 }
                             ]
                         }
@@ -413,6 +415,16 @@
                             "text": "criteria provided, single submitter"
                         }
                     }
+                ],
+                "identifier": [
+                    {
+                        "system": "http://www.ncbi.nlm.nih.gov/clinvar",
+                        "value": "44641"
+                    },
+                    {
+                        "system": "http://www.ncbi.nlm.nih.gov/clinvar/scv",
+                        "value": "SCV000351450.3"
+                    }
                 ]
             }
         },
@@ -534,14 +546,6 @@
                                     "system": "https://api.ncbi.nlm.nih.gov/variation/v0/",
                                     "code": "NC_000001.10:17380496:G:T",
                                     "display": "NC_000001.10:17380496:G:T"
-                                },
-                                {
-                                    "system": "http://www.ncbi.nlm.nih.gov/clinvar",
-                                    "code": "44641"
-                                },
-                                {
-                                    "system": "http://www.ncbi.nlm.nih.gov/clinvar/scv",
-                                    "code": "SCV000351450.3"
                                 }
                             ]
                         }

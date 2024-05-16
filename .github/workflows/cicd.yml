@@ -28,7 +28,7 @@ jobs:
           args: --extend-ignore E501,E741
 
       - name: Run Tests
-        run: python -m pytest
+        run: ./fetch_utilities_data.sh && python -m pytest
 
   deploy:
     name: Deploy to dev

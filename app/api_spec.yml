@@ -1262,6 +1262,86 @@ paths:
             pattern: '^\s*[Nn][Cc]_\d{4,10}(\.)(\d{1,2}):\d{1,10}-\d{1,10}\s*$'
             example: "NC_000001.11:11794399-11794400"
 
+  /utilities/seqfetcher/1/sequence/{acc}:
+    get:
+      summary: "Seqfetcher"
+      operationId: "app.utilities_endpoints.seqfetcher"
+      tags:
+        - "Operations Utilities (not part of balloted HL7 Operations)"
+      responses:
+        "200":
+          description: "Returns RefSeq subsequence"
+          content:
+            text/plain:
+              schema:
+                type: string
+      parameters:
+        - name: acc
+          in: path
+          required: true
+          description: Accession
+          schema:
+            type: string
+            example: "NC_000001.10"
+        - name: start
+          in: query
+          required: true
+          description: Subsequence start index
+          schema:
+            type: integer
+            example: 1
+        - name: end
+          in: query
+          required: true
+          description: Subsequence end index
+          schema:
+            type: integer
+            example: 2
+
+  /utilities/normalize-variant:
+    get:
+      summary: "Normalize Variant"
+      operationId: "app.utilities_endpoints.normalize_variant"
+      tags:
+        - "Operations Utilities (not part of balloted HL7 Operations)"
+      responses:
+        "200":
+          description: "Returns a normalized variant in both GRCh37 and GRCh38."
+          content:
+            application/json:
+              schema:
+                type: object
+      parameters:
+        - name: variant
+          in: query
+          required: true
+          description: "Variant."
+          schema:
+            type: string
+            example: "NM_021960.4:c.740C>T"
+
+  /utilities/normalize-hla:
+    get:
+      summary: "Normalize HLA"
+      operationId: "app.utilities_endpoints.normalize_hla"
+      tags:
+        - "Operations Utilities (not part of balloted HL7 Operations)"
+      responses:
+        "200":
+          description: "Returns a normalized HLA ARD allele."
+          content:
+            application/json:
+              schema:
+                type: object
+      parameters:
+        - name: allele
+          in: query
+          required: true
+          description: "Allele."
+          schema:
+            type: string
+            example: "B14"
+
 tags:
   - name: Subject Genotype Operations
   - name: Subject Phenotype Operations

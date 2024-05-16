@@ -48,3 +48,79 @@ run `python3 -m pytest` from the terminal to execute them all.
 Additionally, since the tests run against the Mongo DB database, if you need to update the test data in this repo, you
 can run `OVERWRITE_TEST_EXPECTED_DATA=true python3 -m pytest` from the terminal and then create a pull request with the
 changes.
+
+## Heroku Deployment
+
+Currently, there are two environments running in Heroku:
+- Dev: <https://fhir-gen-ops-dev-ca42373833b6.herokuapp.com/>
+- Prod: <https://fhir-gen-ops.herokuapp.com/>
+
+Pull requests will trigger a deployment to the dev environment automatically after being merged.
+
+The ["Manual Deployment"](https://github.com/FHIR/genomics-operations/actions/workflows/manual_deployment.yml) workflow
+can be used to deploy code to either the `dev` or `prod` environments. To do so, please select "Run workflow", ignore
+the "Use workflow from" dropdown which lists the branches in the current repo (I can't disable / remove it) and then
+select the environment, the branch and the repository. By default, the `https://github.com/FHIR/genomics-operations`
+repo is specified, but you can replace it with any any fork.
+
+Deployments to the prod environment can only be triggered manually from the `main` branch of the repo using the Manual
+Deployment.
+
+### Heroku Stack
+
+Make sure that the Python version under [`runtime.txt`](./runtime.txt) is
+[supported](https://devcenter.heroku.com/articles/python-support#supported-runtimes) by the
+[Heroku stack](https://devcenter.heroku.com/articles/stack) that is currently running in each environment.
+
+### UTA Database
+
+The Biocommons [hgvs](https://github.com/biocommons/hgvs) library which is used for variant parsing, validation and
+normalisation requires access to a copy of the [UTA](https://github.com/biocommons/uta) Postgres database.
+
+We have provisioned a Heroku Postgres instance in the Prod environment which contains the imported data from a database
+dump as described [here](https://github.com/biocommons/uta#installing-from-database-dumps).
+
+The connection string for this database can be found in Heroku under the `UTA_DATABASE_URL` environment variable.
+
+Additionally, we define a `UTA_DATABASE_SCHEMA` environment variable in the [`.env`](.env) file which contains the name
+of the currently imported database schema.
+
+Database import procedure (it will take about 10 minutes):
+
+```shell
+> UTA_SCHEMA="uta_20210129b" # Specify the UTA schema you wish to use
+> PGPASSWORD="${POSTGRES_PASSWORD}"
+> gzip -cdq ${UTA_SCHEMA}.pgd.gz | grep -v anonymous | psql -U ${POSTGRES_USER} -1 -v ON_ERROR_STOP=1 -d ${POSTGRES_DATABASE} -h ${POSTGRES_HOST} -Eae
+```
+
+Note: `grep -v anonymous` is required because it's not possible to create an `anonymous` role in Heroku Postgres.
+
+Once the process finishes, if you are using the Heroku Postgres Basic plan on the
+[Essential Tier](https://devcenter.heroku.com/articles/heroku-postgres-plans#essential-tier), you'll bump into the 10
+million rows / database limit. However, it's safe to ignore the warnings about this limit, since Heroku will simply
+revoke INSERT privileges from the database and the hgvs library only needs read-only access to this database.
+
+### RefSeq data
+
+The RefSeq metadata from the UTA database needs to be in sync with the RefSeq data which is available for the *Seqfetcher
+Utility* endpoint. Currently, this is stored in GitHub as release artifacts.
+
+To update the RefSeq data, you will have to install `seqrepo` locally and run `./utilities/pack_seqrepo_data.py`. Here
+is a step-by-step guide on how to do this:
+
+```shell
+> mkdir seqrepo
+> cd seqrepo
+> python3 -m venv .venv
+> . .venv/bin/activate
+> pip install setuptools
+> pip install biocommons.seqrepo
+> seqrepo -r . pull --update-latest
+> # If you'll get a "Permission denied" error, then you can run the following command (using the temp directory which got created):
+> # > chmod +w 2024-02-20.r4521u5y && mv 2024-02-20.r4521u5y 2024-02-20 && ln -s 2024-02-20 latest
+>
+> # cd to genomics-operations repo
+> python ./utilities/pack_seqrepo_data.py --seqrepo_dir /path/to/seqrepo/dir/latest
+> # Upload tar archives from ./tmp/ to a new GitHub release and then update `UTILITIES_DATA_VERSION` in the `.env` file
+> # such that it contains the short SHA of the new release which contains the updated data.
+```

@@ -107,6 +107,16 @@
                             "text": "Supports Sensitivity/Response"
                         }
                     }
+                ],
+                "identifier": [
+                    {
+                        "system": "https://civicdb.org/variant",
+                        "value": "12"
+                    },
+                    {
+                        "system": "https://civicdb.org/evidence",
+                        "value": "5958"
+                    }
                 ]
             }
         },
@@ -188,14 +198,308 @@
                                     "system": "https://api.ncbi.nlm.nih.gov/variation/v0/",
                                     "code": "NC_000007.14:140753335:A:T",
                                     "display": "NC_000007.14:140753335:A:T"
-                                },
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "code": {
+                            "coding": [
                                 {
-                                    "system": "https://civicdb.org/variant",
-                                    "code": "12"
-                                },
+                                    "system": "http://loinc.org",
+                                    "code": "69547-8",
+                                    "display": "Genomic Ref allele [ID]"
+                                }
+                            ]
+                        },
+                        "valueString": "A"
+                    },
+                    {
+                        "code": {
+                            "coding": [
                                 {
-                                    "system": "https://civicdb.org/evidence",
-                                    "code": "5958"
+                                    "system": "http://loinc.org",
+                                    "code": "69551-0",
+                                    "display": "Genomic Alt allele [ID]"
+                                }
+                            ]
+                        },
+                        "valueString": "T"
+                    },
+                    {
+                        "code": {
+                            "coding": [
+                                {
+                                    "system": "http://loinc.org",
+                                    "code": "92822-6",
+                                    "display": "Genomic coord system"
+                                }
+                            ]
+                        },
+                        "valueCodeableConcept": {
+                            "coding": [
+                                {
+                                    "system": "http://loinc.org",
+                                    "code": "LA30100-4",
+                                    "display": "0-based interval counting"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "code": {
+                            "coding": [
+                                {
+                                    "system": "http://loinc.org",
+                                    "code": "81254-5",
+                                    "display": "Variant exact start-end"
+                                }
+                            ]
+                        },
+                        "valueRange": {
+                            "low": {
+                                "value": 140753335
+                            }
+                        }
+                    },
+                    {
+                        "code": {
+                            "coding": [
+                                {
+                                    "system": "http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs",
+                                    "code": "molecular-consequence"
+                                }
+                            ]
+                        },
+                        "valueCodeableConcept": {
+                            "coding": [
+                                {
+                                    "system": "http://www.sequenceontology.org/",
+                                    "code": "SO:0001583",
+                                    "display": "missense_variant"
+                                }
+                            ]
+                        },
+                        "interpretation": {
+                            "text": "PREDICTED IMPACT MODERATE"
+                        }
+                    },
+                    {
+                        "code": {
+                            "coding": [
+                                {
+                                    "system": "http://loinc.org",
+                                    "code": "92821-8",
+                                    "display": "Population allele frequency"
+                                }
+                            ]
+                        },
+                        "valueQuantity": {
+                            "value": 3.97994e-06,
+                            "system": "http://unitsofmeasure.org",
+                            "code": "1"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "implication",
+            "resource": {
+                "resourceType": "Observation",
+                "id": "dv-63287c9ff7c8d34d272a3d61",
+                "meta": {
+                    "profile": [
+                        "http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/therapeutic-implication"
+                    ]
+                },
+                "status": "final",
+                "category": [
+                    {
+                        "coding": [
+                            {
+                                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                                "code": "laboratory"
+                            }
+                        ]
+                    }
+                ],
+                "code": {
+                    "coding": [
+                        {
+                            "system": "http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs",
+                            "code": "therapeutic-implication"
+                        }
+                    ]
+                },
+                "subject": {
+                    "reference": "Patient/CA12345"
+                },
+                "derivedFrom": [
+                    {
+                        "reference": "Observation/dv-639224f104908c0632d2612d"
+                    }
+                ],
+                "component": [
+                    {
+                        "code": {
+                            "coding": [
+                                {
+                                    "system": "http://loinc.org",
+                                    "code": "81259-4",
+                                    "display": "phenotypic treatment context"
+                                }
+                            ]
+                        },
+                        "valueCodeableConcept": {
+                            "coding": [
+                                {
+                                    "system": "https://disease-ontology.org",
+                                    "code": "3908",
+                                    "display": "Lung Non-small Cell Carcinoma"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "code": {
+                            "coding": [
+                                {
+                                    "system": "http://loinc.org",
+                                    "code": "93044-6",
+                                    "display": "Level of evidence"
+                                }
+                            ]
+                        },
+                        "valueCodeableConcept": {
+                            "text": "C (Case study)"
+                        }
+                    },
+                    {
+                        "code": {
+                            "coding": [
+                                {
+                                    "system": "http://loinc.org",
+                                    "code": "51963-7",
+                                    "display": "medication-assessed"
+                                }
+                            ]
+                        },
+                        "valueCodeableConcept": {
+                            "coding": [
+                                {
+                                    "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                                    "code": "1424911",
+                                    "display": "Dabrafenib"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "code": {
+                            "coding": [
+                                {
+                                    "system": "http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs",
+                                    "code": "predicted-therapeutic-implication",
+                                    "display": "predicted-therapeutic-implication"
+                                }
+                            ]
+                        },
+                        "valueCodeableConcept": {
+                            "text": "Supports Resistance"
+                        }
+                    }
+                ],
+                "identifier": [
+                    {
+                        "system": "https://civicdb.org/variant",
+                        "value": "12"
+                    },
+                    {
+                        "system": "https://civicdb.org/evidence",
+                        "value": "91"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "variant",
+            "resource": {
+                "resourceType": "Observation",
+                "id": "dv-639224f104908c0632d2612d",
+                "meta": {
+                    "profile": [
+                        "http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/variant"
+                    ]
+                },
+                "status": "final",
+                "category": [
+                    {
+                        "coding": [
+                            {
+                                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                                "code": "laboratory"
+                            }
+                        ]
+                    }
+                ],
+                "code": {
+                    "coding": [
+                        {
+                            "system": "http://loinc.org",
+                            "code": "69548-6",
+                            "display": "Genetic variant assessment"
+                        }
+                    ]
+                },
+                "subject": {
+                    "reference": "Patient/CA12345"
+                },
+                "valueCodeableConcept": {
+                    "coding": [
+                        {
+                            "system": "http://loinc.org",
+                            "code": "LA9633-4",
+                            "display": "present"
+                        }
+                    ]
+                },
+                "component": [
+                    {
+                        "code": {
+                            "coding": [
+                                {
+                                    "system": "http://loinc.org",
+                                    "code": "48013-7",
+                                    "display": "Genomic reference sequence ID"
+                                }
+                            ]
+                        },
+                        "valueCodeableConcept": {
+                            "coding": [
+                                {
+                                    "system": "http://www.ncbi.nlm.nih.gov/nuccore",
+                                    "code": "NC_000007.14"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "code": {
+                            "coding": [
+                                {
+                                    "system": "http://loinc.org",
+                                    "code": "81252-9",
+                                    "display": "Discrete genetic variant"
+                                }
+                            ]
+                        },
+                        "valueCodeableConcept": {
+                            "coding": [
+                                {
+                                    "system": "https://api.ncbi.nlm.nih.gov/variation/v0/",
+                                    "code": "NC_000007.14:140753335:A:T",
+                                    "display": "NC_000007.14:140753335:A:T"
                                 }
                             ]
                         }
@@ -427,305 +731,15 @@
                             "text": "Supports Sensitivity/Response"
                         }
                     }
-                ]
-            }
-        },
-        {
-            "name": "variant",
-            "resource": {
-                "resourceType": "Observation",
-                "id": "dv-639224f104908c0632d2612d",
-                "meta": {
-                    "profile": [
-                        "http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/variant"
-                    ]
-                },
-                "status": "final",
-                "category": [
-                    {
-                        "coding": [
-                            {
-                                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
-                                "code": "laboratory"
-                            }
-                        ]
-                    }
                 ],
-                "code": {
-                    "coding": [
-                        {
-                            "system": "http://loinc.org",
-                            "code": "69548-6",
-                            "display": "Genetic variant assessment"
-                        }
-                    ]
-                },
-                "subject": {
-                    "reference": "Patient/CA12345"
-                },
-                "valueCodeableConcept": {
-                    "coding": [
-                        {
-                            "system": "http://loinc.org",
-                            "code": "LA9633-4",
-                            "display": "present"
-                        }
-                    ]
-                },
-                "component": [
+                "identifier": [
                     {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "48013-7",
-                                    "display": "Genomic reference sequence ID"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "coding": [
-                                {
-                                    "system": "http://www.ncbi.nlm.nih.gov/nuccore",
-                                    "code": "NC_000007.14"
-                                }
-                            ]
-                        }
+                        "system": "https://civicdb.org/variant",
+                        "value": "12"
                     },
                     {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "81252-9",
-                                    "display": "Discrete genetic variant"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "coding": [
-                                {
-                                    "system": "https://api.ncbi.nlm.nih.gov/variation/v0/",
-                                    "code": "NC_000007.14:140753335:A:T",
-                                    "display": "NC_000007.14:140753335:A:T"
-                                },
-                                {
-                                    "system": "https://civicdb.org/variant",
-                                    "code": "12"
-                                },
-                                {
-                                    "system": "https://civicdb.org/evidence",
-                                    "code": "3017"
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "69547-8",
-                                    "display": "Genomic Ref allele [ID]"
-                                }
-                            ]
-                        },
-                        "valueString": "A"
-                    },
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "69551-0",
-                                    "display": "Genomic Alt allele [ID]"
-                                }
-                            ]
-                        },
-                        "valueString": "T"
-                    },
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "92822-6",
-                                    "display": "Genomic coord system"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "LA30100-4",
-                                    "display": "0-based interval counting"
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "81254-5",
-                                    "display": "Variant exact start-end"
-                                }
-                            ]
-                        },
-                        "valueRange": {
-                            "low": {
-                                "value": 140753335
-                            }
-                        }
-                    },
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs",
-                                    "code": "molecular-consequence"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "coding": [
-                                {
-                                    "system": "http://www.sequenceontology.org/",
-                                    "code": "SO:0001583",
-                                    "display": "missense_variant"
-                                }
-                            ]
-                        },
-                        "interpretation": {
-                            "text": "PREDICTED IMPACT MODERATE"
-                        }
-                    },
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "92821-8",
-                                    "display": "Population allele frequency"
-                                }
-                            ]
-                        },
-                        "valueQuantity": {
-                            "value": 3.97994e-06,
-                            "system": "http://unitsofmeasure.org",
-                            "code": "1"
-                        }
-                    }
-                ]
-            }
-        },
-        {
-            "name": "implication",
-            "resource": {
-                "resourceType": "Observation",
-                "id": "dv-63287c9ff7c8d34d272a3d61",
-                "meta": {
-                    "profile": [
-                        "http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/therapeutic-implication"
-                    ]
-                },
-                "status": "final",
-                "category": [
-                    {
-                        "coding": [
-                            {
-                                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
-                                "code": "laboratory"
-                            }
-                        ]
-                    }
-                ],
-                "code": {
-                    "coding": [
-                        {
-                            "system": "http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs",
-                            "code": "therapeutic-implication"
-                        }
-                    ]
-                },
-                "subject": {
-                    "reference": "Patient/CA12345"
-                },
-                "derivedFrom": [
-                    {
-                        "reference": "Observation/dv-639224f104908c0632d2612d"
-                    }
-                ],
-                "component": [
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "81259-4",
-                                    "display": "phenotypic treatment context"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "coding": [
-                                {
-                                    "system": "https://disease-ontology.org",
-                                    "code": "3908",
-                                    "display": "Lung Non-small Cell Carcinoma"
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "93044-6",
-                                    "display": "Level of evidence"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "text": "C (Case study)"
-                        }
-                    },
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "51963-7",
-                                    "display": "medication-assessed"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "coding": [
-                                {
-                                    "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
-                                    "code": "1424911",
-                                    "display": "Dabrafenib"
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs",
-                                    "code": "predicted-therapeutic-implication",
-                                    "display": "predicted-therapeutic-implication"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "text": "Supports Resistance"
-                        }
+                        "system": "https://civicdb.org/evidence",
+                        "value": "3017"
                     }
                 ]
             }
@@ -808,14 +822,6 @@
                                     "system": "https://api.ncbi.nlm.nih.gov/variation/v0/",
                                     "code": "NC_000007.14:140753335:A:T",
                                     "display": "NC_000007.14:140753335:A:T"
-                                },
-                                {
-                                    "system": "https://civicdb.org/variant",
-                                    "code": "12"
-                                },
-                                {
-                                    "system": "https://civicdb.org/evidence",
-                                    "code": "91"
                                 }
                             ]
                         }

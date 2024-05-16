@@ -87,6 +87,12 @@
                             "text": "CYP2C19 Rapid Metabolizer"
                         }
                     }
+                ],
+                "identifier": [
+                    {
+                        "system": "https://www.pharmgkb.org",
+                        "value": "PA124"
+                    }
                 ]
             }
         },
@@ -149,25 +155,6 @@
                                     "system": "http://www.genenames.org/geneId",
                                     "code": "HGNC:2621",
                                     "display": "CYP2C19"
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "81252-9",
-                                    "display": "Discrete genetic variant"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "coding": [
-                                {
-                                    "system": "https://www.pharmgkb.org",
-                                    "code": "PA124"
                                 }
                             ]
                         }
@@ -261,6 +248,12 @@
                             "text": "CYP2C19 Rapid Metabolizer"
                         }
                     }
+                ],
+                "identifier": [
+                    {
+                        "system": "https://www.pharmgkb.org",
+                        "value": "PA124"
+                    }
                 ]
             }
         },
@@ -323,25 +316,6 @@
                                     "system": "http://www.genenames.org/geneId",
                                     "code": "HGNC:2621",
                                     "display": "CYP2C19"
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "81252-9",
-                                    "display": "Discrete genetic variant"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "coding": [
-                                {
-                                    "system": "https://www.pharmgkb.org",
-                                    "code": "PA124"
                                 }
                             ]
                         }
@@ -435,6 +409,12 @@
                             "text": "CYP2C19 Rapid Metabolizer"
                         }
                     }
+                ],
+                "identifier": [
+                    {
+                        "system": "https://www.pharmgkb.org",
+                        "value": "PA124"
+                    }
                 ]
             }
         },
@@ -497,25 +477,6 @@
                                     "system": "http://www.genenames.org/geneId",
                                     "code": "HGNC:2621",
                                     "display": "CYP2C19"
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "81252-9",
-                                    "display": "Discrete genetic variant"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "coding": [
-                                {
-                                    "system": "https://www.pharmgkb.org",
-                                    "code": "PA124"
                                 }
                             ]
                         }
@@ -609,6 +570,12 @@
                             "text": "CYP2C19 Rapid Metabolizer"
                         }
                     }
+                ],
+                "identifier": [
+                    {
+                        "system": "https://www.pharmgkb.org",
+                        "value": "PA124"
+                    }
                 ]
             }
         },
@@ -671,25 +638,6 @@
                                     "system": "http://www.genenames.org/geneId",
                                     "code": "HGNC:2621",
                                     "display": "CYP2C19"
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "81252-9",
-                                    "display": "Discrete genetic variant"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "coding": [
-                                {
-                                    "system": "https://www.pharmgkb.org",
-                                    "code": "PA124"
                                 }
                             ]
                         }
@@ -783,6 +731,12 @@
                             "text": "CYP2C19 Rapid Metabolizer"
                         }
                     }
+                ],
+                "identifier": [
+                    {
+                        "system": "https://www.pharmgkb.org",
+                        "value": "PA124"
+                    }
                 ]
             }
         },
@@ -845,25 +799,6 @@
                                     "system": "http://www.genenames.org/geneId",
                                     "code": "HGNC:2621",
                                     "display": "CYP2C19"
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "81252-9",
-                                    "display": "Discrete genetic variant"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "coding": [
-                                {
-                                    "system": "https://www.pharmgkb.org",
-                                    "code": "PA124"
                                 }
                             ]
                         }
@@ -957,6 +892,12 @@
                             "text": "Normal Metabolizer"
                         }
                     }
+                ],
+                "identifier": [
+                    {
+                        "system": "https://www.pharmgkb.org",
+                        "value": "PA128"
+                    }
                 ]
             }
         },
@@ -1019,25 +960,6 @@
                                     "system": "http://www.genenames.org/geneId",
                                     "code": "HGNC:2625",
                                     "display": "CYP2D6"
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "81252-9",
-                                    "display": "Discrete genetic variant"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "coding": [
-                                {
-                                    "system": "https://www.pharmgkb.org",
-                                    "code": "PA128"
                                 }
                             ]
                         }
@@ -1131,6 +1053,12 @@
                             "text": "Normal Metabolizer"
                         }
                     }
+                ],
+                "identifier": [
+                    {
+                        "system": "https://www.pharmgkb.org",
+                        "value": "PA128"
+                    }
                 ]
             }
         },
@@ -1193,25 +1121,6 @@
                                     "system": "http://www.genenames.org/geneId",
                                     "code": "HGNC:2625",
                                     "display": "CYP2D6"
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "81252-9",
-                                    "display": "Discrete genetic variant"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "coding": [
-                                {
-                                    "system": "https://www.pharmgkb.org",
-                                    "code": "PA128"
                                 }
                             ]
                         }
@@ -1305,6 +1214,12 @@
                             "text": "Normal Metabolizer"
                         }
                     }
+                ],
+                "identifier": [
+                    {
+                        "system": "https://www.pharmgkb.org",
+                        "value": "PA128"
+                    }
                 ]
             }
         },
@@ -1367,25 +1282,6 @@
                                     "system": "http://www.genenames.org/geneId",
                                     "code": "HGNC:2625",
                                     "display": "CYP2D6"
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "81252-9",
-                                    "display": "Discrete genetic variant"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "coding": [
-                                {
-                                    "system": "https://www.pharmgkb.org",
-                                    "code": "PA128"
                                 }
                             ]
                         }
@@ -1479,6 +1375,12 @@
                             "text": "Normal Metabolizer"
                         }
                     }
+                ],
+                "identifier": [
+                    {
+                        "system": "https://www.pharmgkb.org",
+                        "value": "PA128"
+                    }
                 ]
             }
         },
@@ -1541,25 +1443,6 @@
                                     "system": "http://www.genenames.org/geneId",
                                     "code": "HGNC:2625",
                                     "display": "CYP2D6"
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "81252-9",
-                                    "display": "Discrete genetic variant"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "coding": [
-                                {
-                                    "system": "https://www.pharmgkb.org",
-                                    "code": "PA128"
                                 }
                             ]
                         }
@@ -1653,6 +1536,12 @@
                             "text": "Normal Metabolizer"
                         }
                     }
+                ],
+                "identifier": [
+                    {
+                        "system": "https://www.pharmgkb.org",
+                        "value": "PA128"
+                    }
                 ]
             }
         },
@@ -1715,25 +1604,6 @@
                                     "system": "http://www.genenames.org/geneId",
                                     "code": "HGNC:2625",
                                     "display": "CYP2D6"
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "81252-9",
-                                    "display": "Discrete genetic variant"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "coding": [
-                                {
-                                    "system": "https://www.pharmgkb.org",
-                                    "code": "PA128"
                                 }
                             ]
                         }
@@ -1827,6 +1697,12 @@
                             "text": "Normal Metabolizer"
                         }
                     }
+                ],
+                "identifier": [
+                    {
+                        "system": "https://www.pharmgkb.org",
+                        "value": "PA128"
+                    }
                 ]
             }
         },
@@ -1889,25 +1765,6 @@
                                     "system": "http://www.genenames.org/geneId",
                                     "code": "HGNC:2625",
                                     "display": "CYP2D6"
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "81252-9",
-                                    "display": "Discrete genetic variant"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "coding": [
-                                {
-                                    "system": "https://www.pharmgkb.org",
-                                    "code": "PA128"
                                 }
                             ]
                         }
@@ -2001,6 +1858,12 @@
                             "text": "Normal Metabolizer"
                         }
                     }
+                ],
+                "identifier": [
+                    {
+                        "system": "https://www.pharmgkb.org",
+                        "value": "PA128"
+                    }
                 ]
             }
         },
@@ -2063,25 +1926,6 @@
                                     "system": "http://www.genenames.org/geneId",
                                     "code": "HGNC:2625",
                                     "display": "CYP2D6"
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "81252-9",
-                                    "display": "Discrete genetic variant"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "coding": [
-                                {
-                                    "system": "https://www.pharmgkb.org",
-                                    "code": "PA128"
                                 }
                             ]
                         }
@@ -2175,6 +2019,12 @@
                             "text": "Normal Metabolizer"
                         }
                     }
+                ],
+                "identifier": [
+                    {
+                        "system": "https://www.pharmgkb.org",
+                        "value": "PA128"
+                    }
                 ]
             }
         },
@@ -2237,25 +2087,6 @@
                                     "system": "http://www.genenames.org/geneId",
                                     "code": "HGNC:2625",
                                     "display": "CYP2D6"
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "81252-9",
-                                    "display": "Discrete genetic variant"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "coding": [
-                                {
-                                    "system": "https://www.pharmgkb.org",
-                                    "code": "PA128"
                                 }
                             ]
                         }
@@ -2349,6 +2180,12 @@
                             "text": "Normal Metabolizer"
                         }
                     }
+                ],
+                "identifier": [
+                    {
+                        "system": "https://www.pharmgkb.org",
+                        "value": "PA128"
+                    }
                 ]
             }
         },
@@ -2411,25 +2248,6 @@
                                     "system": "http://www.genenames.org/geneId",
                                     "code": "HGNC:2625",
                                     "display": "CYP2D6"
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "81252-9",
-                                    "display": "Discrete genetic variant"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "coding": [
-                                {
-                                    "system": "https://www.pharmgkb.org",
-                                    "code": "PA128"
                                 }
                             ]
                         }
@@ -2523,6 +2341,12 @@
                             "text": "Normal Metabolizer"
                         }
                     }
+                ],
+                "identifier": [
+                    {
+                        "system": "https://www.pharmgkb.org",
+                        "value": "PA128"
+                    }
                 ]
             }
         },
@@ -2585,25 +2409,6 @@
                                     "system": "http://www.genenames.org/geneId",
                                     "code": "HGNC:2625",
                                     "display": "CYP2D6"
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "81252-9",
-                                    "display": "Discrete genetic variant"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "coding": [
-                                {
-                                    "system": "https://www.pharmgkb.org",
-                                    "code": "PA128"
                                 }
                             ]
                         }
@@ -2697,6 +2502,12 @@
                             "text": "Normal Metabolizer"
                         }
                     }
+                ],
+                "identifier": [
+                    {
+                        "system": "https://www.pharmgkb.org",
+                        "value": "PA128"
+                    }
                 ]
             }
         },
@@ -2759,25 +2570,6 @@
                                     "system": "http://www.genenames.org/geneId",
                                     "code": "HGNC:2625",
                                     "display": "CYP2D6"
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "81252-9",
-                                    "display": "Discrete genetic variant"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "coding": [
-                                {
-                                    "system": "https://www.pharmgkb.org",
-                                    "code": "PA128"
                                 }
                             ]
                         }
