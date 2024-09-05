@@ -6,6 +6,8 @@ import hgvs.parser
 
 from utilities.spdi_normalization import get_normalized_spdi
 
+from . import common
+
 # Set the HGVS_SEQREPO_URL env var so the hgvs library will use the local `utilities/seqfetcher` endpoint instead of
 # making NCBI API calls.
 port = os.getenv('PORT', 5000)  # The localhost debugger starts the app on port 5000
@@ -30,16 +32,6 @@ b37hgvsAssemblyMapper = hgvs.assemblymapper.AssemblyMapper(
     hgvsDataProvider, assembly_name='GRCh37', alt_aln_method='splign')
 b38hgvsAssemblyMapper = hgvs.assemblymapper.AssemblyMapper(
     hgvsDataProvider, assembly_name='GRCh38', alt_aln_method='splign')
-# ------------- point to latest data source ------------------------
-# at unix command line: export UTA_DB_URL=postgresql://anonymous:anonymous@uta.biocommons.org/uta/uta_20210129b
-
-# ------------------ PARSE -------------
-
-
-def parse_variant(variant):
-    parsed_variant_dict = dict()
-    parsed_variant_dict['parsed'] = hgvsParser.parse_hgvs_variant(variant)
-    return parsed_variant_dict
 
 # ------------------ PROJECT -------------
 
@@ -55,7 +47,7 @@ def project_variant(parsed_variant):
 # ---------------- NORMALIZE to canonical SPDIs ---------------
 
 
-def normalize_variant(parsed_variant, build):
+def normalize_variant(parsed_variant):
     pos = parsed_variant.posedit.pos.start.base-1
     if parsed_variant.posedit.edit.ref:
         ref = parsed_variant.posedit.edit.ref
@@ -74,17 +66,15 @@ def normalize_variant(parsed_variant, build):
 
 
 def process_NM_HGVS(NM_HGVS):
-    parsed_variant_dict = parse_variant(NM_HGVS)
-    print(f"parsed: {parsed_variant_dict['parsed']}")
+    parsed_variant = hgvsParser.parse_hgvs_variant(NM_HGVS)
+    print(f"parsed: {parsed_variant}")
 
-    projected_variant_dict = project_variant(parsed_variant_dict['parsed'])
+    projected_variant_dict = project_variant(parsed_variant)
     print(
         f"b37projected: {projected_variant_dict['b37projected']}; b38projected: {projected_variant_dict['b38projected']}")
 
-    b37SPDI = normalize_variant(
-        projected_variant_dict['b37projected'], 'GRCh37')
-    b38SPDI = normalize_variant(
-        projected_variant_dict['b38projected'], 'GRCh38')
+    b37SPDI = normalize_variant(projected_variant_dict['b37projected'])
+    b38SPDI = normalize_variant(projected_variant_dict['b38projected'])
     print(f"b37normalized: {b37SPDI}; b38normalized: {b38SPDI}")
 
     return {'GRCh37SPDI': b37SPDI, 'GRCh38SPDI': b38SPDI, 'GRCh37HGVS': str(projected_variant_dict['b37projected']), 'GRCh38HGVS': str(projected_variant_dict['b38projected'])}
@@ -94,37 +84,48 @@ def process_NM_HGVS(NM_HGVS):
 
 
 def process_NC_HGVS(NC_HGVS):
-    parsed_variant_dict = parse_variant(NC_HGVS)
-    parsed_variant = parsed_variant_dict['parsed']
-    print(f"parsed: {parsed_variant_dict['parsed']}")
+    parsed_variant = hgvsParser.parse_hgvs_variant(NC_HGVS)
+    print(f"parsed: {parsed_variant}")
 
-    transcripts = b38hgvsAssemblyMapper.relevant_transcripts(parsed_variant)
-    # Since we might not have access to all the transcripts that UTA contains, we select the "Longest Compatible
-    # Remaining" transcript as described here: https://github.com/GenomicMedLab/cool-seq-tool/blob/main/docs/TranscriptSelectionPriority.md
-    # - If there is a tie, choose the first-published transcript (lowest-numbered accession for RefSeq/Ensembl) among
-    #   those transcripts meeting this criterion.
-    #   Note: We want the most recent version of a transcript associated with an assembly.
-    # Eventually, hgvs should include pyliftover for this purpose: https://github.com/biocommons/hgvs/issues/711
-    nm_transcripts = [t for t in transcripts if 'NM_' in t]
-    # Since a transcript looks like 'NM_006015.6', we sort them based on the number following 'NM_'
-    ordered_transcripts = sorted(nm_transcripts, key=lambda t: int(t[3:t.find('.')]))
-    # Pick the first transcript accession
-    transcript_acc = ordered_transcripts[0].split('.')[0]
-    # Search for its most recent version among nm_transcripts
-    relevant_transcript = max((t for t in nm_transcripts if t.startswith(transcript_acc)), key=lambda t: int(t.split('.')[-1]))
+    try:
+        transcripts = b38hgvsAssemblyMapper.relevant_transcripts(parsed_variant)
+        # Since we might not have access to all the transcripts that UTA contains, we select the "Longest Compatible
+        # Remaining" transcript as described here: https://github.com/GenomicMedLab/cool-seq-tool/blob/main/docs/TranscriptSelectionPriority.md
+        # - If there is a tie, choose the first-published transcript (lowest-numbered accession for RefSeq/Ensembl) among
+        #   those transcripts meeting this criterion.
+        #   Note: We want the most recent version of a transcript associated with an assembly.
+        # Eventually, hgvs should include pyliftover for this purpose: https://github.com/biocommons/hgvs/issues/711
+        nm_transcripts = [t for t in transcripts if 'NM_' in t]
+        # Since a transcript looks like 'NM_006015.6', we sort them based on the number following 'NM_'
+        ordered_transcripts = sorted(nm_transcripts, key=lambda t: int(t[3:t.find('.')]))
+        # Pick the first transcript accession
+        transcript_acc = ordered_transcripts[0].split('.')[0]
+        # Search for its most recent version among nm_transcripts
+        relevant_transcript = max((t for t in nm_transcripts if t.startswith(transcript_acc)), key=lambda t: int(t.split('.')[-1]))
 
-    var_c = b38hgvsAssemblyMapper.g_to_c(
-        parsed_variant, relevant_transcript)
+        var_c = b38hgvsAssemblyMapper.g_to_c(
+            parsed_variant, relevant_transcript)
 
-    projected_variant_dict = project_variant(var_c)
-    print(
-        f"b37projected: {projected_variant_dict['b37projected']}; b38projected: {projected_variant_dict['b38projected']}")
+        projected_variant_dict = project_variant(var_c)
+        print(
+            f"b37projected: {projected_variant_dict['b37projected']}; b38projected: {projected_variant_dict['b38projected']}")
 
-    b37SPDI = normalize_variant(
-        projected_variant_dict['b37projected'], 'GRCh37')
-    b38SPDI = normalize_variant(
-        projected_variant_dict['b38projected'], 'GRCh38')
-    print(f"b37normalized: {b37SPDI}; b38normalized: {b38SPDI}")
+        b37SPDI = normalize_variant(projected_variant_dict['b37projected'])
+        b38SPDI = normalize_variant(projected_variant_dict['b38projected'])
+        print(f"b37normalized: {b37SPDI}; b38normalized: {b38SPDI}")
+
+    except Exception:
+        provided_genomic_build = common.get_build_and_chrom_by_ref_seq(parsed_variant.ac)
+        liftover = common.lift_over(parsed_variant.ac, str(parsed_variant.posedit.pos.start), str(parsed_variant.posedit.pos.end))
+        iv = hgvs.location.Interval(start=liftover['start'], end=liftover['end'])
+        posedit = hgvs.posedit.PosEdit(pos=iv, edit=parsed_variant.posedit.edit)
+        lifted_variant = hgvs.sequencevariant.SequenceVariant(ac=liftover['refSeq'], type="g", posedit=posedit)
+        if provided_genomic_build['build'] == 'GRCh37':
+            b37SPDI = normalize_variant(parsed_variant)
+            b38SPDI = normalize_variant(lifted_variant)
+        else:
+            b37SPDI = normalize_variant(lifted_variant)
+            b38SPDI = normalize_variant(parsed_variant)
 
     return {'GRCh37SPDI': b37SPDI, 'GRCh38SPDI': b38SPDI, 'GRCh37HGVS': str(projected_variant_dict['b37projected']), 'GRCh38HGVS': str(projected_variant_dict['b38projected'])}
 

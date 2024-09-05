@@ -106,7 +106,7 @@ def get_normalized_spdi(acc, pos, ref, alt):
     # Need to serialise this if we can't keep all the RefSeq data in memory
     with ref_seq_lock:
         ref_seq_fasta = get_ref_seq(acc)
-        new_ival, new_alleles = normalize(ref_seq_fasta,
+        new_ival, new_alleles = normalize(sequence=ref_seq_fasta,
                                           interval=(pos, pos + len(ref)),
                                           alleles=(None, alt),
                                           mode=NormalizationMode.EXPAND,
