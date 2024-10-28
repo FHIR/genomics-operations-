@@ -1,29 +1,28 @@
 {
-    "resourceType": "Parameters",
     "parameter": [
         {
             "name": "variants",
             "part": [
                 {
-                    "name": "variantItem",
-                    "valueString": "NC_000005.9:112154946:CC:C"
-                },
-                {
                     "name": "presence",
                     "valueBoolean": false
+                },
+                {
+                    "name": "variantItem",
+                    "valueString": "NC_000005.9:112154946:CC:C"
                 }
             ]
         },
         {
             "name": "variants",
             "part": [
+                {
+                    "name": "presence",
+                    "valueBoolean": false
+                },
                 {
                     "name": "variantItem",
                     "valueString": "NC_000005.9:112157612:C:T"
-                },
-                {
-                    "name": "presence",
-                    "valueBoolean": false
                 }
             ]
         },
@@ -31,38 +30,12 @@
             "name": "variants",
             "part": [
                 {
-                    "name": "variantItem",
-                    "valueString": "NC_000017.10:41246373:G:"
-                },
-                {
                     "name": "presence",
                     "valueBoolean": false
-                }
-            ]
-        },
-        {
-            "name": "variants",
-            "part": [
-                {
-                    "name": "variantItem",
-                    "valueString": "NC_000017.10:41243854:AAA:AAAA"
                 },
-                {
-                    "name": "presence",
-                    "valueBoolean": false
-                }
-            ]
-        },
-        {
-            "name": "variants",
-            "part": [
                 {
                     "name": "variantItem",
                     "valueString": "NC_000013.10:32900284:C:A"
-                },
-                {
-                    "name": "presence",
-                    "valueBoolean": false
                 }
             ]
         },
@@ -70,27 +43,54 @@
             "name": "variants",
             "part": [
                 {
-                    "name": "variantItem",
-                    "valueString": "NC_000019.9:11216262:C:A"
-                },
-                {
                     "name": "presence",
                     "valueBoolean": false
-                }
-            ]
-        },
-        {
-            "name": "variants",
-            "part": [
+                },
                 {
                     "name": "variantItem",
                     "valueString": "NC_000014.8:23894101:A:T"
-                },
+                }
+            ]
+        },
+        {
+            "name": "variants",
+            "part": [
                 {
                     "name": "presence",
                     "valueBoolean": false
+                },
+                {
+                    "name": "variantItem",
+                    "valueString": "NC_000017.10:41243854:AAA:AAAA"
+                }
+            ]
+        },
+        {
+            "name": "variants",
+            "part": [
+                {
+                    "name": "presence",
+                    "valueBoolean": false
+                },
+                {
+                    "name": "variantItem",
+                    "valueString": "NC_000017.10:41246373:G:"
+                }
+            ]
+        },
+        {
+            "name": "variants",
+            "part": [
+                {
+                    "name": "presence",
+                    "valueBoolean": false
+                },
+                {
+                    "name": "variantItem",
+                    "valueString": "NC_000019.9:11216262:C:A"
                 }
             ]
         }
-    ]
+    ],
+    "resourceType": "Parameters"
 }

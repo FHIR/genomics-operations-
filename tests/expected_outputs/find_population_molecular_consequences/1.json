@@ -1,26 +1,26 @@
 {
-  "resourceType": "Parameters",
-  "parameter": [
-    {
-      "name": "consequences",
-      "part": [
+    "parameter": [
         {
-          "name": "numerator",
-          "valueQuantity": {
-            "value": 1
-          }
-        },
-        {
-          "name": "denominator",
-          "valueQuantity": {
-            "value": 1116
-          }
-        },
-        {
-          "name": "subject",
-          "valueString": "TCGA-DD-A1EH"
+            "name": "consequences",
+            "part": [
+                {
+                    "name": "denominator",
+                    "valueQuantity": {
+                        "value": 1116
+                    }
+                },
+                {
+                    "name": "numerator",
+                    "valueQuantity": {
+                        "value": 1
+                    }
+                },
+                {
+                    "name": "subject",
+                    "valueString": "TCGA-DD-A1EH"
+                }
+            ]
         }
-      ]
-    }
-  ]
+    ],
+    "resourceType": "Parameters"
 }

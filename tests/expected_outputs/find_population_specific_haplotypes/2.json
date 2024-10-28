@@ -1,23 +1,18 @@
 {
-    "resourceType": "Parameters",
     "parameter": [
         {
             "name": "variants",
             "part": [
                 {
-                    "name": "variantItem",
-                    "valueString": "CYP2C19"
+                    "name": "denominator",
+                    "valueQuantity": {
+                        "value": 1116
+                    }
                 },
                 {
                     "name": "numerator",
                     "valueQuantity": {
                         "value": 1032
-                    }
-                },
-                {
-                    "name": "denominator",
-                    "valueQuantity": {
-                        "value": 1116
                     }
                 },
                 {
@@ -4147,8 +4142,13 @@
                 {
                     "name": "subject",
                     "valueString": "tacro9"
+                },
+                {
+                    "name": "variantItem",
+                    "valueString": "CYP2C19"
                 }
             ]
         }
-    ]
+    ],
+    "resourceType": "Parameters"
 }

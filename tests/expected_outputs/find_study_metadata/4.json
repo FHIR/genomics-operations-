@@ -1,120 +1,48 @@
 {
-    "resourceType": "Parameters",
     "parameter": [
         {
             "name": "tests",
             "part": [
                 {
-                    "name": "testID",
-                    "valueString": "HCC1143-T1"
-                },
-                {
-                    "name": "testDate",
-                    "valueString": "2020-02-03 00:00:00"
-                },
-                {
-                    "name": "specimenId",
-                    "valueString": "HCC1143-Sp1"
-                },
-                {
-                    "name": "genomicBuild",
-                    "valueCodeableConcept": {
-                        "coding": [
-                            {
-                                "system": "http://loinc.org",
-                                "code": " LA26806-2",
-                                "display": "GRCh38"
-                            }
-                        ]
-                    }
-                },
-                {
                     "name": "dnaChangeType",
                     "valueCodeableConcept": {
                         "coding": [
                             {
-                                "system": "http://sequenceontology.org",
-                                "code": "SO:0001483",
-                                "display": "SNV"
-                            },
-                            {
-                                "system": "http://sequenceontology.org",
-                                "code": "SO:0002007",
-                                "display": "MNV"
-                            },
-                            {
-                                "system": "http://sequenceontology.org",
-                                "code": "SO:1000032",
-                                "display": "delins"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "name": "regionStudied",
-                    "valueString": "['NC_000006.12:26091075-26091079']"
-                },
-                {
-                    "name": "uncallableRegions",
-                    "valueString": "unknown"
-                }
-            ]
-        },
-        {
-            "name": "tests",
-            "part": [
-                {
-                    "name": "testID",
-                    "valueString": "HCC1143-T2"
-                },
-                {
-                    "name": "testDate",
-                    "valueString": "2020-02-17 00:00:00"
-                },
-                {
-                    "name": "specimenId",
-                    "valueString": "HCC1143-Sp1"
-                },
-                {
-                    "name": "genomicBuild",
-                    "valueCodeableConcept": {
-                        "coding": [
-                            {
-                                "system": "http://loinc.org",
-                                "code": "LA14029-5",
-                                "display": "GRCh37"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "name": "dnaChangeType",
-                    "valueCodeableConcept": {
-                        "coding": [
-                            {
-                                "system": "http://sequenceontology.org",
-                                "code": "SO:0000667",
-                                "display": "INS"
-                            },
-                            {
-                                "system": "http://sequenceontology.org",
-                                "code": "SO:1000036",
-                                "display": "INV"
-                            },
-                            {
-                                "system": "http://sequenceontology.org",
-                                "code": "SO:0001019",
-                                "display": "CNV"
-                            },
-                            {
-                                "system": "http://sequenceontology.org",
                                 "code": "SO:0000159",
-                                "display": "DEL"
+                                "display": "DEL",
+                                "system": "http://sequenceontology.org"
                             },
                             {
-                                "system": "http://sequenceontology.org",
+                                "code": "SO:0000667",
+                                "display": "INS",
+                                "system": "http://sequenceontology.org"
+                            },
+                            {
                                 "code": "SO:0001019",
-                                "display": "DUP"
+                                "display": "CNV",
+                                "system": "http://sequenceontology.org"
+                            },
+                            {
+                                "code": "SO:0001019",
+                                "display": "DUP",
+                                "system": "http://sequenceontology.org"
+                            },
+                            {
+                                "code": "SO:1000036",
+                                "display": "INV",
+                                "system": "http://sequenceontology.org"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "genomicBuild",
+                    "valueCodeableConcept": {
+                        "coding": [
+                            {
+                                "code": "LA14029-5",
+                                "display": "GRCh37",
+                                "system": "http://loinc.org"
                             }
                         ]
                     }
@@ -124,10 +52,82 @@
                     "valueString": "['NC_000006.11:26091303-26091307']"
                 },
                 {
+                    "name": "specimenId",
+                    "valueString": "HCC1143-Sp1"
+                },
+                {
+                    "name": "testDate",
+                    "valueString": "2020-02-17 00:00:00"
+                },
+                {
+                    "name": "testID",
+                    "valueString": "HCC1143-T2"
+                },
+                {
                     "name": "uncallableRegions",
                     "valueString": "[]"
                 }
             ]
+        },
+        {
+            "name": "tests",
+            "part": [
+                {
+                    "name": "dnaChangeType",
+                    "valueCodeableConcept": {
+                        "coding": [
+                            {
+                                "code": "SO:0001483",
+                                "display": "SNV",
+                                "system": "http://sequenceontology.org"
+                            },
+                            {
+                                "code": "SO:0002007",
+                                "display": "MNV",
+                                "system": "http://sequenceontology.org"
+                            },
+                            {
+                                "code": "SO:1000032",
+                                "display": "delins",
+                                "system": "http://sequenceontology.org"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "genomicBuild",
+                    "valueCodeableConcept": {
+                        "coding": [
+                            {
+                                "code": " LA26806-2",
+                                "display": "GRCh38",
+                                "system": "http://loinc.org"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "regionStudied",
+                    "valueString": "['NC_000006.12:26091075-26091079']"
+                },
+                {
+                    "name": "specimenId",
+                    "valueString": "HCC1143-Sp1"
+                },
+                {
+                    "name": "testDate",
+                    "valueString": "2020-02-03 00:00:00"
+                },
+                {
+                    "name": "testID",
+                    "valueString": "HCC1143-T1"
+                },
+                {
+                    "name": "uncallableRegions",
+                    "valueString": "unknown"
+                }
+            ]
         }
-    ]
+    ],
+    "resourceType": "Parameters"
 }

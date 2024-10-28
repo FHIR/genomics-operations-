@@ -1,12 +1,13 @@
 {
-    "resourceType": "Parameters",
     "parameter": [
         {
             "name": "variants",
             "part": [
                 {
-                    "name": "rangeItem",
-                    "valueString": "NC_000022.10:42522500-42526812"
+                    "name": "denominator",
+                    "valueQuantity": {
+                        "value": 1116
+                    }
                 },
                 {
                     "name": "numerator",
@@ -15,10 +16,8 @@
                     }
                 },
                 {
-                    "name": "denominator",
-                    "valueQuantity": {
-                        "value": 1116
-                    }
+                    "name": "rangeItem",
+                    "valueString": "NC_000022.10:42522500-42526812"
                 },
                 {
                     "name": "subject",
@@ -34,5 +33,6 @@
                 }
             ]
         }
-    ]
+    ],
+    "resourceType": "Parameters"
 }

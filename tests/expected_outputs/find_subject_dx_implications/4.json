@@ -1,23 +1,14 @@
 {
-    "resourceType": "Parameters",
     "parameter": [
         {
             "name": "implication",
             "resource": {
-                "resourceType": "Observation",
-                "id": "dv-62fab6305932091e78bf2329",
-                "meta": {
-                    "profile": [
-                        "http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/diagnostic-implication"
-                    ]
-                },
-                "status": "final",
                 "category": [
                     {
                         "coding": [
                             {
-                                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
-                                "code": "laboratory"
+                                "code": "laboratory",
+                                "system": "http://terminology.hl7.org/CodeSystem/observation-category"
                             }
                         ]
                     }
@@ -25,36 +16,28 @@
                 "code": {
                     "coding": [
                         {
-                            "system": "http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs",
-                            "code": "diagnostic-implication"
+                            "code": "diagnostic-implication",
+                            "system": "http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs"
                         }
                     ]
                 },
-                "subject": {
-                    "reference": "Patient/HG02657"
-                },
-                "derivedFrom": [
-                    {
-                        "reference": "Observation/dv-e6b9e50014b24ebe81a0504cbba79282"
-                    }
-                ],
                 "component": [
                     {
                         "code": {
                             "coding": [
                                 {
-                                    "system": "http://loinc.org",
                                     "code": "53037-8",
-                                    "display": "Genetic variation clinical significance"
+                                    "display": "Genetic variation clinical significance",
+                                    "system": "http://loinc.org"
                                 }
                             ]
                         },
                         "valueCodeableConcept": {
                             "coding": [
                                 {
-                                    "system": "http://loinc.org",
                                     "code": "LA6668-3",
-                                    "display": "Pathogenic"
+                                    "display": "Pathogenic",
+                                    "system": "http://loinc.org"
                                 }
                             ]
                         }
@@ -63,18 +46,18 @@
                         "code": {
                             "coding": [
                                 {
-                                    "system": "http://loinc.org",
                                     "code": "81259-4",
-                                    "display": "predicted phenotype"
+                                    "display": "predicted phenotype",
+                                    "system": "http://loinc.org"
                                 }
                             ]
                         },
                         "valueCodeableConcept": {
                             "coding": [
                                 {
-                                    "system": "https://www.ncbi.nlm.nih.gov/medgen",
                                     "code": "C3469186",
-                                    "display": "Hemochromatosis type 1"
+                                    "display": "Hemochromatosis t",
+                                    "system": "https://www.ncbi.nlm.nih.gov/medgen"
                                 }
                             ]
                         }
@@ -83,9 +66,9 @@
                         "code": {
                             "coding": [
                                 {
-                                    "system": "http://loinc.org",
                                     "code": "93044-6",
-                                    "display": "Level of evidence"
+                                    "display": "Level of evidence",
+                                    "system": "http://loinc.org"
                                 }
                             ]
                         },
@@ -94,6 +77,957 @@
                         }
                     }
                 ],
+                "derivedFrom": [
+                    {
+                        "reference": "Observation/dv-e6b9e50014b24ebe81a0504cbba79282"
+                    }
+                ],
+                "id": "dv-62fab6305932091e78bf231e",
+                "identifier": [
+                    {
+                        "system": "http://www.ncbi.nlm.nih.gov/clinvar",
+                        "value": "10"
+                    },
+                    {
+                        "system": "http://www.ncbi.nlm.nih.gov/clinvar/scv",
+                        "value": "SCV000893709.1"
+                    }
+                ],
+                "meta": {
+                    "profile": [
+                        "http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/diagnostic-implication"
+                    ]
+                },
+                "resourceType": "Observation",
+                "status": "final",
+                "subject": {
+                    "reference": "Patient/HG02657"
+                }
+            }
+        },
+        {
+            "name": "implication",
+            "resource": {
+                "category": [
+                    {
+                        "coding": [
+                            {
+                                "code": "laboratory",
+                                "system": "http://terminology.hl7.org/CodeSystem/observation-category"
+                            }
+                        ]
+                    }
+                ],
+                "code": {
+                    "coding": [
+                        {
+                            "code": "diagnostic-implication",
+                            "system": "http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs"
+                        }
+                    ]
+                },
+                "component": [
+                    {
+                        "code": {
+                            "coding": [
+                                {
+                                    "code": "53037-8",
+                                    "display": "Genetic variation clinical significance",
+                                    "system": "http://loinc.org"
+                                }
+                            ]
+                        },
+                        "valueCodeableConcept": {
+                            "coding": [
+                                {
+                                    "code": "LA6668-3",
+                                    "display": "Pathogenic",
+                                    "system": "http://loinc.org"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "code": {
+                            "coding": [
+                                {
+                                    "code": "81259-4",
+                                    "display": "predicted phenotype",
+                                    "system": "http://loinc.org"
+                                }
+                            ]
+                        },
+                        "valueCodeableConcept": {
+                            "coding": [
+                                {
+                                    "code": "C3469186",
+                                    "display": "Hemochromatosis type 1",
+                                    "system": "https://www.ncbi.nlm.nih.gov/medgen"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "code": {
+                            "coding": [
+                                {
+                                    "code": "93044-6",
+                                    "display": "Level of evidence",
+                                    "system": "http://loinc.org"
+                                }
+                            ]
+                        },
+                        "valueCodeableConcept": {
+                            "text": "criteria provided, single submitter"
+                        }
+                    }
+                ],
+                "derivedFrom": [
+                    {
+                        "reference": "Observation/dv-e6b9e50014b24ebe81a0504cbba79282"
+                    }
+                ],
+                "id": "dv-62fab6305932091e78bf230d",
+                "identifier": [
+                    {
+                        "system": "http://www.ncbi.nlm.nih.gov/clinvar",
+                        "value": "10"
+                    },
+                    {
+                        "system": "http://www.ncbi.nlm.nih.gov/clinvar/scv",
+                        "value": "SCV002038504.1"
+                    }
+                ],
+                "meta": {
+                    "profile": [
+                        "http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/diagnostic-implication"
+                    ]
+                },
+                "resourceType": "Observation",
+                "status": "final",
+                "subject": {
+                    "reference": "Patient/HG02657"
+                }
+            }
+        },
+        {
+            "name": "implication",
+            "resource": {
+                "category": [
+                    {
+                        "coding": [
+                            {
+                                "code": "laboratory",
+                                "system": "http://terminology.hl7.org/CodeSystem/observation-category"
+                            }
+                        ]
+                    }
+                ],
+                "code": {
+                    "coding": [
+                        {
+                            "code": "diagnostic-implication",
+                            "system": "http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs"
+                        }
+                    ]
+                },
+                "component": [
+                    {
+                        "code": {
+                            "coding": [
+                                {
+                                    "code": "53037-8",
+                                    "display": "Genetic variation clinical significance",
+                                    "system": "http://loinc.org"
+                                }
+                            ]
+                        },
+                        "valueCodeableConcept": {
+                            "coding": [
+                                {
+                                    "code": "LA6668-3",
+                                    "display": "Pathogenic",
+                                    "system": "http://loinc.org"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "code": {
+                            "coding": [
+                                {
+                                    "code": "81259-4",
+                                    "display": "predicted phenotype",
+                                    "system": "http://loinc.org"
+                                }
+                            ]
+                        },
+                        "valueCodeableConcept": {
+                            "coding": [
+                                {
+                                    "code": "C3469186",
+                                    "display": "Hemochromatosis type 1",
+                                    "system": "https://www.ncbi.nlm.nih.gov/medgen"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "code": {
+                            "coding": [
+                                {
+                                    "code": "93044-6",
+                                    "display": "Level of evidence",
+                                    "system": "http://loinc.org"
+                                }
+                            ]
+                        },
+                        "valueCodeableConcept": {
+                            "text": "criteria provided, single submitter"
+                        }
+                    }
+                ],
+                "derivedFrom": [
+                    {
+                        "reference": "Observation/dv-e6b9e50014b24ebe81a0504cbba79282"
+                    }
+                ],
+                "id": "dv-62fab6305932091e78bf230e",
+                "identifier": [
+                    {
+                        "system": "http://www.ncbi.nlm.nih.gov/clinvar",
+                        "value": "10"
+                    },
+                    {
+                        "system": "http://www.ncbi.nlm.nih.gov/clinvar/scv",
+                        "value": "SCV001137061.1"
+                    }
+                ],
+                "meta": {
+                    "profile": [
+                        "http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/diagnostic-implication"
+                    ]
+                },
+                "resourceType": "Observation",
+                "status": "final",
+                "subject": {
+                    "reference": "Patient/HG02657"
+                }
+            }
+        },
+        {
+            "name": "implication",
+            "resource": {
+                "category": [
+                    {
+                        "coding": [
+                            {
+                                "code": "laboratory",
+                                "system": "http://terminology.hl7.org/CodeSystem/observation-category"
+                            }
+                        ]
+                    }
+                ],
+                "code": {
+                    "coding": [
+                        {
+                            "code": "diagnostic-implication",
+                            "system": "http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs"
+                        }
+                    ]
+                },
+                "component": [
+                    {
+                        "code": {
+                            "coding": [
+                                {
+                                    "code": "53037-8",
+                                    "display": "Genetic variation clinical significance",
+                                    "system": "http://loinc.org"
+                                }
+                            ]
+                        },
+                        "valueCodeableConcept": {
+                            "coding": [
+                                {
+                                    "code": "LA6668-3",
+                                    "display": "Pathogenic",
+                                    "system": "http://loinc.org"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "code": {
+                            "coding": [
+                                {
+                                    "code": "81259-4",
+                                    "display": "predicted phenotype",
+                                    "system": "http://loinc.org"
+                                }
+                            ]
+                        },
+                        "valueCodeableConcept": {
+                            "coding": [
+                                {
+                                    "code": "C3469186",
+                                    "display": "Hemochromatosis type 1",
+                                    "system": "https://www.ncbi.nlm.nih.gov/medgen"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "code": {
+                            "coding": [
+                                {
+                                    "code": "93044-6",
+                                    "display": "Level of evidence",
+                                    "system": "http://loinc.org"
+                                }
+                            ]
+                        },
+                        "valueCodeableConcept": {
+                            "text": "criteria provided, single submitter"
+                        }
+                    }
+                ],
+                "derivedFrom": [
+                    {
+                        "reference": "Observation/dv-e6b9e50014b24ebe81a0504cbba79282"
+                    }
+                ],
+                "id": "dv-62fab6305932091e78bf2312",
+                "identifier": [
+                    {
+                        "system": "http://www.ncbi.nlm.nih.gov/clinvar",
+                        "value": "10"
+                    },
+                    {
+                        "system": "http://www.ncbi.nlm.nih.gov/clinvar/scv",
+                        "value": "SCV002499222.1"
+                    }
+                ],
+                "meta": {
+                    "profile": [
+                        "http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/diagnostic-implication"
+                    ]
+                },
+                "resourceType": "Observation",
+                "status": "final",
+                "subject": {
+                    "reference": "Patient/HG02657"
+                }
+            }
+        },
+        {
+            "name": "implication",
+            "resource": {
+                "category": [
+                    {
+                        "coding": [
+                            {
+                                "code": "laboratory",
+                                "system": "http://terminology.hl7.org/CodeSystem/observation-category"
+                            }
+                        ]
+                    }
+                ],
+                "code": {
+                    "coding": [
+                        {
+                            "code": "diagnostic-implication",
+                            "system": "http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs"
+                        }
+                    ]
+                },
+                "component": [
+                    {
+                        "code": {
+                            "coding": [
+                                {
+                                    "code": "53037-8",
+                                    "display": "Genetic variation clinical significance",
+                                    "system": "http://loinc.org"
+                                }
+                            ]
+                        },
+                        "valueCodeableConcept": {
+                            "coding": [
+                                {
+                                    "code": "LA6668-3",
+                                    "display": "Pathogenic",
+                                    "system": "http://loinc.org"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "code": {
+                            "coding": [
+                                {
+                                    "code": "81259-4",
+                                    "display": "predicted phenotype",
+                                    "system": "http://loinc.org"
+                                }
+                            ]
+                        },
+                        "valueCodeableConcept": {
+                            "coding": [
+                                {
+                                    "code": "C3469186",
+                                    "display": "Hemochromatosis type 1",
+                                    "system": "https://www.ncbi.nlm.nih.gov/medgen"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "code": {
+                            "coding": [
+                                {
+                                    "code": "93044-6",
+                                    "display": "Level of evidence",
+                                    "system": "http://loinc.org"
+                                }
+                            ]
+                        },
+                        "valueCodeableConcept": {
+                            "text": "criteria provided, single submitter"
+                        }
+                    }
+                ],
+                "derivedFrom": [
+                    {
+                        "reference": "Observation/dv-e6b9e50014b24ebe81a0504cbba79282"
+                    }
+                ],
+                "id": "dv-62fab6305932091e78bf2317",
+                "identifier": [
+                    {
+                        "system": "http://www.ncbi.nlm.nih.gov/clinvar",
+                        "value": "10"
+                    },
+                    {
+                        "system": "http://www.ncbi.nlm.nih.gov/clinvar/scv",
+                        "value": "SCV001368348.2"
+                    }
+                ],
+                "meta": {
+                    "profile": [
+                        "http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/diagnostic-implication"
+                    ]
+                },
+                "resourceType": "Observation",
+                "status": "final",
+                "subject": {
+                    "reference": "Patient/HG02657"
+                }
+            }
+        },
+        {
+            "name": "implication",
+            "resource": {
+                "category": [
+                    {
+                        "coding": [
+                            {
+                                "code": "laboratory",
+                                "system": "http://terminology.hl7.org/CodeSystem/observation-category"
+                            }
+                        ]
+                    }
+                ],
+                "code": {
+                    "coding": [
+                        {
+                            "code": "diagnostic-implication",
+                            "system": "http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs"
+                        }
+                    ]
+                },
+                "component": [
+                    {
+                        "code": {
+                            "coding": [
+                                {
+                                    "code": "53037-8",
+                                    "display": "Genetic variation clinical significance",
+                                    "system": "http://loinc.org"
+                                }
+                            ]
+                        },
+                        "valueCodeableConcept": {
+                            "coding": [
+                                {
+                                    "code": "LA6668-3",
+                                    "display": "Pathogenic",
+                                    "system": "http://loinc.org"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "code": {
+                            "coding": [
+                                {
+                                    "code": "81259-4",
+                                    "display": "predicted phenotype",
+                                    "system": "http://loinc.org"
+                                }
+                            ]
+                        },
+                        "valueCodeableConcept": {
+                            "coding": [
+                                {
+                                    "code": "C3469186",
+                                    "display": "Hemochromatosis type 1",
+                                    "system": "https://www.ncbi.nlm.nih.gov/medgen"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "code": {
+                            "coding": [
+                                {
+                                    "code": "93044-6",
+                                    "display": "Level of evidence",
+                                    "system": "http://loinc.org"
+                                }
+                            ]
+                        },
+                        "valueCodeableConcept": {
+                            "text": "criteria provided, single submitter"
+                        }
+                    }
+                ],
+                "derivedFrom": [
+                    {
+                        "reference": "Observation/dv-e6b9e50014b24ebe81a0504cbba79282"
+                    }
+                ],
+                "id": "dv-62fab6305932091e78bf231b",
+                "identifier": [
+                    {
+                        "system": "http://www.ncbi.nlm.nih.gov/clinvar",
+                        "value": "10"
+                    },
+                    {
+                        "system": "http://www.ncbi.nlm.nih.gov/clinvar/scv",
+                        "value": "SCV000693430.2"
+                    }
+                ],
+                "meta": {
+                    "profile": [
+                        "http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/diagnostic-implication"
+                    ]
+                },
+                "resourceType": "Observation",
+                "status": "final",
+                "subject": {
+                    "reference": "Patient/HG02657"
+                }
+            }
+        },
+        {
+            "name": "implication",
+            "resource": {
+                "category": [
+                    {
+                        "coding": [
+                            {
+                                "code": "laboratory",
+                                "system": "http://terminology.hl7.org/CodeSystem/observation-category"
+                            }
+                        ]
+                    }
+                ],
+                "code": {
+                    "coding": [
+                        {
+                            "code": "diagnostic-implication",
+                            "system": "http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs"
+                        }
+                    ]
+                },
+                "component": [
+                    {
+                        "code": {
+                            "coding": [
+                                {
+                                    "code": "53037-8",
+                                    "display": "Genetic variation clinical significance",
+                                    "system": "http://loinc.org"
+                                }
+                            ]
+                        },
+                        "valueCodeableConcept": {
+                            "coding": [
+                                {
+                                    "code": "LA6668-3",
+                                    "display": "Pathogenic",
+                                    "system": "http://loinc.org"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "code": {
+                            "coding": [
+                                {
+                                    "code": "81259-4",
+                                    "display": "predicted phenotype",
+                                    "system": "http://loinc.org"
+                                }
+                            ]
+                        },
+                        "valueCodeableConcept": {
+                            "coding": [
+                                {
+                                    "code": "C3469186",
+                                    "display": "Hemochromatosis type 1",
+                                    "system": "https://www.ncbi.nlm.nih.gov/medgen"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "code": {
+                            "coding": [
+                                {
+                                    "code": "93044-6",
+                                    "display": "Level of evidence",
+                                    "system": "http://loinc.org"
+                                }
+                            ]
+                        },
+                        "valueCodeableConcept": {
+                            "text": "criteria provided, single submitter"
+                        }
+                    }
+                ],
+                "derivedFrom": [
+                    {
+                        "reference": "Observation/dv-e6b9e50014b24ebe81a0504cbba79282"
+                    }
+                ],
+                "id": "dv-62fab6305932091e78bf231f",
+                "identifier": [
+                    {
+                        "system": "http://www.ncbi.nlm.nih.gov/clinvar",
+                        "value": "10"
+                    },
+                    {
+                        "system": "http://www.ncbi.nlm.nih.gov/clinvar/scv",
+                        "value": "SCV002028310.1"
+                    }
+                ],
+                "meta": {
+                    "profile": [
+                        "http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/diagnostic-implication"
+                    ]
+                },
+                "resourceType": "Observation",
+                "status": "final",
+                "subject": {
+                    "reference": "Patient/HG02657"
+                }
+            }
+        },
+        {
+            "name": "implication",
+            "resource": {
+                "category": [
+                    {
+                        "coding": [
+                            {
+                                "code": "laboratory",
+                                "system": "http://terminology.hl7.org/CodeSystem/observation-category"
+                            }
+                        ]
+                    }
+                ],
+                "code": {
+                    "coding": [
+                        {
+                            "code": "diagnostic-implication",
+                            "system": "http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs"
+                        }
+                    ]
+                },
+                "component": [
+                    {
+                        "code": {
+                            "coding": [
+                                {
+                                    "code": "53037-8",
+                                    "display": "Genetic variation clinical significance",
+                                    "system": "http://loinc.org"
+                                }
+                            ]
+                        },
+                        "valueCodeableConcept": {
+                            "coding": [
+                                {
+                                    "code": "LA6668-3",
+                                    "display": "Pathogenic",
+                                    "system": "http://loinc.org"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "code": {
+                            "coding": [
+                                {
+                                    "code": "81259-4",
+                                    "display": "predicted phenotype",
+                                    "system": "http://loinc.org"
+                                }
+                            ]
+                        },
+                        "valueCodeableConcept": {
+                            "coding": [
+                                {
+                                    "code": "C3469186",
+                                    "display": "Hemochromatosis type 1",
+                                    "system": "https://www.ncbi.nlm.nih.gov/medgen"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "code": {
+                            "coding": [
+                                {
+                                    "code": "93044-6",
+                                    "display": "Level of evidence",
+                                    "system": "http://loinc.org"
+                                }
+                            ]
+                        },
+                        "valueCodeableConcept": {
+                            "text": "criteria provided, single submitter"
+                        }
+                    }
+                ],
+                "derivedFrom": [
+                    {
+                        "reference": "Observation/dv-e6b9e50014b24ebe81a0504cbba79282"
+                    }
+                ],
+                "id": "dv-62fab6305932091e78bf2322",
+                "identifier": [
+                    {
+                        "system": "http://www.ncbi.nlm.nih.gov/clinvar",
+                        "value": "10"
+                    },
+                    {
+                        "system": "http://www.ncbi.nlm.nih.gov/clinvar/scv",
+                        "value": "SCV001194094.2"
+                    }
+                ],
+                "meta": {
+                    "profile": [
+                        "http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/diagnostic-implication"
+                    ]
+                },
+                "resourceType": "Observation",
+                "status": "final",
+                "subject": {
+                    "reference": "Patient/HG02657"
+                }
+            }
+        },
+        {
+            "name": "implication",
+            "resource": {
+                "category": [
+                    {
+                        "coding": [
+                            {
+                                "code": "laboratory",
+                                "system": "http://terminology.hl7.org/CodeSystem/observation-category"
+                            }
+                        ]
+                    }
+                ],
+                "code": {
+                    "coding": [
+                        {
+                            "code": "diagnostic-implication",
+                            "system": "http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs"
+                        }
+                    ]
+                },
+                "component": [
+                    {
+                        "code": {
+                            "coding": [
+                                {
+                                    "code": "53037-8",
+                                    "display": "Genetic variation clinical significance",
+                                    "system": "http://loinc.org"
+                                }
+                            ]
+                        },
+                        "valueCodeableConcept": {
+                            "coding": [
+                                {
+                                    "code": "LA6668-3",
+                                    "display": "Pathogenic",
+                                    "system": "http://loinc.org"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "code": {
+                            "coding": [
+                                {
+                                    "code": "81259-4",
+                                    "display": "predicted phenotype",
+                                    "system": "http://loinc.org"
+                                }
+                            ]
+                        },
+                        "valueCodeableConcept": {
+                            "coding": [
+                                {
+                                    "code": "C3469186",
+                                    "display": "Hemochromatosis type 1",
+                                    "system": "https://www.ncbi.nlm.nih.gov/medgen"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "code": {
+                            "coding": [
+                                {
+                                    "code": "93044-6",
+                                    "display": "Level of evidence",
+                                    "system": "http://loinc.org"
+                                }
+                            ]
+                        },
+                        "valueCodeableConcept": {
+                            "text": "criteria provided, single submitter"
+                        }
+                    }
+                ],
+                "derivedFrom": [
+                    {
+                        "reference": "Observation/dv-e6b9e50014b24ebe81a0504cbba79282"
+                    }
+                ],
+                "id": "dv-62fab6305932091e78bf2326",
+                "identifier": [
+                    {
+                        "system": "http://www.ncbi.nlm.nih.gov/clinvar",
+                        "value": "10"
+                    },
+                    {
+                        "system": "http://www.ncbi.nlm.nih.gov/clinvar/scv",
+                        "value": "SCV001519563.1"
+                    }
+                ],
+                "meta": {
+                    "profile": [
+                        "http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/diagnostic-implication"
+                    ]
+                },
+                "resourceType": "Observation",
+                "status": "final",
+                "subject": {
+                    "reference": "Patient/HG02657"
+                }
+            }
+        },
+        {
+            "name": "implication",
+            "resource": {
+                "category": [
+                    {
+                        "coding": [
+                            {
+                                "code": "laboratory",
+                                "system": "http://terminology.hl7.org/CodeSystem/observation-category"
+                            }
+                        ]
+                    }
+                ],
+                "code": {
+                    "coding": [
+                        {
+                            "code": "diagnostic-implication",
+                            "system": "http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs"
+                        }
+                    ]
+                },
+                "component": [
+                    {
+                        "code": {
+                            "coding": [
+                                {
+                                    "code": "53037-8",
+                                    "display": "Genetic variation clinical significance",
+                                    "system": "http://loinc.org"
+                                }
+                            ]
+                        },
+                        "valueCodeableConcept": {
+                            "coding": [
+                                {
+                                    "code": "LA6668-3",
+                                    "display": "Pathogenic",
+                                    "system": "http://loinc.org"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "code": {
+                            "coding": [
+                                {
+                                    "code": "81259-4",
+                                    "display": "predicted phenotype",
+                                    "system": "http://loinc.org"
+                                }
+                            ]
+                        },
+                        "valueCodeableConcept": {
+                            "coding": [
+                                {
+                                    "code": "C3469186",
+                                    "display": "Hemochromatosis type 1",
+                                    "system": "https://www.ncbi.nlm.nih.gov/medgen"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "code": {
+                            "coding": [
+                                {
+                                    "code": "93044-6",
+                                    "display": "Level of evidence",
+                                    "system": "http://loinc.org"
+                                }
+                            ]
+                        },
+                        "valueCodeableConcept": {
+                            "text": "criteria provided, single submitter"
+                        }
+                    }
+                ],
+                "derivedFrom": [
+                    {
+                        "reference": "Observation/dv-e6b9e50014b24ebe81a0504cbba79282"
+                    }
+                ],
+                "id": "dv-62fab6305932091e78bf2329",
                 "identifier": [
                     {
                         "system": "http://www.ncbi.nlm.nih.gov/clinvar",
@@ -103,26 +1037,28 @@
                         "system": "http://www.ncbi.nlm.nih.gov/clinvar/scv",
                         "value": "SCV001251532.1"
                     }
-                ]
+                ],
+                "meta": {
+                    "profile": [
+                        "http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/diagnostic-implication"
+                    ]
+                },
+                "resourceType": "Observation",
+                "status": "final",
+                "subject": {
+                    "reference": "Patient/HG02657"
+                }
             }
         },
         {
-            "name": "variant",
+            "name": "implication",
             "resource": {
-                "resourceType": "Observation",
-                "id": "dv-e6b9e50014b24ebe81a0504cbba79282",
-                "meta": {
-                    "profile": [
-                        "http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/variant"
-                    ]
-                },
-                "status": "final",
                 "category": [
                     {
                         "coding": [
                             {
-                                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
-                                "code": "laboratory"
+                                "code": "laboratory",
+                                "system": "http://terminology.hl7.org/CodeSystem/observation-category"
                             }
                         ]
                     }
@@ -130,21 +1066,8 @@
                 "code": {
                     "coding": [
                         {
-                            "system": "http://loinc.org",
-                            "code": "69548-6",
-                            "display": "Genetic variant assessment"
-                        }
-                    ]
-                },
-                "subject": {
-                    "reference": "Patient/HG02657"
-                },
-                "valueCodeableConcept": {
-                    "coding": [
-                        {
-                            "system": "http://loinc.org",
-                            "code": "LA9633-4",
-                            "display": "present"
+                            "code": "diagnostic-implication",
+                            "system": "http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs"
                         }
                     ]
                 },
@@ -153,18 +1076,544 @@
                         "code": {
                             "coding": [
                                 {
-                                    "system": "http://loinc.org",
+                                    "code": "53037-8",
+                                    "display": "Genetic variation clinical significance",
+                                    "system": "http://loinc.org"
+                                }
+                            ]
+                        },
+                        "valueCodeableConcept": {
+                            "coding": [
+                                {
+                                    "code": "LA6668-3",
+                                    "display": "Pathogenic",
+                                    "system": "http://loinc.org"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "code": {
+                            "coding": [
+                                {
+                                    "code": "81259-4",
+                                    "display": "predicted phenotype",
+                                    "system": "http://loinc.org"
+                                }
+                            ]
+                        },
+                        "valueCodeableConcept": {
+                            "coding": [
+                                {
+                                    "code": "C3469186",
+                                    "display": "Hemochromatosis type 1",
+                                    "system": "https://www.ncbi.nlm.nih.gov/medgen"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "code": {
+                            "coding": [
+                                {
+                                    "code": "93044-6",
+                                    "display": "Level of evidence",
+                                    "system": "http://loinc.org"
+                                }
+                            ]
+                        },
+                        "valueCodeableConcept": {
+                            "text": "criteria provided, single submitter"
+                        }
+                    }
+                ],
+                "derivedFrom": [
+                    {
+                        "reference": "Observation/dv-e6b9e50014b24ebe81a0504cbba79282"
+                    }
+                ],
+                "id": "dv-62fab6305932091e78bf232b",
+                "identifier": [
+                    {
+                        "system": "http://www.ncbi.nlm.nih.gov/clinvar",
+                        "value": "10"
+                    },
+                    {
+                        "system": "http://www.ncbi.nlm.nih.gov/clinvar/scv",
+                        "value": "SCV001523197.1"
+                    }
+                ],
+                "meta": {
+                    "profile": [
+                        "http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/diagnostic-implication"
+                    ]
+                },
+                "resourceType": "Observation",
+                "status": "final",
+                "subject": {
+                    "reference": "Patient/HG02657"
+                }
+            }
+        },
+        {
+            "name": "implication",
+            "resource": {
+                "category": [
+                    {
+                        "coding": [
+                            {
+                                "code": "laboratory",
+                                "system": "http://terminology.hl7.org/CodeSystem/observation-category"
+                            }
+                        ]
+                    }
+                ],
+                "code": {
+                    "coding": [
+                        {
+                            "code": "diagnostic-implication",
+                            "system": "http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs"
+                        }
+                    ]
+                },
+                "component": [
+                    {
+                        "code": {
+                            "coding": [
+                                {
+                                    "code": "53037-8",
+                                    "display": "Genetic variation clinical significance",
+                                    "system": "http://loinc.org"
+                                }
+                            ]
+                        },
+                        "valueCodeableConcept": {
+                            "coding": [
+                                {
+                                    "code": "LA6668-3",
+                                    "display": "Pathogenic",
+                                    "system": "http://loinc.org"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "code": {
+                            "coding": [
+                                {
+                                    "code": "81259-4",
+                                    "display": "predicted phenotype",
+                                    "system": "http://loinc.org"
+                                }
+                            ]
+                        },
+                        "valueCodeableConcept": {
+                            "coding": [
+                                {
+                                    "code": "C3469186",
+                                    "display": "Hemochromatosis type 1",
+                                    "system": "https://www.ncbi.nlm.nih.gov/medgen"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "code": {
+                            "coding": [
+                                {
+                                    "code": "93044-6",
+                                    "display": "Level of evidence",
+                                    "system": "http://loinc.org"
+                                }
+                            ]
+                        },
+                        "valueCodeableConcept": {
+                            "text": "criteria provided, single submitter"
+                        }
+                    }
+                ],
+                "derivedFrom": [
+                    {
+                        "reference": "Observation/dv-e6b9e50014b24ebe81a0504cbba79282"
+                    }
+                ],
+                "id": "dv-62fab6305932091e78bf232c",
+                "identifier": [
+                    {
+                        "system": "http://www.ncbi.nlm.nih.gov/clinvar",
+                        "value": "10"
+                    },
+                    {
+                        "system": "http://www.ncbi.nlm.nih.gov/clinvar/scv",
+                        "value": "SCV000223933.2"
+                    }
+                ],
+                "meta": {
+                    "profile": [
+                        "http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/diagnostic-implication"
+                    ]
+                },
+                "resourceType": "Observation",
+                "status": "final",
+                "subject": {
+                    "reference": "Patient/HG02657"
+                }
+            }
+        },
+        {
+            "name": "implication",
+            "resource": {
+                "category": [
+                    {
+                        "coding": [
+                            {
+                                "code": "laboratory",
+                                "system": "http://terminology.hl7.org/CodeSystem/observation-category"
+                            }
+                        ]
+                    }
+                ],
+                "code": {
+                    "coding": [
+                        {
+                            "code": "diagnostic-implication",
+                            "system": "http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs"
+                        }
+                    ]
+                },
+                "component": [
+                    {
+                        "code": {
+                            "coding": [
+                                {
+                                    "code": "53037-8",
+                                    "display": "Genetic variation clinical significance",
+                                    "system": "http://loinc.org"
+                                }
+                            ]
+                        },
+                        "valueCodeableConcept": {
+                            "coding": [
+                                {
+                                    "code": "LA6668-3",
+                                    "display": "Pathogenic",
+                                    "system": "http://loinc.org"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "code": {
+                            "coding": [
+                                {
+                                    "code": "81259-4",
+                                    "display": "predicted phenotype",
+                                    "system": "http://loinc.org"
+                                }
+                            ]
+                        },
+                        "valueCodeableConcept": {
+                            "coding": [
+                                {
+                                    "code": "C3469186",
+                                    "display": "Hemochromatosis type 1",
+                                    "system": "https://www.ncbi.nlm.nih.gov/medgen"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "code": {
+                            "coding": [
+                                {
+                                    "code": "93044-6",
+                                    "display": "Level of evidence",
+                                    "system": "http://loinc.org"
+                                }
+                            ]
+                        },
+                        "valueCodeableConcept": {
+                            "text": "criteria provided, single submitter"
+                        }
+                    }
+                ],
+                "derivedFrom": [
+                    {
+                        "reference": "Observation/dv-e6b9e50014b24ebe81a0504cbba79282"
+                    }
+                ],
+                "id": "dv-62fab6305932091e78bf2330",
+                "identifier": [
+                    {
+                        "system": "http://www.ncbi.nlm.nih.gov/clinvar",
+                        "value": "10"
+                    },
+                    {
+                        "system": "http://www.ncbi.nlm.nih.gov/clinvar/scv",
+                        "value": "SCV000206973.2"
+                    }
+                ],
+                "meta": {
+                    "profile": [
+                        "http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/diagnostic-implication"
+                    ]
+                },
+                "resourceType": "Observation",
+                "status": "final",
+                "subject": {
+                    "reference": "Patient/HG02657"
+                }
+            }
+        },
+        {
+            "name": "implication",
+            "resource": {
+                "category": [
+                    {
+                        "coding": [
+                            {
+                                "code": "laboratory",
+                                "system": "http://terminology.hl7.org/CodeSystem/observation-category"
+                            }
+                        ]
+                    }
+                ],
+                "code": {
+                    "coding": [
+                        {
+                            "code": "diagnostic-implication",
+                            "system": "http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs"
+                        }
+                    ]
+                },
+                "component": [
+                    {
+                        "code": {
+                            "coding": [
+                                {
+                                    "code": "53037-8",
+                                    "display": "Genetic variation clinical significance",
+                                    "system": "http://loinc.org"
+                                }
+                            ]
+                        },
+                        "valueCodeableConcept": {
+                            "coding": [
+                                {
+                                    "code": "LA6668-3",
+                                    "display": "Pathogenic",
+                                    "system": "http://loinc.org"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "code": {
+                            "coding": [
+                                {
+                                    "code": "81259-4",
+                                    "display": "predicted phenotype",
+                                    "system": "http://loinc.org"
+                                }
+                            ]
+                        },
+                        "valueCodeableConcept": {
+                            "coding": [
+                                {
+                                    "code": "C3469186",
+                                    "display": "Hemochromatosis type 1",
+                                    "system": "https://www.ncbi.nlm.nih.gov/medgen"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "code": {
+                            "coding": [
+                                {
+                                    "code": "93044-6",
+                                    "display": "Level of evidence",
+                                    "system": "http://loinc.org"
+                                }
+                            ]
+                        },
+                        "valueCodeableConcept": {
+                            "text": "no assertion criteria provided"
+                        }
+                    }
+                ],
+                "derivedFrom": [
+                    {
+                        "reference": "Observation/dv-e6b9e50014b24ebe81a0504cbba79282"
+                    }
+                ],
+                "id": "dv-62fab6305932091e78bf2316",
+                "identifier": [
+                    {
+                        "system": "http://www.ncbi.nlm.nih.gov/clinvar",
+                        "value": "10"
+                    },
+                    {
+                        "system": "http://www.ncbi.nlm.nih.gov/clinvar/scv",
+                        "value": "SCV000245789.1"
+                    }
+                ],
+                "meta": {
+                    "profile": [
+                        "http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/diagnostic-implication"
+                    ]
+                },
+                "resourceType": "Observation",
+                "status": "final",
+                "subject": {
+                    "reference": "Patient/HG02657"
+                }
+            }
+        },
+        {
+            "name": "implication",
+            "resource": {
+                "category": [
+                    {
+                        "coding": [
+                            {
+                                "code": "laboratory",
+                                "system": "http://terminology.hl7.org/CodeSystem/observation-category"
+                            }
+                        ]
+                    }
+                ],
+                "code": {
+                    "coding": [
+                        {
+                            "code": "diagnostic-implication",
+                            "system": "http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs"
+                        }
+                    ]
+                },
+                "component": [
+                    {
+                        "code": {
+                            "coding": [
+                                {
+                                    "code": "53037-8",
+                                    "display": "Genetic variation clinical significance",
+                                    "system": "http://loinc.org"
+                                }
+                            ]
+                        },
+                        "valueCodeableConcept": {
+                            "coding": [
+                                {
+                                    "code": "LA6668-3",
+                                    "display": "Pathogenic",
+                                    "system": "http://loinc.org"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "code": {
+                            "coding": [
+                                {
+                                    "code": "81259-4",
+                                    "display": "predicted phenotype",
+                                    "system": "http://loinc.org"
+                                }
+                            ]
+                        },
+                        "valueCodeableConcept": {
+                            "coding": [
+                                {
+                                    "code": "C3469186",
+                                    "display": "Hemochromatosis type 1",
+                                    "system": "https://www.ncbi.nlm.nih.gov/medgen"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "code": {
+                            "coding": [
+                                {
+                                    "code": "93044-6",
+                                    "display": "Level of evidence",
+                                    "system": "http://loinc.org"
+                                }
+                            ]
+                        },
+                        "valueCodeableConcept": {
+                            "text": "no assertion criteria provided"
+                        }
+                    }
+                ],
+                "derivedFrom": [
+                    {
+                        "reference": "Observation/dv-e6b9e50014b24ebe81a0504cbba79282"
+                    }
+                ],
+                "id": "dv-62fab6305932091e78bf232f",
+                "identifier": [
+                    {
+                        "system": "http://www.ncbi.nlm.nih.gov/clinvar",
+                        "value": "10"
+                    },
+                    {
+                        "system": "http://www.ncbi.nlm.nih.gov/clinvar/scv",
+                        "value": "SCV000020169.4"
+                    }
+                ],
+                "meta": {
+                    "profile": [
+                        "http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/diagnostic-implication"
+                    ]
+                },
+                "resourceType": "Observation",
+                "status": "final",
+                "subject": {
+                    "reference": "Patient/HG02657"
+                }
+            }
+        },
+        {
+            "name": "variant",
+            "resource": {
+                "category": [
+                    {
+                        "coding": [
+                            {
+                                "code": "laboratory",
+                                "system": "http://terminology.hl7.org/CodeSystem/observation-category"
+                            }
+                        ]
+                    }
+                ],
+                "code": {
+                    "coding": [
+                        {
+                            "code": "69548-6",
+                            "display": "Genetic variant assessment",
+                            "system": "http://loinc.org"
+                        }
+                    ]
+                },
+                "component": [
+                    {
+                        "code": {
+                            "coding": [
+                                {
                                     "code": "48002-0",
-                                    "display": "Genomic Source Class"
+                                    "display": "Genomic Source Class",
+                                    "system": "http://loinc.org"
                                 }
                             ]
                         },
                         "valueCodeableConcept": {
                             "coding": [
                                 {
-                                    "system": "http://loinc.org",
                                     "code": "LA6683-2",
-                                    "display": "germline"
+                                    "display": "germline",
+                                    "system": "http://loinc.org"
                                 }
                             ]
                         }
@@ -173,17 +1622,17 @@
                         "code": {
                             "coding": [
                                 {
-                                    "system": "http://loinc.org",
                                     "code": "48013-7",
-                                    "display": "Genomic reference sequence ID"
+                                    "display": "Genomic reference sequence ID",
+                                    "system": "http://loinc.org"
                                 }
                             ]
                         },
                         "valueCodeableConcept": {
                             "coding": [
                                 {
-                                    "system": "http://www.ncbi.nlm.nih.gov/nuccore",
-                                    "code": "NC_000006.11"
+                                    "code": "NC_000006.11",
+                                    "system": "http://www.ncbi.nlm.nih.gov/nuccore"
                                 }
                             ]
                         }
@@ -192,18 +1641,18 @@
                         "code": {
                             "coding": [
                                 {
-                                    "system": "http://loinc.org",
                                     "code": "53034-5",
-                                    "display": "Allelic state"
+                                    "display": "Allelic state",
+                                    "system": "http://loinc.org"
                                 }
                             ]
                         },
                         "valueCodeableConcept": {
                             "coding": [
                                 {
-                                    "system": "http://loinc.org",
                                     "code": "LA6706-1",
-                                    "display": "heterozygous"
+                                    "display": "heterozygous",
+                                    "system": "http://loinc.org"
                                 }
                             ]
                         }
@@ -212,46 +1661,9 @@
                         "code": {
                             "coding": [
                                 {
-                                    "system": "http://loinc.org",
-                                    "code": "81252-9",
-                                    "display": "Discrete genetic variant"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "coding": [
-                                {
-                                    "system": "https://api.ncbi.nlm.nih.gov/variation/v0/",
-                                    "code": "NC_000006.11:26091178:C:G",
-                                    "display": "NC_000006.11:26091178:C:G"
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "81258-6",
-                                    "display": "Sample VAF"
-                                }
-                            ]
-                        },
-                        "valueQuantity": {
-                            "value": 0.5,
-                            "unit": "relative frequency of a particular allele in the specimen",
-                            "system": "http://unitsofmeasure.org",
-                            "code": "1"
-                        }
-                    },
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
                                     "code": "69547-8",
-                                    "display": "Genomic Ref allele [ID]"
+                                    "display": "Genomic Ref allele [ID]",
+                                    "system": "http://loinc.org"
                                 }
                             ]
                         },
@@ -261,9 +1673,9 @@
                         "code": {
                             "coding": [
                                 {
-                                    "system": "http://loinc.org",
                                     "code": "69551-0",
-                                    "display": "Genomic Alt allele [ID]"
+                                    "display": "Genomic Alt allele [ID]",
+                                    "system": "http://loinc.org"
                                 }
                             ]
                         },
@@ -273,18 +1685,18 @@
                         "code": {
                             "coding": [
                                 {
-                                    "system": "http://loinc.org",
-                                    "code": "92822-6",
-                                    "display": "Genomic coord system"
+                                    "code": "81252-9",
+                                    "display": "Discrete genetic variant",
+                                    "system": "http://loinc.org"
                                 }
                             ]
                         },
                         "valueCodeableConcept": {
                             "coding": [
                                 {
-                                    "system": "http://loinc.org",
-                                    "code": "LA30100-4",
-                                    "display": "0-based interval counting"
+                                    "code": "NC_000006.11:26091178:C:G",
+                                    "display": "NC_000006.11:26091178:C:G",
+                                    "system": "https://api.ncbi.nlm.nih.gov/variation/v0/"
                                 }
                             ]
                         }
@@ -293,9 +1705,9 @@
                         "code": {
                             "coding": [
                                 {
-                                    "system": "http://loinc.org",
                                     "code": "81254-5",
-                                    "display": "Variant exact start-end"
+                                    "display": "Variant exact start-end",
+                                    "system": "http://loinc.org"
                                 }
                             ]
                         },
@@ -309,1490 +1721,78 @@
                         "code": {
                             "coding": [
                                 {
-                                    "system": "http://loinc.org",
-                                    "code": "92821-8",
-                                    "display": "Population allele frequency"
+                                    "code": "81258-6",
+                                    "display": "Sample VAF",
+                                    "system": "http://loinc.org"
                                 }
                             ]
                         },
                         "valueQuantity": {
-                            "value": 0.10924,
+                            "code": "1",
                             "system": "http://unitsofmeasure.org",
-                            "code": "1"
+                            "unit": "relative frequency of a particular allele in the specimen",
+                            "value": 0.5
                         }
-                    }
-                ]
-            }
-        },
-        {
-            "name": "implication",
-            "resource": {
-                "resourceType": "Observation",
-                "id": "dv-62fab6305932091e78bf2317",
-                "meta": {
-                    "profile": [
-                        "http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/diagnostic-implication"
-                    ]
-                },
-                "status": "final",
-                "category": [
+                    },
                     {
-                        "coding": [
-                            {
-                                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
-                                "code": "laboratory"
-                            }
-                        ]
+                        "code": {
+                            "coding": [
+                                {
+                                    "code": "92821-8",
+                                    "display": "Population allele frequency",
+                                    "system": "http://loinc.org"
+                                }
+                            ]
+                        },
+                        "valueQuantity": {
+                            "code": "1",
+                            "system": "http://unitsofmeasure.org",
+                            "value": 0.10924
+                        }
+                    },
+                    {
+                        "code": {
+                            "coding": [
+                                {
+                                    "code": "92822-6",
+                                    "display": "Genomic coord system",
+                                    "system": "http://loinc.org"
+                                }
+                            ]
+                        },
+                        "valueCodeableConcept": {
+                            "coding": [
+                                {
+                                    "code": "LA30100-4",
+                                    "display": "0-based interval counting",
+                                    "system": "http://loinc.org"
+                                }
+                            ]
+                        }
                     }
                 ],
-                "code": {
-                    "coding": [
-                        {
-                            "system": "http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs",
-                            "code": "diagnostic-implication"
-                        }
+                "id": "dv-e6b9e50014b24ebe81a0504cbba79282",
+                "meta": {
+                    "profile": [
+                        "http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/variant"
                     ]
                 },
+                "resourceType": "Observation",
+                "status": "final",
                 "subject": {
                     "reference": "Patient/HG02657"
                 },
-                "derivedFrom": [
-                    {
-                        "reference": "Observation/dv-e6b9e50014b24ebe81a0504cbba79282"
-                    }
-                ],
-                "component": [
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "53037-8",
-                                    "display": "Genetic variation clinical significance"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "LA6668-3",
-                                    "display": "Pathogenic"
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "81259-4",
-                                    "display": "predicted phenotype"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "coding": [
-                                {
-                                    "system": "https://www.ncbi.nlm.nih.gov/medgen",
-                                    "code": "C3469186",
-                                    "display": "Hemochromatosis type 1"
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "93044-6",
-                                    "display": "Level of evidence"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "text": "criteria provided, single submitter"
-                        }
-                    }
-                ],
-                "identifier": [
-                    {
-                        "system": "http://www.ncbi.nlm.nih.gov/clinvar",
-                        "value": "10"
-                    },
-                    {
-                        "system": "http://www.ncbi.nlm.nih.gov/clinvar/scv",
-                        "value": "SCV001368348.2"
-                    }
-                ]
-            }
-        },
-        {
-            "name": "implication",
-            "resource": {
-                "resourceType": "Observation",
-                "id": "dv-62fab6305932091e78bf230e",
-                "meta": {
-                    "profile": [
-                        "http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/diagnostic-implication"
-                    ]
-                },
-                "status": "final",
-                "category": [
-                    {
-                        "coding": [
-                            {
-                                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
-                                "code": "laboratory"
-                            }
-                        ]
-                    }
-                ],
-                "code": {
+                "valueCodeableConcept": {
                     "coding": [
                         {
-                            "system": "http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs",
-                            "code": "diagnostic-implication"
+                            "code": "LA9633-4",
+                            "display": "present",
+                            "system": "http://loinc.org"
                         }
                     ]
-                },
-                "subject": {
-                    "reference": "Patient/HG02657"
-                },
-                "derivedFrom": [
-                    {
-                        "reference": "Observation/dv-e6b9e50014b24ebe81a0504cbba79282"
-                    }
-                ],
-                "component": [
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "53037-8",
-                                    "display": "Genetic variation clinical significance"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "LA6668-3",
-                                    "display": "Pathogenic"
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "81259-4",
-                                    "display": "predicted phenotype"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "coding": [
-                                {
-                                    "system": "https://www.ncbi.nlm.nih.gov/medgen",
-                                    "code": "C3469186",
-                                    "display": "Hemochromatosis type 1"
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "93044-6",
-                                    "display": "Level of evidence"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "text": "criteria provided, single submitter"
-                        }
-                    }
-                ],
-                "identifier": [
-                    {
-                        "system": "http://www.ncbi.nlm.nih.gov/clinvar",
-                        "value": "10"
-                    },
-                    {
-                        "system": "http://www.ncbi.nlm.nih.gov/clinvar/scv",
-                        "value": "SCV001137061.1"
-                    }
-                ]
-            }
-        },
-        {
-            "name": "implication",
-            "resource": {
-                "resourceType": "Observation",
-                "id": "dv-62fab6305932091e78bf231b",
-                "meta": {
-                    "profile": [
-                        "http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/diagnostic-implication"
-                    ]
-                },
-                "status": "final",
-                "category": [
-                    {
-                        "coding": [
-                            {
-                                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
-                                "code": "laboratory"
-                            }
-                        ]
-                    }
-                ],
-                "code": {
-                    "coding": [
-                        {
-                            "system": "http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs",
-                            "code": "diagnostic-implication"
-                        }
-                    ]
-                },
-                "subject": {
-                    "reference": "Patient/HG02657"
-                },
-                "derivedFrom": [
-                    {
-                        "reference": "Observation/dv-e6b9e50014b24ebe81a0504cbba79282"
-                    }
-                ],
-                "component": [
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "53037-8",
-                                    "display": "Genetic variation clinical significance"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "LA6668-3",
-                                    "display": "Pathogenic"
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "81259-4",
-                                    "display": "predicted phenotype"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "coding": [
-                                {
-                                    "system": "https://www.ncbi.nlm.nih.gov/medgen",
-                                    "code": "C3469186",
-                                    "display": "Hemochromatosis type 1"
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "93044-6",
-                                    "display": "Level of evidence"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "text": "criteria provided, single submitter"
-                        }
-                    }
-                ],
-                "identifier": [
-                    {
-                        "system": "http://www.ncbi.nlm.nih.gov/clinvar",
-                        "value": "10"
-                    },
-                    {
-                        "system": "http://www.ncbi.nlm.nih.gov/clinvar/scv",
-                        "value": "SCV000693430.2"
-                    }
-                ]
-            }
-        },
-        {
-            "name": "implication",
-            "resource": {
-                "resourceType": "Observation",
-                "id": "dv-62fab6305932091e78bf232b",
-                "meta": {
-                    "profile": [
-                        "http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/diagnostic-implication"
-                    ]
-                },
-                "status": "final",
-                "category": [
-                    {
-                        "coding": [
-                            {
-                                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
-                                "code": "laboratory"
-                            }
-                        ]
-                    }
-                ],
-                "code": {
-                    "coding": [
-                        {
-                            "system": "http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs",
-                            "code": "diagnostic-implication"
-                        }
-                    ]
-                },
-                "subject": {
-                    "reference": "Patient/HG02657"
-                },
-                "derivedFrom": [
-                    {
-                        "reference": "Observation/dv-e6b9e50014b24ebe81a0504cbba79282"
-                    }
-                ],
-                "component": [
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "53037-8",
-                                    "display": "Genetic variation clinical significance"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "LA6668-3",
-                                    "display": "Pathogenic"
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "81259-4",
-                                    "display": "predicted phenotype"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "coding": [
-                                {
-                                    "system": "https://www.ncbi.nlm.nih.gov/medgen",
-                                    "code": "C3469186",
-                                    "display": "Hemochromatosis type 1"
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "93044-6",
-                                    "display": "Level of evidence"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "text": "criteria provided, single submitter"
-                        }
-                    }
-                ],
-                "identifier": [
-                    {
-                        "system": "http://www.ncbi.nlm.nih.gov/clinvar",
-                        "value": "10"
-                    },
-                    {
-                        "system": "http://www.ncbi.nlm.nih.gov/clinvar/scv",
-                        "value": "SCV001523197.1"
-                    }
-                ]
-            }
-        },
-        {
-            "name": "implication",
-            "resource": {
-                "resourceType": "Observation",
-                "id": "dv-62fab6305932091e78bf2330",
-                "meta": {
-                    "profile": [
-                        "http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/diagnostic-implication"
-                    ]
-                },
-                "status": "final",
-                "category": [
-                    {
-                        "coding": [
-                            {
-                                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
-                                "code": "laboratory"
-                            }
-                        ]
-                    }
-                ],
-                "code": {
-                    "coding": [
-                        {
-                            "system": "http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs",
-                            "code": "diagnostic-implication"
-                        }
-                    ]
-                },
-                "subject": {
-                    "reference": "Patient/HG02657"
-                },
-                "derivedFrom": [
-                    {
-                        "reference": "Observation/dv-e6b9e50014b24ebe81a0504cbba79282"
-                    }
-                ],
-                "component": [
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "53037-8",
-                                    "display": "Genetic variation clinical significance"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "LA6668-3",
-                                    "display": "Pathogenic"
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "81259-4",
-                                    "display": "predicted phenotype"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "coding": [
-                                {
-                                    "system": "https://www.ncbi.nlm.nih.gov/medgen",
-                                    "code": "C3469186",
-                                    "display": "Hemochromatosis type 1"
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "93044-6",
-                                    "display": "Level of evidence"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "text": "criteria provided, single submitter"
-                        }
-                    }
-                ],
-                "identifier": [
-                    {
-                        "system": "http://www.ncbi.nlm.nih.gov/clinvar",
-                        "value": "10"
-                    },
-                    {
-                        "system": "http://www.ncbi.nlm.nih.gov/clinvar/scv",
-                        "value": "SCV000206973.2"
-                    }
-                ]
-            }
-        },
-        {
-            "name": "implication",
-            "resource": {
-                "resourceType": "Observation",
-                "id": "dv-62fab6305932091e78bf2316",
-                "meta": {
-                    "profile": [
-                        "http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/diagnostic-implication"
-                    ]
-                },
-                "status": "final",
-                "category": [
-                    {
-                        "coding": [
-                            {
-                                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
-                                "code": "laboratory"
-                            }
-                        ]
-                    }
-                ],
-                "code": {
-                    "coding": [
-                        {
-                            "system": "http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs",
-                            "code": "diagnostic-implication"
-                        }
-                    ]
-                },
-                "subject": {
-                    "reference": "Patient/HG02657"
-                },
-                "derivedFrom": [
-                    {
-                        "reference": "Observation/dv-e6b9e50014b24ebe81a0504cbba79282"
-                    }
-                ],
-                "component": [
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "53037-8",
-                                    "display": "Genetic variation clinical significance"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "LA6668-3",
-                                    "display": "Pathogenic"
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "81259-4",
-                                    "display": "predicted phenotype"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "coding": [
-                                {
-                                    "system": "https://www.ncbi.nlm.nih.gov/medgen",
-                                    "code": "C3469186",
-                                    "display": "Hemochromatosis type 1"
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "93044-6",
-                                    "display": "Level of evidence"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "text": "no assertion criteria provided"
-                        }
-                    }
-                ],
-                "identifier": [
-                    {
-                        "system": "http://www.ncbi.nlm.nih.gov/clinvar",
-                        "value": "10"
-                    },
-                    {
-                        "system": "http://www.ncbi.nlm.nih.gov/clinvar/scv",
-                        "value": "SCV000245789.1"
-                    }
-                ]
-            }
-        },
-        {
-            "name": "implication",
-            "resource": {
-                "resourceType": "Observation",
-                "id": "dv-62fab6305932091e78bf232f",
-                "meta": {
-                    "profile": [
-                        "http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/diagnostic-implication"
-                    ]
-                },
-                "status": "final",
-                "category": [
-                    {
-                        "coding": [
-                            {
-                                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
-                                "code": "laboratory"
-                            }
-                        ]
-                    }
-                ],
-                "code": {
-                    "coding": [
-                        {
-                            "system": "http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs",
-                            "code": "diagnostic-implication"
-                        }
-                    ]
-                },
-                "subject": {
-                    "reference": "Patient/HG02657"
-                },
-                "derivedFrom": [
-                    {
-                        "reference": "Observation/dv-e6b9e50014b24ebe81a0504cbba79282"
-                    }
-                ],
-                "component": [
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "53037-8",
-                                    "display": "Genetic variation clinical significance"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "LA6668-3",
-                                    "display": "Pathogenic"
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "81259-4",
-                                    "display": "predicted phenotype"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "coding": [
-                                {
-                                    "system": "https://www.ncbi.nlm.nih.gov/medgen",
-                                    "code": "C3469186",
-                                    "display": "Hemochromatosis type 1"
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "93044-6",
-                                    "display": "Level of evidence"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "text": "no assertion criteria provided"
-                        }
-                    }
-                ],
-                "identifier": [
-                    {
-                        "system": "http://www.ncbi.nlm.nih.gov/clinvar",
-                        "value": "10"
-                    },
-                    {
-                        "system": "http://www.ncbi.nlm.nih.gov/clinvar/scv",
-                        "value": "SCV000020169.4"
-                    }
-                ]
-            }
-        },
-        {
-            "name": "implication",
-            "resource": {
-                "resourceType": "Observation",
-                "id": "dv-62fab6305932091e78bf232c",
-                "meta": {
-                    "profile": [
-                        "http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/diagnostic-implication"
-                    ]
-                },
-                "status": "final",
-                "category": [
-                    {
-                        "coding": [
-                            {
-                                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
-                                "code": "laboratory"
-                            }
-                        ]
-                    }
-                ],
-                "code": {
-                    "coding": [
-                        {
-                            "system": "http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs",
-                            "code": "diagnostic-implication"
-                        }
-                    ]
-                },
-                "subject": {
-                    "reference": "Patient/HG02657"
-                },
-                "derivedFrom": [
-                    {
-                        "reference": "Observation/dv-e6b9e50014b24ebe81a0504cbba79282"
-                    }
-                ],
-                "component": [
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "53037-8",
-                                    "display": "Genetic variation clinical significance"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "LA6668-3",
-                                    "display": "Pathogenic"
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "81259-4",
-                                    "display": "predicted phenotype"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "coding": [
-                                {
-                                    "system": "https://www.ncbi.nlm.nih.gov/medgen",
-                                    "code": "C3469186",
-                                    "display": "Hemochromatosis type 1"
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "93044-6",
-                                    "display": "Level of evidence"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "text": "criteria provided, single submitter"
-                        }
-                    }
-                ],
-                "identifier": [
-                    {
-                        "system": "http://www.ncbi.nlm.nih.gov/clinvar",
-                        "value": "10"
-                    },
-                    {
-                        "system": "http://www.ncbi.nlm.nih.gov/clinvar/scv",
-                        "value": "SCV000223933.2"
-                    }
-                ]
-            }
-        },
-        {
-            "name": "implication",
-            "resource": {
-                "resourceType": "Observation",
-                "id": "dv-62fab6305932091e78bf231e",
-                "meta": {
-                    "profile": [
-                        "http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/diagnostic-implication"
-                    ]
-                },
-                "status": "final",
-                "category": [
-                    {
-                        "coding": [
-                            {
-                                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
-                                "code": "laboratory"
-                            }
-                        ]
-                    }
-                ],
-                "code": {
-                    "coding": [
-                        {
-                            "system": "http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs",
-                            "code": "diagnostic-implication"
-                        }
-                    ]
-                },
-                "subject": {
-                    "reference": "Patient/HG02657"
-                },
-                "derivedFrom": [
-                    {
-                        "reference": "Observation/dv-e6b9e50014b24ebe81a0504cbba79282"
-                    }
-                ],
-                "component": [
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "53037-8",
-                                    "display": "Genetic variation clinical significance"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "LA6668-3",
-                                    "display": "Pathogenic"
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "81259-4",
-                                    "display": "predicted phenotype"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "coding": [
-                                {
-                                    "system": "https://www.ncbi.nlm.nih.gov/medgen",
-                                    "code": "C3469186",
-                                    "display": "Hemochromatosis t"
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "93044-6",
-                                    "display": "Level of evidence"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "text": "criteria provided, single submitter"
-                        }
-                    }
-                ],
-                "identifier": [
-                    {
-                        "system": "http://www.ncbi.nlm.nih.gov/clinvar",
-                        "value": "10"
-                    },
-                    {
-                        "system": "http://www.ncbi.nlm.nih.gov/clinvar/scv",
-                        "value": "SCV000893709.1"
-                    }
-                ]
-            }
-        },
-        {
-            "name": "implication",
-            "resource": {
-                "resourceType": "Observation",
-                "id": "dv-62fab6305932091e78bf231f",
-                "meta": {
-                    "profile": [
-                        "http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/diagnostic-implication"
-                    ]
-                },
-                "status": "final",
-                "category": [
-                    {
-                        "coding": [
-                            {
-                                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
-                                "code": "laboratory"
-                            }
-                        ]
-                    }
-                ],
-                "code": {
-                    "coding": [
-                        {
-                            "system": "http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs",
-                            "code": "diagnostic-implication"
-                        }
-                    ]
-                },
-                "subject": {
-                    "reference": "Patient/HG02657"
-                },
-                "derivedFrom": [
-                    {
-                        "reference": "Observation/dv-e6b9e50014b24ebe81a0504cbba79282"
-                    }
-                ],
-                "component": [
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "53037-8",
-                                    "display": "Genetic variation clinical significance"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "LA6668-3",
-                                    "display": "Pathogenic"
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "81259-4",
-                                    "display": "predicted phenotype"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "coding": [
-                                {
-                                    "system": "https://www.ncbi.nlm.nih.gov/medgen",
-                                    "code": "C3469186",
-                                    "display": "Hemochromatosis type 1"
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "93044-6",
-                                    "display": "Level of evidence"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "text": "criteria provided, single submitter"
-                        }
-                    }
-                ],
-                "identifier": [
-                    {
-                        "system": "http://www.ncbi.nlm.nih.gov/clinvar",
-                        "value": "10"
-                    },
-                    {
-                        "system": "http://www.ncbi.nlm.nih.gov/clinvar/scv",
-                        "value": "SCV002028310.1"
-                    }
-                ]
-            }
-        },
-        {
-            "name": "implication",
-            "resource": {
-                "resourceType": "Observation",
-                "id": "dv-62fab6305932091e78bf2326",
-                "meta": {
-                    "profile": [
-                        "http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/diagnostic-implication"
-                    ]
-                },
-                "status": "final",
-                "category": [
-                    {
-                        "coding": [
-                            {
-                                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
-                                "code": "laboratory"
-                            }
-                        ]
-                    }
-                ],
-                "code": {
-                    "coding": [
-                        {
-                            "system": "http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs",
-                            "code": "diagnostic-implication"
-                        }
-                    ]
-                },
-                "subject": {
-                    "reference": "Patient/HG02657"
-                },
-                "derivedFrom": [
-                    {
-                        "reference": "Observation/dv-e6b9e50014b24ebe81a0504cbba79282"
-                    }
-                ],
-                "component": [
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "53037-8",
-                                    "display": "Genetic variation clinical significance"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "LA6668-3",
-                                    "display": "Pathogenic"
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "81259-4",
-                                    "display": "predicted phenotype"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "coding": [
-                                {
-                                    "system": "https://www.ncbi.nlm.nih.gov/medgen",
-                                    "code": "C3469186",
-                                    "display": "Hemochromatosis type 1"
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "93044-6",
-                                    "display": "Level of evidence"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "text": "criteria provided, single submitter"
-                        }
-                    }
-                ],
-                "identifier": [
-                    {
-                        "system": "http://www.ncbi.nlm.nih.gov/clinvar",
-                        "value": "10"
-                    },
-                    {
-                        "system": "http://www.ncbi.nlm.nih.gov/clinvar/scv",
-                        "value": "SCV001519563.1"
-                    }
-                ]
-            }
-        },
-        {
-            "name": "implication",
-            "resource": {
-                "resourceType": "Observation",
-                "id": "dv-62fab6305932091e78bf230d",
-                "meta": {
-                    "profile": [
-                        "http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/diagnostic-implication"
-                    ]
-                },
-                "status": "final",
-                "category": [
-                    {
-                        "coding": [
-                            {
-                                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
-                                "code": "laboratory"
-                            }
-                        ]
-                    }
-                ],
-                "code": {
-                    "coding": [
-                        {
-                            "system": "http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs",
-                            "code": "diagnostic-implication"
-                        }
-                    ]
-                },
-                "subject": {
-                    "reference": "Patient/HG02657"
-                },
-                "derivedFrom": [
-                    {
-                        "reference": "Observation/dv-e6b9e50014b24ebe81a0504cbba79282"
-                    }
-                ],
-                "component": [
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "53037-8",
-                                    "display": "Genetic variation clinical significance"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "LA6668-3",
-                                    "display": "Pathogenic"
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "81259-4",
-                                    "display": "predicted phenotype"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "coding": [
-                                {
-                                    "system": "https://www.ncbi.nlm.nih.gov/medgen",
-                                    "code": "C3469186",
-                                    "display": "Hemochromatosis type 1"
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "93044-6",
-                                    "display": "Level of evidence"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "text": "criteria provided, single submitter"
-                        }
-                    }
-                ],
-                "identifier": [
-                    {
-                        "system": "http://www.ncbi.nlm.nih.gov/clinvar",
-                        "value": "10"
-                    },
-                    {
-                        "system": "http://www.ncbi.nlm.nih.gov/clinvar/scv",
-                        "value": "SCV002038504.1"
-                    }
-                ]
-            }
-        },
-        {
-            "name": "implication",
-            "resource": {
-                "resourceType": "Observation",
-                "id": "dv-62fab6305932091e78bf2312",
-                "meta": {
-                    "profile": [
-                        "http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/diagnostic-implication"
-                    ]
-                },
-                "status": "final",
-                "category": [
-                    {
-                        "coding": [
-                            {
-                                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
-                                "code": "laboratory"
-                            }
-                        ]
-                    }
-                ],
-                "code": {
-                    "coding": [
-                        {
-                            "system": "http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs",
-                            "code": "diagnostic-implication"
-                        }
-                    ]
-                },
-                "subject": {
-                    "reference": "Patient/HG02657"
-                },
-                "derivedFrom": [
-                    {
-                        "reference": "Observation/dv-e6b9e50014b24ebe81a0504cbba79282"
-                    }
-                ],
-                "component": [
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "53037-8",
-                                    "display": "Genetic variation clinical significance"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "LA6668-3",
-                                    "display": "Pathogenic"
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "81259-4",
-                                    "display": "predicted phenotype"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "coding": [
-                                {
-                                    "system": "https://www.ncbi.nlm.nih.gov/medgen",
-                                    "code": "C3469186",
-                                    "display": "Hemochromatosis type 1"
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "93044-6",
-                                    "display": "Level of evidence"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "text": "criteria provided, single submitter"
-                        }
-                    }
-                ],
-                "identifier": [
-                    {
-                        "system": "http://www.ncbi.nlm.nih.gov/clinvar",
-                        "value": "10"
-                    },
-                    {
-                        "system": "http://www.ncbi.nlm.nih.gov/clinvar/scv",
-                        "value": "SCV002499222.1"
-                    }
-                ]
-            }
-        },
-        {
-            "name": "implication",
-            "resource": {
-                "resourceType": "Observation",
-                "id": "dv-62fab6305932091e78bf2322",
-                "meta": {
-                    "profile": [
-                        "http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/diagnostic-implication"
-                    ]
-                },
-                "status": "final",
-                "category": [
-                    {
-                        "coding": [
-                            {
-                                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
-                                "code": "laboratory"
-                            }
-                        ]
-                    }
-                ],
-                "code": {
-                    "coding": [
-                        {
-                            "system": "http://hl7.org/fhir/uv/genomics-reporting/CodeSystem/tbd-codes-cs",
-                            "code": "diagnostic-implication"
-                        }
-                    ]
-                },
-                "subject": {
-                    "reference": "Patient/HG02657"
-                },
-                "derivedFrom": [
-                    {
-                        "reference": "Observation/dv-e6b9e50014b24ebe81a0504cbba79282"
-                    }
-                ],
-                "component": [
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "53037-8",
-                                    "display": "Genetic variation clinical significance"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "LA6668-3",
-                                    "display": "Pathogenic"
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "81259-4",
-                                    "display": "predicted phenotype"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "coding": [
-                                {
-                                    "system": "https://www.ncbi.nlm.nih.gov/medgen",
-                                    "code": "C3469186",
-                                    "display": "Hemochromatosis type 1"
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "code": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "93044-6",
-                                    "display": "Level of evidence"
-                                }
-                            ]
-                        },
-                        "valueCodeableConcept": {
-                            "text": "criteria provided, single submitter"
-                        }
-                    }
-                ],
-                "identifier": [
-                    {
-                        "system": "http://www.ncbi.nlm.nih.gov/clinvar",
-                        "value": "10"
-                    },
-                    {
-                        "system": "http://www.ncbi.nlm.nih.gov/clinvar/scv",
-                        "value": "SCV001194094.2"
-                    }
-                ]
+                }
             }
         }
-    ]
+    ],
+    "resourceType": "Parameters"
 }

@@ -1,6 +1,6 @@
 {
-    "chromosome": "chrM",
-    "chromosomeLink": "https://medlineplus.gov/genetics/chromosome/mitochondrial-dna/",
     "build37RefSeq": "NC_012920.1",
-    "build38RefSeq": "NC_012920.1"
+    "build38RefSeq": "NC_012920.1",
+    "chromosome": "chrM",
+    "chromosomeLink": "https://medlineplus.gov/genetics/chromosome/mitochondrial-dna/"
 }
