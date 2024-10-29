@@ -1,0 +1,35 @@
+{
+   "fruits": [
+      {
+         "examples": [
+            {
+               "common-name": "strawberry",
+               "name": "achenes"
+            },
+            {
+               "members": [
+                  {
+                     "common-name": "blackberry"
+                  },
+                  {
+                     "common-name": "raspberry"
+                  }
+               ],
+               "name": "drupelets"
+            }
+         ],
+         "type": "aggregate"
+      },
+      {
+         "examples": [
+            {
+               "name": "apple"
+            },
+            {
+               "name": "cherries"
+            }
+         ],
+         "type": "simple-fruits"
+      }
+   ]
+}

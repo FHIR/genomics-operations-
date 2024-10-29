@@ -1,6 +1,6 @@
 {
-    "chromosome": "chrY",
-    "chromosomeLink": "https://medlineplus.gov/genetics/chromosome/y/",
     "build37RefSeq": "NC_000024.9",
-    "build38RefSeq": "NC_000024.10"
+    "build38RefSeq": "NC_000024.10",
+    "chromosome": "chrY",
+    "chromosomeLink": "https://medlineplus.gov/genetics/chromosome/y/"
 }

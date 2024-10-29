@@ -1,15 +1,15 @@
 [
     {
-        "geneId": "HGNC:7436",
-        "geneSymbol": "MTHFR",
-        "geneLink": "https://www.genenames.org/data/gene-symbol-report/#!/hgnc_id/HGNC:7436",
-        "build37Coordinates": "NC_000001.10:11845779-11866021",
-        "build38Coordinates": "NC_000001.11:11785722-11806103",
-        "transcripts": [
-            "NM_001330358.2",
+        "MANE": [
             "NM_005957.5"
         ],
-        "MANE": [
+        "build37Coordinates": "NC_000001.10:11845779-11866021",
+        "build38Coordinates": "NC_000001.11:11785722-11806103",
+        "geneId": "HGNC:7436",
+        "geneLink": "https://www.genenames.org/data/gene-symbol-report/#!/hgnc_id/HGNC:7436",
+        "geneSymbol": "MTHFR",
+        "transcripts": [
+            "NM_001330358.2",
             "NM_005957.5"
         ]
     }

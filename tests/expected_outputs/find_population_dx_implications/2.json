@@ -1,22 +1,22 @@
 {
-    "resourceType": "Parameters",
     "parameter": [
         {
             "name": "implications",
             "part": [
                 {
-                    "name": "numerator",
-                    "valueQuantity": {
-                        "value": 13
-                    }
-                },
-                {
                     "name": "denominator",
                     "valueQuantity": {
                         "value": 1116
                     }
+                },
+                {
+                    "name": "numerator",
+                    "valueQuantity": {
+                        "value": 13
+                    }
                 }
             ]
         }
-    ]
+    ],
+    "resourceType": "Parameters"
 }

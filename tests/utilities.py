@@ -60,6 +60,8 @@ GET_FEATURE_COORDINATES_OUTPUT_DIR = "tests/expected_outputs/get_feature_coordin
 FIND_THE_GENE_URL = "/utilities/find-the-gene"
 FIND_THE_GENE_OUTPUT_DIR = "tests/expected_outputs/find_the_gene/"
 
+JSON_SORT_OUTPUT_DIR = "tests/expected_outputs/json_sorting/"
+
 
 def find_subject_variants_query(query):
     return f"{FIND_SUBJECT_VARIANTS_URL}?{query}"
@@ -137,14 +139,33 @@ def find_the_gene_query(query):
     return f"{FIND_THE_GENE_URL}?{query}"
 
 
+def key_sorter(dict_list):
+    result = json.dumps(dict_list, sort_keys=True)
+    return result
+
+
+def sort_output_jsons(output_json):
+    if isinstance(output_json, dict):
+        return {k: sort_output_jsons(json_dict) for k, json_dict in sorted(output_json.items())}
+    elif isinstance(output_json, list):
+        return sorted((sort_output_jsons(json_list) for json_list in output_json), key=lambda x: key_sorter(x))
+    else:
+        return output_json
+
+
 def compare_actual_and_expected_output(filename, actual_json):
     with open(filename) as expected_output_file:
         expected_json = json.load(expected_output_file)
-        diff = DeepDiff(actual_json, expected_json, ignore_order=True, report_repetition=True)
+        sorted_expected = sort_output_jsons(expected_json)
+        sorted_actual = sort_output_jsons(actual_json)
+
+        assert json.dumps(sorted_expected) == json.dumps(expected_json)
+
+        diff = DeepDiff(sorted_actual, sorted_expected, ignore_order=False, report_repetition=True)
 
         if diff != {}:
             if 'OVERWRITE_TEST_EXPECTED_DATA' in os.environ:
                 with open(filename, 'w') as expected_output_file:
-                    json.dump(actual_json, expected_output_file, indent=4)
+                    json.dump(sorted_actual, expected_output_file, indent=4)
             else:
                 assert diff == {}

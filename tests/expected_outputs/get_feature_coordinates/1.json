@@ -1,6 +1,6 @@
 {
-    "chromosome": "chr1",
-    "chromosomeLink": "https://medlineplus.gov/genetics/chromosome/1/",
     "build37RefSeq": "NC_000001.10",
-    "build38RefSeq": "NC_000001.11"
+    "build38RefSeq": "NC_000001.11",
+    "chromosome": "chr1",
+    "chromosomeLink": "https://medlineplus.gov/genetics/chromosome/1/"
 }

@@ -1,23 +1,18 @@
 {
-    "resourceType": "Parameters",
     "parameter": [
         {
             "name": "variants",
             "part": [
                 {
-                    "name": "variantItem",
-                    "valueString": "NC_000001.10:144931726:G:A AND NC_000001.10:145532548:T:C AND NC_000001.10:145592072:A:T"
+                    "name": "denominator",
+                    "valueQuantity": {
+                        "value": 1116
+                    }
                 },
                 {
                     "name": "numerator",
                     "valueQuantity": {
                         "value": 6
-                    }
-                },
-                {
-                    "name": "denominator",
-                    "valueQuantity": {
-                        "value": 1116
                     }
                 },
                 {
@@ -43,8 +38,13 @@
                 {
                     "name": "subject",
                     "valueString": "NA19240"
+                },
+                {
+                    "name": "variantItem",
+                    "valueString": "NC_000001.10:144931726:G:A AND NC_000001.10:145532548:T:C AND NC_000001.10:145592072:A:T"
                 }
             ]
         }
-    ]
+    ],
+    "resourceType": "Parameters"
 }

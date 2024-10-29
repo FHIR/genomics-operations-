@@ -1,18 +1,18 @@
 {
-    "resourceType": "Parameters",
     "parameter": [
         {
             "name": "variants",
             "part": [
                 {
-                    "name": "rangeItem",
-                    "valueString": "NC_000019.9:11221327-11221447"
-                },
-                {
                     "name": "presence",
                     "valueBoolean": false
+                },
+                {
+                    "name": "rangeItem",
+                    "valueString": "NC_000019.9:11221327-11221447"
                 }
             ]
         }
-    ]
+    ],
+    "resourceType": "Parameters"
 }

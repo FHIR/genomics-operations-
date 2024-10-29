@@ -1,12 +1,13 @@
 {
-    "resourceType": "Parameters",
     "parameter": [
         {
             "name": "variants",
             "part": [
                 {
-                    "name": "rangeItem",
-                    "valueString": "NC_000017.10:37844346-37884911"
+                    "name": "denominator",
+                    "valueQuantity": {
+                        "value": 1116
+                    }
                 },
                 {
                     "name": "numerator",
@@ -15,10 +16,8 @@
                     }
                 },
                 {
-                    "name": "denominator",
-                    "valueQuantity": {
-                        "value": 1116
-                    }
+                    "name": "rangeItem",
+                    "valueString": "NC_000017.10:37844346-37884911"
                 }
             ]
         },
@@ -26,8 +25,10 @@
             "name": "variants",
             "part": [
                 {
-                    "name": "rangeItem",
-                    "valueString": "NC_000007.13:116312249-116438431"
+                    "name": "denominator",
+                    "valueQuantity": {
+                        "value": 1116
+                    }
                 },
                 {
                     "name": "numerator",
@@ -36,10 +37,8 @@
                     }
                 },
                 {
-                    "name": "denominator",
-                    "valueQuantity": {
-                        "value": 1116
-                    }
+                    "name": "rangeItem",
+                    "valueString": "NC_000007.13:116312249-116438431"
                 },
                 {
                     "name": "subject",
@@ -47,5 +46,6 @@
                 }
             ]
         }
-    ]
+    ],
+    "resourceType": "Parameters"
 }

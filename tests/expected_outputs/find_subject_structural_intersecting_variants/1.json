@@ -1,16 +1,15 @@
 {
-    "resourceType": "Parameters",
     "parameter": [
         {
             "name": "variants",
             "part": [
                 {
-                    "name": "rangeItem",
-                    "valueString": "NC_000007.14:55019016-55211628"
-                },
-                {
                     "name": "presence",
                     "valueBoolean": false
+                },
+                {
+                    "name": "rangeItem",
+                    "valueString": "NC_000004.12:54727415-54727542"
                 }
             ]
         },
@@ -18,14 +17,15 @@
             "name": "variants",
             "part": [
                 {
-                    "name": "rangeItem",
-                    "valueString": "NC_000004.12:54727415-54727542"
-                },
-                {
                     "name": "presence",
                     "valueBoolean": false
+                },
+                {
+                    "name": "rangeItem",
+                    "valueString": "NC_000007.14:55019016-55211628"
                 }
             ]
         }
-    ]
+    ],
+    "resourceType": "Parameters"
 }

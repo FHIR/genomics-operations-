@@ -1,12 +1,13 @@
 {
-    "resourceType": "Parameters",
     "parameter": [
         {
             "name": "variants",
             "part": [
                 {
-                    "name": "variantItem",
-                    "valueString": "CYP2C9 *1/*2"
+                    "name": "denominator",
+                    "valueQuantity": {
+                        "value": 1116
+                    }
                 },
                 {
                     "name": "numerator",
@@ -15,16 +16,15 @@
                     }
                 },
                 {
-                    "name": "denominator",
-                    "valueQuantity": {
-                        "value": 1116
-                    }
-                },
-                {
                     "name": "subject",
                     "valueString": "NB6TK328"
+                },
+                {
+                    "name": "variantItem",
+                    "valueString": "CYP2C9 *1/*2"
                 }
             ]
         }
-    ]
+    ],
+    "resourceType": "Parameters"
 }

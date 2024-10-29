@@ -1,12 +1,13 @@
 {
-    "resourceType": "Parameters",
     "parameter": [
         {
             "name": "variants",
             "part": [
                 {
-                    "name": "variantItem",
-                    "valueString": "NC_000011.10:g.8263343T>C AND NC_000006.11:26091305:T:C"
+                    "name": "denominator",
+                    "valueQuantity": {
+                        "value": 1116
+                    }
                 },
                 {
                     "name": "numerator",
@@ -15,12 +16,11 @@
                     }
                 },
                 {
-                    "name": "denominator",
-                    "valueQuantity": {
-                        "value": 1116
-                    }
+                    "name": "variantItem",
+                    "valueString": "NC_000011.10:g.8263343T>C AND NC_000006.11:26091305:T:C"
                 }
             ]
         }
-    ]
+    ],
+    "resourceType": "Parameters"
 }

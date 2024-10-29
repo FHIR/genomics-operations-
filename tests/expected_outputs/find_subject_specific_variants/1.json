@@ -1,13 +1,8 @@
 {
-    "resourceType": "Parameters",
     "parameter": [
         {
             "name": "variants",
             "part": [
-                {
-                    "name": "variantItem",
-                    "valueString": "NC_000005.9:g.112102032A>T"
-                },
                 {
                     "name": "presence",
                     "valueBoolean": true
@@ -15,20 +10,12 @@
                 {
                     "name": "variant",
                     "resource": {
-                        "resourceType": "Observation",
-                        "id": "dv-8946090cf8ec4bd78f0ca4a8ee32b3c7",
-                        "meta": {
-                            "profile": [
-                                "http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/variant"
-                            ]
-                        },
-                        "status": "final",
                         "category": [
                             {
                                 "coding": [
                                     {
-                                        "system": "http://terminology.hl7.org/CodeSystem/observation-category",
-                                        "code": "laboratory"
+                                        "code": "laboratory",
+                                        "system": "http://terminology.hl7.org/CodeSystem/observation-category"
                                     }
                                 ]
                             }
@@ -36,21 +23,9 @@
                         "code": {
                             "coding": [
                                 {
-                                    "system": "http://loinc.org",
                                     "code": "69548-6",
-                                    "display": "Genetic variant assessment"
-                                }
-                            ]
-                        },
-                        "subject": {
-                            "reference": "Patient/m123"
-                        },
-                        "valueCodeableConcept": {
-                            "coding": [
-                                {
-                                    "system": "http://loinc.org",
-                                    "code": "LA9633-4",
-                                    "display": "present"
+                                    "display": "Genetic variant assessment",
+                                    "system": "http://loinc.org"
                                 }
                             ]
                         },
@@ -59,17 +34,17 @@
                                 "code": {
                                     "coding": [
                                         {
-                                            "system": "http://loinc.org",
                                             "code": "48013-7",
-                                            "display": "Genomic reference sequence ID"
+                                            "display": "Genomic reference sequence ID",
+                                            "system": "http://loinc.org"
                                         }
                                     ]
                                 },
                                 "valueCodeableConcept": {
                                     "coding": [
                                         {
-                                            "system": "http://www.ncbi.nlm.nih.gov/nuccore",
-                                            "code": "NC_000005.9"
+                                            "code": "NC_000005.9",
+                                            "system": "http://www.ncbi.nlm.nih.gov/nuccore"
                                         }
                                     ]
                                 }
@@ -78,29 +53,9 @@
                                 "code": {
                                     "coding": [
                                         {
-                                            "system": "http://loinc.org",
-                                            "code": "81252-9",
-                                            "display": "Discrete genetic variant"
-                                        }
-                                    ]
-                                },
-                                "valueCodeableConcept": {
-                                    "coding": [
-                                        {
-                                            "system": "https://api.ncbi.nlm.nih.gov/variation/v0/",
-                                            "code": "NC_000005.9:112102031:A:T",
-                                            "display": "NC_000005.9:112102031:A:T"
-                                        }
-                                    ]
-                                }
-                            },
-                            {
-                                "code": {
-                                    "coding": [
-                                        {
-                                            "system": "http://loinc.org",
                                             "code": "69547-8",
-                                            "display": "Genomic Ref allele [ID]"
+                                            "display": "Genomic Ref allele [ID]",
+                                            "system": "http://loinc.org"
                                         }
                                     ]
                                 },
@@ -110,9 +65,9 @@
                                 "code": {
                                     "coding": [
                                         {
-                                            "system": "http://loinc.org",
                                             "code": "69551-0",
-                                            "display": "Genomic Alt allele [ID]"
+                                            "display": "Genomic Alt allele [ID]",
+                                            "system": "http://loinc.org"
                                         }
                                     ]
                                 },
@@ -122,18 +77,18 @@
                                 "code": {
                                     "coding": [
                                         {
-                                            "system": "http://loinc.org",
-                                            "code": "92822-6",
-                                            "display": "Genomic coord system"
+                                            "code": "81252-9",
+                                            "display": "Discrete genetic variant",
+                                            "system": "http://loinc.org"
                                         }
                                     ]
                                 },
                                 "valueCodeableConcept": {
                                     "coding": [
                                         {
-                                            "system": "http://loinc.org",
-                                            "code": "LA30100-4",
-                                            "display": "0-based interval counting"
+                                            "code": "NC_000005.9:112102031:A:T",
+                                            "display": "NC_000005.9:112102031:A:T",
+                                            "system": "https://api.ncbi.nlm.nih.gov/variation/v0/"
                                         }
                                     ]
                                 }
@@ -142,9 +97,9 @@
                                 "code": {
                                     "coding": [
                                         {
-                                            "system": "http://loinc.org",
                                             "code": "81254-5",
-                                            "display": "Variant exact start-end"
+                                            "display": "Variant exact start-end",
+                                            "system": "http://loinc.org"
                                         }
                                     ]
                                 },
@@ -153,11 +108,56 @@
                                         "value": 112102031
                                     }
                                 }
+                            },
+                            {
+                                "code": {
+                                    "coding": [
+                                        {
+                                            "code": "92822-6",
+                                            "display": "Genomic coord system",
+                                            "system": "http://loinc.org"
+                                        }
+                                    ]
+                                },
+                                "valueCodeableConcept": {
+                                    "coding": [
+                                        {
+                                            "code": "LA30100-4",
+                                            "display": "0-based interval counting",
+                                            "system": "http://loinc.org"
+                                        }
+                                    ]
+                                }
                             }
-                        ]
+                        ],
+                        "id": "dv-8946090cf8ec4bd78f0ca4a8ee32b3c7",
+                        "meta": {
+                            "profile": [
+                                "http://hl7.org/fhir/uv/genomics-reporting/StructureDefinition/variant"
+                            ]
+                        },
+                        "resourceType": "Observation",
+                        "status": "final",
+                        "subject": {
+                            "reference": "Patient/m123"
+                        },
+                        "valueCodeableConcept": {
+                            "coding": [
+                                {
+                                    "code": "LA9633-4",
+                                    "display": "present",
+                                    "system": "http://loinc.org"
+                                }
+                            ]
+                        }
                     }
+                },
+                {
+                    "name": "variantItem",
+                    "valueString": "NC_000005.9:g.112102032A>T"
                 }
             ]
         }
-    ]
+    ],
+    "resourceType": "Parameters"
 }

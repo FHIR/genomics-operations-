@@ -1,66 +1,66 @@
 {
-    "resourceType": "Parameters",
     "parameter": [
         {
             "name": "tests",
             "part": [
                 {
-                    "name": "testID",
-                    "valueString": "ABC123-T1"
-                },
-                {
-                    "name": "testDate",
-                    "valueString": "2020-09-20 00:00:00"
-                },
-                {
-                    "name": "specimenId",
-                    "valueString": "ABC123-Sp1"
+                    "name": "dnaChangeType",
+                    "valueCodeableConcept": {
+                        "coding": [
+                            {
+                                "code": "SO:0000159",
+                                "display": "DEL",
+                                "system": "http://sequenceontology.org"
+                            },
+                            {
+                                "code": "SO:0000667",
+                                "display": "INS",
+                                "system": "http://sequenceontology.org"
+                            },
+                            {
+                                "code": "SO:0001019",
+                                "display": "CNV",
+                                "system": "http://sequenceontology.org"
+                            },
+                            {
+                                "code": "SO:0001019",
+                                "display": "DUP",
+                                "system": "http://sequenceontology.org"
+                            },
+                            {
+                                "code": "SO:1000036",
+                                "display": "INV",
+                                "system": "http://sequenceontology.org"
+                            }
+                        ]
+                    }
                 },
                 {
                     "name": "genomicBuild",
                     "valueCodeableConcept": {
                         "coding": [
                             {
-                                "system": "http://loinc.org",
                                 "code": "LA14029-5",
-                                "display": "GRCh37"
+                                "display": "GRCh37",
+                                "system": "http://loinc.org"
                             }
                         ]
                     }
                 },
                 {
-                    "name": "dnaChangeType",
-                    "valueCodeableConcept": {
-                        "coding": [
-                            {
-                                "system": "http://sequenceontology.org",
-                                "code": "SO:0000667",
-                                "display": "INS"
-                            },
-                            {
-                                "system": "http://sequenceontology.org",
-                                "code": "SO:1000036",
-                                "display": "INV"
-                            },
-                            {
-                                "system": "http://sequenceontology.org",
-                                "code": "SO:0001019",
-                                "display": "CNV"
-                            },
-                            {
-                                "system": "http://sequenceontology.org",
-                                "code": "SO:0000159",
-                                "display": "DEL"
-                            },
-                            {
-                                "system": "http://sequenceontology.org",
-                                "code": "SO:0001019",
-                                "display": "DUP"
-                            }
-                        ]
-                    }
+                    "name": "specimenId",
+                    "valueString": "ABC123-Sp1"
+                },
+                {
+                    "name": "testDate",
+                    "valueString": "2020-09-20 00:00:00"
+                },
+                {
+                    "name": "testID",
+                    "valueString": "ABC123-T1"
                 }
             ]
         }
-    ]
+    ],
+    "resourceType": "Parameters"
 }
