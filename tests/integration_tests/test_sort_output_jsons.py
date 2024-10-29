@@ -63,7 +63,3 @@ def test_sorting_json_nested():
     with open(expected_loc) as expected_file:
         expected_json = json.load(expected_file)
         assert json.dumps(sorted_actual) == json.dumps(expected_json)
-
-
-
-
