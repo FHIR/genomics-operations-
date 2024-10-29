@@ -60,6 +60,8 @@ GET_FEATURE_COORDINATES_OUTPUT_DIR = "tests/expected_outputs/get_feature_coordin
 FIND_THE_GENE_URL = "/utilities/find-the-gene"
 FIND_THE_GENE_OUTPUT_DIR = "tests/expected_outputs/find_the_gene/"
 
+JSON_SORT_OUTPUT_DIR = "tests/expected_outputs/json_sorting/"
+
 
 def find_subject_variants_query(query):
     return f"{FIND_SUBJECT_VARIANTS_URL}?{query}"
@@ -157,7 +159,9 @@ def compare_actual_and_expected_output(filename, actual_json):
         sorted_expected = sort_output_jsons(expected_json)
         sorted_actual = sort_output_jsons(actual_json)
 
-        diff = DeepDiff(sorted_actual, sorted_expected, ignore_order=True, report_repetition=True)
+        assert json.dumps(sorted_expected) == json.dumps(expected_json)
+
+        diff = DeepDiff(sorted_actual, sorted_expected, ignore_order=False, report_repetition=True)
 
         if diff != {}:
             if 'OVERWRITE_TEST_EXPECTED_DATA' in os.environ:
