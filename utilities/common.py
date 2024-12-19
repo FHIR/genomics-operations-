@@ -2,6 +2,8 @@ from enum import Enum
 import re
 import pandas as pd
 import pymongo
+import pyfastx
+from threading import Lock
 
 utilities_data_client_uri = "mongodb+srv://download:download@cluster0.8ianr.mongodb.net/UtilitiesData"
 utilities_client = pymongo.MongoClient(utilities_data_client_uri)
@@ -142,3 +144,169 @@ def query_genes(transcript_map):
 
 def _error_log_allelicstate(record):
     pass
+
+
+
+# Fasta file handles cache
+fasta_cache = {}
+fasta_lock = Lock()
+
+# File paths
+BUILD37_FILE = 'FASTA/GCF_000001405.25_GRCh37.p13_genomic.fna'
+BUILD38_FILE = 'FASTA/GCF_000001405.40_GRCh38.p14_genomic.fna'
+
+# Dictionaries for GRCh37 and GRCh38 chromosomes
+grch37_chromosomes = {
+    "1": "NC_000001.10", "2": "NC_000002.11", "3": "NC_000003.11", "4": "NC_000004.11", "5": "NC_000005.9",
+    "6": "NC_000006.11", "7": "NC_000007.13", "8": "NC_000008.10", "9": "NC_000009.11", "10": "NC_000010.10",
+    "11": "NC_000011.9", "12": "NC_000012.11", "13": "NC_000013.10", "14": "NC_000014.8", "15": "NC_000015.9",
+    "16": "NC_000016.9", "17": "NC_000017.10", "18": "NC_000018.9", "19": "NC_000019.9", "20": "NC_000020.10",
+    "21": "NC_000021.8", "22": "NC_000022.10", "X": "NC_000023.10", "Y": "NC_000024.9", "MIT": "NC_012920.1"
+}
+grch38_chromosomes = {
+    "1": "NC_000001.11", "2": "NC_000002.12", "3": "NC_000003.12", "4": "NC_000004.12", "5": "NC_000005.10",
+    "6": "NC_000006.12", "7": "NC_000007.14", "8": "NC_000008.11", "9": "NC_000009.12", "10": "NC_000010.11",
+    "11": "NC_000011.10", "12": "NC_000012.12", "13": "NC_000013.11", "14": "NC_000014.9", "15": "NC_000015.10",
+    "16": "NC_000016.10", "17": "NC_000017.11", "18": "NC_000018.10", "19": "NC_000019.10", "20": "NC_000020.11",
+    "21": "NC_000021.9", "22": "NC_000022.11", "X": "NC_000023.11", "Y": "NC_000024.10", "MIT": "NC_012920.1"
+}
+
+def get_fasta(file):
+    """
+    Retrieves the pyfastx.Fasta object for a given file, using a caching mechanism.
+
+    Args:
+        file (str): Path to the FASTA file.
+
+    Returns:
+        pyfastx.Fasta: An indexed FASTA object.
+    """
+    with fasta_lock:
+        if file not in fasta_cache:
+            try:
+                fasta = pyfastx.Fasta(file)
+            except Exception as err:
+                print(f"Unexpected {err=}, {type(err)=}")
+                raise
+            fasta_cache[file] = fasta
+        return fasta_cache[file]
+
+def extract_chromosome_sequence(chromosome_tag, file_version):
+    """
+    Extracts the sequence of the specified chromosome using a cached FASTA file.
+
+    Args:
+        chromosome_tag (str): Chromosome tag (1-22, X, Y, or MIT).
+        file_version (int): Version of the genome build (37 for GRCh37, 38 for GRCh38).
+
+    Returns:
+        str: The full sequence of the specified chromosome.
+    """
+    if file_version == 37:
+        file_path = BUILD37_FILE
+        chromosome = grch37_chromosomes.get(chromosome_tag)
+    elif file_version == 38:
+        file_path = BUILD38_FILE
+        chromosome = grch38_chromosomes.get(chromosome_tag)
+    else:
+        raise ValueError("Invalid file version. Use 37 for GRCh37 or 38 for GRCh38.")
+
+    if not chromosome:
+        raise ValueError(f"Invalid chromosome tag: {chromosome_tag}. Must be 1-22, X, Y, or MIT.")
+
+    fasta = get_fasta(file_path)
+    if chromosome in fasta:
+        return fasta[chromosome].seq
+    else:
+        raise ValueError(f"Chromosome {chromosome} not found in {file_path}")
+
+
+
+
+
+
+# Function to validate chromosome identifiers
+def validate_chrom_identifier(chrom):
+    """
+    Validates if the given chromosome identifier is valid (1-22, X, Y, M).
+
+    Args:
+        chrom (str): Chromosome identifier (e.g., 'chr1', 'X', 'M').
+
+    Returns:
+        bool: True if the identifier is valid, False otherwise.
+    """
+    chrom = extract_chrom_identifier(chrom)
+    pattern = r'^(?:[1-9]|1[0-9]|2[0-2]|X|Y|M)$'
+    return bool(re.match(pattern, chrom))
+
+
+# Function to normalize chromosome identifiers
+def extract_chrom_identifier(chrom):
+    """
+    Normalizes the chromosome identifier by removing prefixes and handling special cases.
+
+    Args:
+        chrom (str): Chromosome identifier (e.g., 'chr1', 'MT').
+
+    Returns:
+        str: Normalized chromosome identifier (e.g., '1', 'X', 'M').
+    """
+    chrom = chrom.upper().replace("CHR", "")
+    if chrom == "MT":
+        chrom = "M"
+    return chrom
+
+
+# Function to generate reference sequence mapping for all chromosomes
+def generate_chrom_to_refseq(build):
+    """
+    Generates a mapping of chromosomes to reference sequence identifiers for the given build.
+
+    Args:
+        build (str): Reference genome build ('GRCh37' or 'GRCh38').
+
+    Returns:
+        dict: Mapping of chromosome identifiers to reference sequence identifiers.
+    """
+    if build == "GRCh37":
+        base = "NC_0000"
+        mitochondrial = "NC_012920.1"
+    elif build == "GRCh38":
+        base = "NC_0000"
+        mitochondrial = "NC_012920.2"
+    else:
+        raise ValueError("Unsupported reference build. Use 'GRCh37' or 'GRCh38'.")
+
+    # Autosomes 1-22
+    chrom_to_refseq = {str(i): f"{base}{i:02}.12" for i in range(1, 23)}
+    # Sex chromosomes and mitochondrial
+    chrom_to_refseq["X"] = f"{base}23.12"
+    chrom_to_refseq["Y"] = f"{base}24.12"
+    chrom_to_refseq["M"] = mitochondrial
+
+    return chrom_to_refseq
+
+
+# Function to fetch reference sequence by chromosome
+def _get_ref_seq_by_chrom(ref_build, chrom):
+    """
+    Returns the reference sequence identifier for the given chromosome and build.
+
+    Args:
+        ref_build (str): Reference genome build (e.g., 'GRCh37' or 'GRCh38').
+        chrom (str): Chromosome identifier (e.g., 'chr1', 'X').
+
+    Returns:
+        str: Reference sequence identifier.
+
+    Raises:
+        ValueError: If the chromosome identifier is invalid or the build is unsupported.
+    """
+    chrom = extract_chrom_identifier(chrom)
+
+    if not validate_chrom_identifier(chrom):
+        raise ValueError(f"Invalid chromosome identifier: {chrom}")
+
+    chrom_to_refseq = generate_chrom_to_refseq(ref_build)
+    return chrom_to_refseq.get(chrom, "UNKNOWN")
