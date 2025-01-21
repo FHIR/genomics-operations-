@@ -42,8 +42,17 @@ The operations return the following status codes:
 
 ## Testing
 
-To run the [integration tests](https://github.com/FHIR/genomics-operations/tree/main/tests), you can use the VS Code Testing functionality which should discover them automatically. You can also
-run `python3 -m pytest` from the terminal to execute them all.
+For local development, you will have to create a `secrets.env` file in the root of the repo and add in it the MongoDB
+password and, optionally, the UTA Postgres database connection string (see the UTA section below for details):
+
+```
+MONGODB_READONLY_PASSWORD=...
+UTA_DATABASE_URL=...
+```
+
+To run the [integration tests](https://github.com/FHIR/genomics-operations/tree/main/tests), you can use the VS Code
+Testing functionality which should discover them automatically. You can also run `python3 -m pytest` from the terminal
+to execute them all.
 
 Additionally, since the tests run against the Mongo DB database, if you need to update the test data in this repo, you
 can run `OVERWRITE_TEST_EXPECTED_DATA=true python3 -m pytest` from the terminal and then create a pull request with the
@@ -80,25 +89,60 @@ normalisation requires access to a copy of the [UTA](https://github.com/biocommo
 We have provisioned a Heroku Postgres instance in the Prod environment which contains the imported data from a database
 dump as described [here](https://github.com/biocommons/uta#installing-from-database-dumps).
 
-The connection string for this database can be found in Heroku under the `UTA_DATABASE_URL` environment variable.
+We define a `UTA_DATABASE_SCHEMA` environment variable in the [`.env`](.env) file which contains the name of the
+currently imported database schema.
 
-Additionally, we define a `UTA_DATABASE_SCHEMA` environment variable in the [`.env`](.env) file which contains the name
-of the currently imported database schema.
+#### Database import procedure (it will take about 30 minutes):
 
-Database import procedure (it will take about 10 minutes):
+- Go to the UTA dump download site (http://dl.biocommons.org/uta/) and get the latest `<UTA_SCHEMA>.pgd.gz` file.
+- Go to https://dashboard.heroku.com/apps/fhir-gen-ops/resources and click on the "Heroku Postgres" instance (it will
+open a new window)
+- Go to the Settings tab
+- Click "View Credentials"
+- Use the fields from this window to fill in the variables below
 
 ```shell
-> UTA_SCHEMA="uta_20210129b" # Specify the UTA schema you wish to use
-> PGPASSWORD="${POSTGRES_PASSWORD}"
-> gzip -cdq ${UTA_SCHEMA}.pgd.gz | grep -v anonymous | psql -U ${POSTGRES_USER} -1 -v ON_ERROR_STOP=1 -d ${POSTGRES_DATABASE} -h ${POSTGRES_HOST} -Eae
+$ POSTGRES_HOST="<Heroku Postgres Host>"
+$ POSTGRES_DATABASE="<Heroku Postgres Database>"
+$ POSTGRES_USER="<Heroku Postgres User>"
+$ PGPASSWORD="<Heroku Postgres Password>"
+$ UTA_SCHEMA="<UTA Schema>" # Specify the UTA schema of the UTA dump you downloaded (example: uta_20240523b)
+$ gzip -cdq ${UTA_SCHEMA}.pgd.gz | grep -v '^GRANT USAGE ON SCHEMA .* TO anonymous;$' | grep -v '^ALTER .* OWNER TO uta_admin;$' | psql -U ${POSTGRES_USER} -1 -v ON_ERROR_STOP=1 -d ${POSTGRES_DATABASE} -h ${POSTGRES_HOST} -Eae
 ```
 
-Note: `grep -v anonymous` is required because it's not possible to create an `anonymous` role in Heroku Postgres.
+Note: The `grep -v` commands are required because the Heroku Postgres instance doesn't allow us to create a new role.
 
-Once the process finishes, if you are using the Heroku Postgres Basic plan on the
-[Essential Tier](https://devcenter.heroku.com/articles/heroku-postgres-plans#essential-tier), you'll bump into the 10
-million rows / database limit. However, it's safe to ignore the warnings about this limit, since Heroku will simply
-revoke INSERT privileges from the database and the hgvs library only needs read-only access to this database.
+Once complete, make sure you update the `UTA_DATABASE_SCHEMA` environment variable in the [`.env`](.env) file and commit
+it.
+
+#### Connection string
+
+The connection string for this database can be found in the same Heroku Postgres Settings tab under "View Credentials".
+It is pre-populated in the Heroku runtime under the `UTA_DATABASE_URL` environment variable. Additionally, we set the
+same `UTA_DATABASE_URL` environment variable in GitHub so the CI can can use this database when running the tests.
+
+For local development, if you'd like to use this Postgres instance instead of the HGVS public one
+(`postgresql://anonymous:anonymous@uta.biocommons.org/uta`), please add `UTA_DATABASE_URL` with the Heroku Postgres
+connection string in the `secrets.env` file.
+
+#### Testing the database
+
+```shell
+$ pgcli "${UTA_DATABASE_URL}"
+> set schema '<UTA Schema>'; # Specify the UTA schema of the UTA dump you downloaded (example: uta_20240523b)
+> select count(*) from alembic_version
+    union select count(*) from associated_accessions
+    union select count(*) from exon
+    union select count(*) from exon_aln
+    union select count(*) from exon_set
+    union select count(*) from gene
+    union select count(*) from meta
+    union select count(*) from origin
+    union select count(*) from seq
+    union select count(*) from seq_anno
+    union select count(*) from transcript
+    union select count(*) from translation_exception;
+```
 
 ### RefSeq data
 
@@ -109,18 +153,21 @@ To update the RefSeq data, you will have to install `seqrepo` locally and run `.
 is a step-by-step guide on how to do this:
 
 ```shell
-> mkdir seqrepo
-> cd seqrepo
-> python3 -m venv .venv
-> . .venv/bin/activate
-> pip install setuptools
-> pip install biocommons.seqrepo
-> seqrepo -r . pull --update-latest
-> # If you'll get a "Permission denied" error, then you can run the following command (using the temp directory which got created):
-> # > chmod +w 2024-02-20.r4521u5y && mv 2024-02-20.r4521u5y 2024-02-20 && ln -s 2024-02-20 latest
->
-> # cd to genomics-operations repo
-> python ./utilities/pack_seqrepo_data.py --seqrepo_dir /path/to/seqrepo/dir/latest
-> # Upload tar archives from ./tmp/ to a new GitHub release and then update `UTILITIES_DATA_VERSION` in the `.env` file
-> # such that it contains the short SHA of the new release which contains the updated data.
+$ mkdir seqrepo
+$ cd seqrepo
+$ python3 -m venv .venv
+$ . .venv/bin/activate
+$ pip install setuptools==75.7.0
+$ pip install biocommons.seqrepo==0.6.9
+$ # See https://github.com/biocommons/biocommons.seqrepo/issues/171 for a bug that's causing issues with the builtin
+$ # rsync on OSX.
+$ brew install rsync # OSX-specific. Guess the standard package managers have it available on Linux
+$ seqrepo --rsync-exe /opt/homebrew/bin/rsync -r . pull --update-latest
+$ # If you'll get a "Permission denied" error, then you can run the following command (using the temp directory which got created):
+$ # > chmod +w 2024-02-20.r4521u5y && mv 2024-02-20.r4521u5y 2024-02-20 && ln -s 2024-02-20 latest
+$
+$ # cd to genomics-operations repo
+$ python ./utilities/pack_seqrepo_data.py --seqrepo_dir /path/to/seqrepo/dir/latest
+$ # Upload tar archives from ./tmp/ to a new GitHub release and then update `UTILITIES_DATA_VERSION` in the `.env` file
+$ # such that it contains the short SHA of the new release which contains the updated data.
 ```

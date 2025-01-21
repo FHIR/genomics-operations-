@@ -4,6 +4,7 @@
 .pytest_cache
 __pycache__
 .venv
+/seqrepo
 /refseq
 /data
 /tmp

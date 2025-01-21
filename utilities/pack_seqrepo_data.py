@@ -16,9 +16,10 @@ parser = argparse.ArgumentParser(description='Pack genome and RNA refseq data fr
 
 parser.add_argument('--uta_database_schema',
                     help='UTA database schema',
-                    default=os.environ.get('UTA_DATABASE_SCHEMA'))
+                    default=os.getenv('UTA_DATABASE_SCHEMA', 'uta_20240523b'))
 parser.add_argument('--uta_database_url', help='UTA database URL',
-                    default='postgresql://anonymous:anonymous@uta.biocommons.org/uta')
+                    # Use the biocommons UTA database if we don't specify a custom one.
+                    default=os.getenv('UTA_DATABASE_URL', 'postgresql://anonymous:anonymous@uta.biocommons.org/uta'))
 parser.add_argument('--seqrepo_dir',
                     help='Seqrepo directory',
                     default='/usr/local/share/seqrepo/latest')
@@ -27,7 +28,6 @@ parser.add_argument('--output_dir',
                     default='tmp')
 args = parser.parse_args()
 
-# Use the biocommons UTA database if we don't specify a custom one.
 # Also, make sure the URL uses `postgresql` instead of `postgres` as schema
 database_url = f"{args.uta_database_url}/{args.uta_database_schema}".replace('postgres://', 'postgresql://')
 

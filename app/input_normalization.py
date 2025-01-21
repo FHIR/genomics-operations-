@@ -13,7 +13,7 @@ from . import common
 port = os.getenv('PORT', 5000)  # The localhost debugger starts the app on port 5000
 os.environ['HGVS_SEQREPO_URL'] = f"http://localhost:{port}/utilities/seqfetcher"
 
-database_schema = os.getenv('UTA_DATABASE_SCHEMA', 'uta_20210129b')
+database_schema = os.getenv('UTA_DATABASE_SCHEMA', 'uta_20240523b')
 # Use the biocommons UTA database if we don't specify a custom one.
 # Also, make sure the URL uses `postgresql` instead of `postgres` as schema
 database_url = f"{os.getenv('UTA_DATABASE_URL', 'postgresql://anonymous:anonymous@uta.biocommons.org/uta')}/{database_schema}".replace('postgres://', 'postgresql://')
@@ -67,7 +67,6 @@ def normalize_variant(parsed_variant):
 
 def process_NM_HGVS(NM_HGVS):
     parsed_variant = hgvsParser.parse_hgvs_variant(NM_HGVS)
-    print(f"parsed: {parsed_variant}")
 
     projected_variant_dict = project_variant(parsed_variant)
     print(
@@ -85,7 +84,6 @@ def process_NM_HGVS(NM_HGVS):
 
 def process_NC_HGVS(NC_HGVS):
     parsed_variant = hgvsParser.parse_hgvs_variant(NC_HGVS)
-    print(f"parsed: {parsed_variant}")
 
     try:
         transcripts = b38hgvsAssemblyMapper.relevant_transcripts(parsed_variant)
